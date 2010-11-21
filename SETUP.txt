@@ -1,0 +1,4 @@
+Currently this repository is set up to work as an Eclipse project and has JARs and library source
+code attached.  The JOGL OS specific files (DLLs on Windows) need to be downloaded and put in the
+root of the project directory.
+https://jogl.dev.java.net/servlets/ProjectDocumentList?folderID=11509&expandFolder=11509&folderID=11508
