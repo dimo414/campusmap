@@ -1,0 +1,3 @@
+glob:.project
+glob:bin/*
+glob:*.dll
