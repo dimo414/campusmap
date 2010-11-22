@@ -26,9 +26,4 @@ public abstract class Building {
 	 * @param gl the OpenGL object
 	 */
 	public abstract void draw(GL gl);
-	/**
-	 * Returns the canonical coordinate for the building.
-	 * @return a coordinate
-	 */
-	public abstract double[] getCoordinate();
 }
