@@ -4,5 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/gluegen-rt.jar"/>
 	<classpathentry kind="lib" path="lib/jogl.jar" sourcepath="lib/jogl-1.1.1a-src.zip"/>
+	<classpathentry kind="lib" path="/OpenGL/lib/jogl.jar" sourcepath="/OpenGL/lib/jogl-1.1.1a-src.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
