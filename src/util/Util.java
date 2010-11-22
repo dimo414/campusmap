@@ -1,4 +1,4 @@
-package main;
+package util;
 
 /**
  * Contains static helper methods for use throughout the project.

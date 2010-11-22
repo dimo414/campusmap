@@ -1,4 +1,4 @@
-package main;
+package util;
 
 import javax.media.opengl.GL;
 
