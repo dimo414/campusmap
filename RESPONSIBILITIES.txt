@@ -1,0 +1,49 @@
+Brian:
+CampusPanel.java, global OpenGL, feature implementation
+Buildings:
+	Art
+	AXO
+	Goudy Commons
+	Pi Phi
+	Putnam UC
+	Rogers/Playhouse
+	Smullin/Walton
+	WISH/Admissions
+
+
+Jose:
+CampusPanel.java, global OpenGL, feature implementation
+Buildings:
+	Baxter
+	Collins
+	Eaton
+	Gatke
+	Lee/York
+	Olin
+	Sparks
+	Westside (Doney, Lausanne, ResLife, Campus Safety)
+	
+
+Michael:
+CampusFrame.java, Swing, UI, available features
+Buildings:
+	Belknap/Matthews
+	Clock tower
+	DG
+	Ford
+	Grounds-keeping Building
+	Hatfield Library
+	Smith/FAE/FAW
+	Waller
+	
+
+Travis:
+Util.java, global to local coordinates, other utilities
+Grounds:
+	Lattice ground, accurate elevations
+	Paths
+	Mill Stream
+	Streets, Parking
+	Trees and plants (Star Trees)
+	Memorials (Hatfield Fountain)
+	Sports (Sparks Field, Tennis Courts, etc.)
