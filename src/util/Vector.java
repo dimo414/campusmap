@@ -1,6 +1,9 @@
-package main;
+package util;
 
-/** An immutable 3 dimension vector. */
+/**
+ * An immutable representation of a 3D vector.
+ * @author Michael Diamond
+ */
 public class Vector {
   private final double x;
   private final double y;
