@@ -4,9 +4,6 @@ import javax.media.opengl.GL;
 
 /**
  * Abstract implementation of a building.
- * 
- * All buildings should be built from 150ft in vertical elevation.  A building at 163ft should
- * therefore be 13 feet off "the ground".
  */
 public abstract class Building {
 
