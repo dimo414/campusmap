@@ -23,6 +23,8 @@ public class Util {
 	 * @param elevation The elevation of the point, from sea level
 	 * @return an OpenGL coordinate (x,y,z)
 	 */
+	
+	
 	public static double[] coordToGL(double latitude, double longitude, double elevation){
 		return new double[]{};
 		
@@ -48,7 +50,7 @@ public class Util {
 	 * @return the distance in OpenGL units
 	 */
 	public static double feetToGL(double feet){
-		return 0;
+		return feet;
 	}
 	
 	/**
