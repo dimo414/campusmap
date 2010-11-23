@@ -1,6 +1,6 @@
 Brian:
 CampusPanel.java, global OpenGL, feature implementation
-Buildings:
+    Buildings:
 	Art
 	AXO
 	Goudy Commons
@@ -11,8 +11,11 @@ Buildings:
 	WISH/Admissions
 
 
+
+
+
 Jose:
-CampusPanel.java, global OpenGL, feature implementation
+CampusPanel.java, global OpenGL, feature implementation  
 Buildings:
 	Baxter
 	Collins
@@ -22,11 +25,14 @@ Buildings:
 	Olin
 	Sparks
 	Westside (Doney, Lausanne, ResLife, Campus Safety)
-	
+
+
+
+
 
 Michael:
 CampusFrame.java, Swing, UI, available features
-Buildings:
+   Buildings:
 	Belknap/Matthews
 	Clock tower
 	DG
@@ -35,11 +41,14 @@ Buildings:
 	Hatfield Library
 	Smith/FAE/FAW
 	Waller
-	
+
+
+
+
 
 Travis:
 Util.java, global to local coordinates, other utilities
-Grounds:
+  Grounds:
 	Lattice ground, accurate elevations
 	Paths
 	Mill Stream
