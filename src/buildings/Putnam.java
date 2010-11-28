@@ -2,6 +2,11 @@ package buildings;
 
 import javax.media.opengl.GL;
 
+/**
+ * Putnam University Center
+ * 
+ * THIS JAVADOC OR SOME OTHER COMMENT SHOULD CONTAIN DETAILS LIKE POSITION AND DIMENSIONS OF THE BUILDING
+ */
 public class Putnam extends Building {
 
 	double length = 167 + 4. / 12;
