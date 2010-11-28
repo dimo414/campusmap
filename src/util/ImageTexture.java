@@ -1,4 +1,4 @@
-package textures;
+package util;
 
 import java.awt.image.BufferedImage;
 import java.nio.ByteBuffer;
