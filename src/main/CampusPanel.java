@@ -3,10 +3,7 @@ package main;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
 
-import buildings.Building;
-import buildings.Putnam;
-import buildings.SmullinWalton;
-import buildings.Gatke;
+import buildings.*;
 
 import java.util.ArrayList;
 
