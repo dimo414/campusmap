@@ -1,6 +1,6 @@
 Brian:
 CampusPanel.java, global OpenGL, feature implementation
-    Buildings:
+  Buildings:
 	Art
 	AXO
 	Goudy Commons
@@ -16,7 +16,7 @@ CampusPanel.java, global OpenGL, feature implementation
 
 Jose:
 CampusPanel.java, global OpenGL, feature implementation  
-Buildings:
+  Buildings:
 	Baxter
 	Collins
 	Eaton
@@ -32,7 +32,7 @@ Buildings:
 
 Michael:
 CampusFrame.java, Swing, UI, available features
-   Buildings:
+  Buildings:
 	Belknap/Matthews
 	Clock tower
 	DG
