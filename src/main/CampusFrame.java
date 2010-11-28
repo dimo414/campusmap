@@ -109,6 +109,7 @@ public class CampusFrame extends JFrame implements ActionListener, KeyListener {
 		// Probably not a problem, but worth being aware of. 
 		fullScreen = fs;
 		
+		// http://stackoverflow.com/questions/875132/how-to-call-setundecorated-after-a-frame-is-made-visible
 		dispose();
         setUndecorated(fullScreen);
         setResizable(!fullScreen);
