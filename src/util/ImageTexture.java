@@ -6,6 +6,10 @@ import java.nio.ByteBuffer;
 import javax.imageio.ImageIO;
 import javax.media.opengl.GL;
 
+// TODO Add Javadoc
+/**
+ * @author Michael Diamond
+ */
 public class ImageTexture {
 	private BufferedImage image;
     private String filename = "";
@@ -16,7 +20,7 @@ public class ImageTexture {
      */
     public ImageTexture(String name) {
         filename = name;
-        loadImage(filename);
+        loadImage();
     }
 
     /** Wrap an already existing BufferedImage into a MyImage object.
@@ -55,9 +59,8 @@ public class ImageTexture {
     }
 
     /** Read in image and store as a BufferedImage.
-     * @param filename name of image file.
      */
-    public void loadImage(String filename) {
+    public void loadImage() {
         try {
         	getClass().getClassLoader();
         //	File file = new File("src/"+filename);
