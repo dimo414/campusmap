@@ -1,110 +1,58 @@
 package util;
 
 /**
- * Contains static helper methods for use throughout the project.
+ * <p>Contains static helper methods for use throughout the project.  Notably, this class defines
+ * how real world coordinates are converted to points to be drawn in OpenGL.  No other classes
+ * should be aware of, nor concerned with, the underlying OpenGL coordinates, everything should be
+ * specified in terms of real world coordinates and converted by these methods to the internal measurements.</p>
+ *  * 
+ * <p>The State Plane Coordinate System is a useful and common way to describe
+ * locations at a scale approximately the size of a state.  It uses plane coordinates,
+ * as opposed to the spherical latitude and longitude coordinates, which greatly simplify
+ * calculations.  We are using the State Plane Coordinate System to describe positions in space.</p>
+ * 
+ * <p>Willamette University is covered by Zone 3601 - Oregon North.
+ * Our coordinates are in international feet.</p>
+ * 
+ * <p>See: http://en.wikipedia.org/wiki/State_Plane_Coordinate_System</p>
+ * <p>Useful Resource: http://www.earthpoint.us/StatePlane.aspx</p>
  */
 public class Util {
+	
+	/** The location of the northwest corner of the main Willamette campus. */
+	public static final double[] CAMPUS_NW = new double[]{7546523.888, 473824.754};
+	/** The location of the northeast corner of the main Willamette campus. */
+	public static final double[] CAMPUS_NE = new double[]{7547756.519, 473339.332};
+	/** The location of the southeast corner of the main Willamette campus. */
+	public static final double[] CAMPUS_SE = new double[]{7547272.347, 472011.012};
+	/** The location of the southwest corner of the main Willamette campus. */
+	public static final double[] CAMPUS_SW = new double[]{7546005.950, 472500.560};
+	
 	/**
 	 * <p>
-	 * Takes a world coordinate (longitude, latitude, and elevation) and
+	 * Takes a State Plane coordinate point (easting, northing, and elevation) and
 	 * converts it to display in OpenGL. This method is the definitive
 	 * conversion of real world positions to the internal positioning of objects
 	 * in this application.
 	 * </p>
 	 * 
-	 * <h4>Implementation notes</h4>
-	 * <ul>
-	 * <li>All buildings should be built from 150ft in vertical elevation. A
-	 * building at 163ft should therefore be 13 feet off "the ground".</li>
-	 * </ul>
-	 * 
-	 * <p>
-	 * See: http://en.wikipedia.org/wiki/World_Geodetic_System,
-	 * http://en.wikipedia.org/wiki/Longitude and
-	 * http://en.wikipedia.org/wiki/Latitude
-	 * </p>
-	 * 
-	 * @param latitude
-	 *            The latitude of the point, in degrees (and fractions thereof)
-	 * @param longitude
-	 *            The longitude of the point, in degrees (and fractions thereof)
+	 * @param easting
+	 *            The number of feet east of the Oregon North origin
+	 * @param northing
+	 *            The number of feet north of the Oregon North origin
 	 * @param elevation
 	 *            The elevation of the point, from sea level
 	 * @return an OpenGL coordinate (x,y,z)
 	 */
-
-	static double minX = Double.MIN_VALUE;
-	static double maxX = Double.MAX_VALUE;
-	static double minY = Double.MIN_VALUE;
-	static double maxY = Double.MAX_VALUE;
-
-	/**
-	 * Takes coordinates of four corners of campus and 
-	 * sets minimum and maximum x and y coordinates for scaling
-	 * 
-	 */
-	public void setMinMax(double[][] vertices) {
-		for (int i = 0; i < 4; i++) {
-				if (vertices[i][0] < minX)
-					minX = vertices[i][0];
-				if (vertices[i][0] > maxX)
-					maxX = vertices[i][0];
-				if (vertices[i][1] < minY)
-					minY = vertices[i][1];
-				if (vertices[i][1] > maxY)
-					maxY = vertices[i][1];
-		}
-	}
-
-	/**
-	 * Uses min and max to scale components between 0 and 1
-	 * @return
-	 */
-	public static double[] scale(double[] component) {
-		component[0] = (component[0] - minX) / (maxX - minX);
-		component[1] = (component[1] - minY) / (maxY - minY);
-		return component;
-	}
-
-	/**
-	 * Sets coordinates on a scale of 0 to 1
-	 * @param latitude
-	 * @param longitude
-	 * @param elevation
-	 * @return
-	 */
-	public static double[] coordToGL(double longitude, double latitude,
-			double elevation) {
-		double[] coordinates = {longitude, latitude};
-		coordinates = scale(coordinates);
-		return new double[] { coordinates[0], coordinates[1], elevation };
-
-	}
-
-	/**
-	 * Takes an angle in degrees, minutes, and seconds, and converts it to just
-	 * degrees (and fractions thereof).
-	 * "For example, the Eiffel Tower has a latitude of 48° 51' 29" N, where 48°
-	 * refers to the number of degrees, 51' refers to the number of minutes, and
-	 * 29" refers to the number of seconds. Alternatively, latitude may be
-	 * measured entirely in degrees, e.g. 48.8583° N." From
-	 * http://en.wikipedia.org/wiki/Latitude.
-	 * 
-	 * @param deg
-	 *            the degrees from zero
-	 * @param min
-	 *            the minutes from that degree
-	 * @param sec
-	 *            the seconds from that minute
-	 * @return the angle as a single double, see example above
-	 */
-	public static double minSecToDegrees(int deg, int min, double sec) {
-		return 0;
+	public static double[] coordToGL(double easting, double northing, double elevation) {
+		// The southwest corner of campus will be considered the origin for now
+		// If the application is developed properly, changing the origin should be trivial
+		return new double[]{easting-CAMPUS_SW[0],elevation,northing-CAMPUS_SW[1]};
 	}
 
 	/**
 	 * Takes a measurement in feet, and converts it to the appropriate distance
-	 * in OpenGL
+	 * in OpenGL.  This method corresponds to coordToGL() - cordToGL(x,y,z)[0]+feetToGL(f) is exactly equivalent to cordToGL(x+f,y,z)[0].
 	 * 
 	 * @param feet
 	 *            measurement (in feet)
