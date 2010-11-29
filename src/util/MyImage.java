@@ -4,6 +4,10 @@ import java.io.File;
 import java.nio.ByteBuffer;
 import javax.imageio.ImageIO;
 
+/**
+ * This class has been deprecated in favor of ImageTexture.  Do not use it.  It will be deleted shortly.
+ */
+@Deprecated
 public class MyImage {
 
     private BufferedImage image;
@@ -54,15 +58,15 @@ public class MyImage {
     }
 
     /** Read in image and store as a BufferedImage.
-     * @param filename name of image file.
+     * @param fileStr name of image file.
      */
-    public void loadImage(String filename) {
-        File file = new File(filename);
+    public void loadImage(String fileStr) {
+        File file = new File(fileStr);
         try {
             image = ImageIO.read(file.toURL());
-            System.out.println("Loading image " + filename + ".");
+            System.out.println("Loading image " + fileStr + ".");
         } catch (Exception e) {
-            System.out.println(e + "\nError reading " + filename);
+            System.out.println(e + "\nError reading " + fileStr);
         }
         if (image == null) {
             System.out.println("null image!!");
