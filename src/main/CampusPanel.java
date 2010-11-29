@@ -3,8 +3,7 @@ package main;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
 
-import buildings.Building;
-import util.*;
+import buildings.*;
 
 import java.util.ArrayList;
 
@@ -12,26 +11,38 @@ import javax.media.opengl.GL;
 import com.sun.opengl.util.GLUT;
 import javax.media.opengl.glu.GLU;
 
+import util.Eye;
+import util.MyImage;
+import util.Vector;
+
 /**
  * The Central class for the project, runs OpenGL and manages all the buildings and other
  * features.
  */
 public class CampusPanel implements GLEventListener {
 
-	Eye eye = new Eye(new Vector(-5.0,5.0,-5.0), new Vector(1.0,0.0,0.0), new Vector(0.0,1.0,0.0), new Vector(3.0,0.0,3.0));
-	public ArrayList<Building> buildings = new ArrayList<Building>();
-	public GLU glu = new GLU();  // OpenGL Utility Library - used to set camera view
-    public GLUT glut = new GLUT();  // OpenGL Utility Toolkit - contains teapot
-	int[] names; // the array of texture names;
-	int nTex = 1; // the name of chosen texture
+	//glu.gluLookAt(-5.0, 5.0, -5.0, 3.0, 0.0, 3.0, 0.0, 1.0, 0.0);
+	private Eye eye = new Eye(new Vector(-5.0,5.0,-5.0), new Vector(3.0, 0.0, 3.0));
+	private  ArrayList<Building> buildings = new ArrayList<Building>();
+	private  GLU glu = new GLU();  // OpenGL Utility Library - used to set camera view
+    private GLUT glut = new GLUT();  // OpenGL Utility Toolkit - contains teapot
+	private int[] names; // the array of texture names;
+	private int nTex = 1; // the name of chosen texture
+	
+	/**
+	 * Gives access to the eye object for easy positioning.
+	 * @return the eye object viewing this display
+	 */
+	public Eye getEye(){
+		return eye;
+	}
 	
 	@Override
 	/**
-	 * Defines buildings, textures, etc. at compile time (only need to be called once)
-	 * It also sets some default values 
+	 * Defines buildings, textures, etc. at compile time (is called once)
+	 * It also sets some default values
 	 */
 	public void init(GLAutoDrawable drawable) {
-		// TODO Auto-generated method stub
 		GL gl = drawable.getGL();
         gl.glClearColor(.2f, .2f, .5f, 0);
 
@@ -63,6 +74,7 @@ public class CampusPanel implements GLEventListener {
 	 * Adds textures to openGl
 	 */
 	public void addTextures(GL gl){
+		// TODO this should probably use ImageTexture, not MyImage - ImageTexture improves on how MyImage works
 		MyImage image = new MyImage("BluePrints\\CampusMap2.jpg");
 		
 		names = new int[1];
@@ -104,15 +116,14 @@ public class CampusPanel implements GLEventListener {
 	
 	@Override
 	/**
-	 * Displays everything
+	 * Runs once per frame, generates the image to display
 	 */
 	public void display(GLAutoDrawable drawable) {
-		// TODO Auto-generated method stub
         GL gl = drawable.getGL();
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
         gl.glMatrixMode(GL.GL_MODELVIEW);
         gl.glLoadIdentity();
-        glu.gluLookAt(-5.0, 5.0, -5.0, 3.0, 0.0, 3.0, 0.0, 1.0, 0.0);
+        eye.positionCamera(gl);
 		
 	//	drawBuildings(gl);
 		drawGround(gl);
@@ -140,13 +151,10 @@ public class CampusPanel implements GLEventListener {
 	
 	@Override
 	/**
-	 * Allows you to change the size of the screen
+	 * What to do when the display is reshaped (resized)
 	 */
-	public void reshape(GLAutoDrawable drawable, int x, int y, int width,
-			int height) {
-		// TODO Auto-generated method stub
+	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
 		GL gl = drawable.getGL();
-        GLU glu = new GLU();
 
         if (height <= 0) { // avoid a divide by zero error!
         
@@ -163,12 +171,10 @@ public class CampusPanel implements GLEventListener {
 
 	@Override
 	/**
-	 * No idea what this is for
+	 * What to do when the display changes.  We do not use this method at all.
 	 */
-	public void displayChanged(GLAutoDrawable drawable, boolean modeChanged,
-			boolean deviceChanged) {
-		// TODO Auto-generated method stub
-		
+	public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) {
+		// Nothing to do
 	}
 
 }
