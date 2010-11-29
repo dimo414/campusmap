@@ -111,10 +111,7 @@ public class BuildingViewer implements GLEventListener, ActionListener {
 
     public void display(GLAutoDrawable drawable) {    	
         GL gl = drawable.getGL();
-        
-      	gl.glEnable(GL.GL_LIGHT0);  
-        gl.glEnable(GL.GL_LIGHTING);
-        
+                
         // lightwork
         float[] lightPosition = {1000.0f*(float)Math.sin(lAngle), 1000.0f*(float)Math.abs(Math.cos(lAngle)), 5.0f, 1.0f};
         gl.glLightfv(GL.GL_LIGHT0, GL.GL_POSITION, lightPosition,0);

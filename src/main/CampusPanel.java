@@ -41,6 +41,8 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	private boolean turn = false;
 	private boolean track = false;
 	
+	private double lAngle = 60;
+	
 	private  ArrayList<Building> buildings = new ArrayList<Building>();
 	
 	private int[] names; // the array of texture names;
@@ -69,6 +71,11 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
         gl.glMatrixMode(GL.GL_PROJECTION);
         gl.glLoadIdentity();
         gl.glMatrixMode(GL.GL_MODELVIEW);
+        
+        gl.glEnable(GL.GL_COLOR_MATERIAL);  // uses glColor to set the color      
+        gl.glEnable(GL.GL_LIGHT0);  
+        gl.glEnable(GL.GL_LIGHTING);
+        gl.glEnable(GL.GL_NORMALIZE);
 
         addBuildings(gl);
         addTextures(gl);
@@ -83,6 +90,11 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	public void display(GLAutoDrawable drawable) {
 		handleControls();
         GL gl = drawable.getGL();
+        
+        // lightwork
+        float[] lightPosition = {(float)(Util.feetToGL(1000)*Math.sin(lAngle)), (float)(Util.feetToGL(1000)*Math.abs(Math.cos(lAngle))), (float)Util.feetToGL(500), 1.0f};
+        gl.glLightfv(GL.GL_LIGHT0, GL.GL_POSITION, lightPosition,0);
+        
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
         gl.glMatrixMode(GL.GL_MODELVIEW);
         gl.glLoadIdentity();
