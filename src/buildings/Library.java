@@ -38,10 +38,12 @@ public class Library extends Building {
 		gl.glRotated(buildingRotation, 0, 1, 0);
 		if(!drawOrigin)
 			gl.glTranslated(glPos[0],glPos[1],glPos[2]);
+		else
+			gl.glTranslated(-Util.feetToGL(186.1/2), 0, -Util.feetToGL(186.1/2));
 		
 		gl.glScaled(Util.feetToGL(186.1), Util.feetToGL(40), Util.feetToGL(186.1));
-		if(!drawOrigin)
-			gl.glTranslated(.5,.5,.5);
+		
+		gl.glTranslated(.5,.5,.5);
 		
 		glut.glutSolidCube(1);
 		
