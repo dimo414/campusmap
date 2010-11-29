@@ -35,17 +35,31 @@ public class Library extends Building {
 	public void draw(GL gl) {//TODO find a better way to position the building at the origin or not
 		gl.glPushMatrix();
 		
-		gl.glRotated(buildingRotation, 0, 1, 0);
-		if(!drawOrigin)
+		// Universal positioning
+		if(!drawOrigin){
 			gl.glTranslated(glPos[0],glPos[1],glPos[2]);
+			gl.glRotated(buildingRotation, 0, 1, 0);
+		}
 		else
-			gl.glTranslated(-Util.feetToGL(186.1/2), 0, -Util.feetToGL(186.1/2));
+			// this is the appx centerpoint of the building
+			gl.glTranslated(-Util.feetToGL(186.1/2), 0, Util.feetToGL(186.1/2));
+		// End universal positioning
 		
+		// main building
+		gl.glPushMatrix();
 		gl.glScaled(Util.feetToGL(186.1), Util.feetToGL(40), Util.feetToGL(186.1));
-		
-		gl.glTranslated(.5,.5,.5);
-		
+		gl.glTranslated(.5,.5,-.5);
 		glut.glutSolidCube(1);
+		gl.glPopMatrix();
+		
+		// north outcrop - this position has not been measured yet - numbers are guesses
+		gl.glPushMatrix();
+		gl.glTranslated(Util.feetToGL(60),0,-Util.feetToGL(186.1));
+		gl.glRotated(45, 0, 1, 0);
+		gl.glScaled(Util.feetToGL(30), Util.feetToGL(40), Util.feetToGL(30));
+		gl.glTranslated(0, .5, 0);
+		glut.glutSolidCube(1);
+		gl.glPopMatrix();
 		
 		gl.glPopMatrix();
 	}

@@ -47,7 +47,7 @@ public class Util {
 	public static double[] coordToGL(double easting, double northing, double elevation) {
 		// The southwest corner of campus will be considered the origin for now
 		// If the application is developed properly, changing the origin should be trivial
-		return new double[]{easting-CAMPUS_SW[0],elevation,northing-CAMPUS_SW[1]};
+		return new double[]{easting-CAMPUS_SW[0],elevation,-(northing-CAMPUS_SW[1])};
 	}
 
 	/**
