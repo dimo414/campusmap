@@ -15,7 +15,7 @@ public class Cube {
     int faces[][] = {{0, 1, 3, 2}, {2, 3, 7, 6}, {6, 7, 5, 4}, {4, 5, 1, 0}, {1, 5, 7, 3}, {0, 2, 6, 4}};
     double normals[][] = {{-1, 0, 0}, {0, 1, 0}, {1, 0, 0}, {0, -1, 0}, {0, 0, 1}, {0, 0, -1}};
     double scale = 1;
-    double textures[][] = {{scale, 0}, {scale, scale}, {0, scale}, {0, 0}};
+    double textures[][] = {{scale, 0}, {0, 0}, {0, scale}, {scale, scale}};
     double position[] = {0, 0, 0};
 
     /** Creates a new instance of Cube */
