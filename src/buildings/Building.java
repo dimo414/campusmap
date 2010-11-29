@@ -8,14 +8,14 @@ import javax.media.opengl.GL;
  * 
  * Although blueprints show the buildings oriented facing North, the campus itself faces slightly off of North.
  * Calculations using ArcMap indicate that campus is Appx. 21.2999 degrees clockwise off of North.  Therefore, assuming
- * this is accurate, you should rotate your building by that much.
+ * this is accurate, you should rotate your building by that much -  use buildingRotation to make your job easier.
  */
 public abstract class Building {
 	/**
 	 * The standard amount a building developed facing north should be rotated in order to face the correct direction
 	 * on the map.
 	 */
-	public static double buildingRotation = 21.2999;
+	public static final double buildingRotation = -21.2999;
 	
 	protected boolean drawOrigin = false;
 	

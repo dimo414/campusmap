@@ -16,9 +16,9 @@ import javax.media.opengl.glu.GLU;
 
 import util.Eye;
 import util.ImageTexture;
+import util.Util;
 import util.Vector;
 import buildings.Building;
-import buildings.Cube;
 
 import com.sun.opengl.util.GLUT;
 
@@ -31,7 +31,7 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
     private GLUT glut = new GLUT();  // OpenGL Utility Toolkit - contains teapot
 
 	//glu.gluLookAt(-5.0, 5.0, -5.0, 3.0, 0.0, 3.0, 0.0, 1.0, 0.0);
-	private Eye eye = new Eye(new Vector(-5.0,5.0,-5.0), new Vector(3.0, 0.0, 3.0));
+	private Eye eye;
 	private HashSet<Integer> keys = new HashSet<Integer>();
 
 	private double moveSpeed = 2;
@@ -39,6 +39,7 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	private int lastX;
 	private int lastY;
 	private boolean turn = false;
+	private boolean track = false;
 	
 	private  ArrayList<Building> buildings = new ArrayList<Building>();
 	
@@ -54,7 +55,14 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	 * Defines buildings, textures, etc. at compile time (is called once)
 	 * It also sets some default values
 	 */
-	public void init(GLAutoDrawable drawable) {		
+	public void init(GLAutoDrawable drawable) {
+		// Setup Eye
+		// TODO this could be better positioned, but is perfectly good for right now
+		Vector pos = new Vector(Util.coordToGL((Util.CAMPUS_SE[0]+Util.CAMPUS_SW[0])/2, (Util.CAMPUS_SE[1]+Util.CAMPUS_SW[1])/2, 1000));
+		Vector lookAt = new Vector(Util.coordToGL((Util.CAMPUS_NE[0]+Util.CAMPUS_NW[0])/2, (Util.CAMPUS_NE[1]+Util.CAMPUS_NW[1])/2, 0));
+		eye = new Eye(pos, lookAt);
+		eye.pitch(-.5);
+		
 		GL gl = drawable.getGL();
         gl.glClearColor(.2f, .2f, .5f, 0);
 
@@ -174,11 +182,25 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 		gl.glPushMatrix();
         gl.glEnable(GL.GL_TEXTURE_2D);
         
-		Cube cube = new Cube();
 		gl.glBindTexture(GL.GL_TEXTURE_2D, names[0]);
-		cube.draw(gl);
+		
+        gl.glBegin(GL.GL_QUADS);
 
-		gl.glDisable(GL.GL_TEXTURE_2D);
+        gl.glTexCoord2d(1,0);
+        gl.glVertex3dv(Util.coordToGL(Util.CAMPUS_SW[0],Util.CAMPUS_SW[1],0),0);
+
+        gl.glTexCoord2d(0,0);
+        gl.glVertex3dv(Util.coordToGL(Util.CAMPUS_SE[0],Util.CAMPUS_SE[1],0),0);
+
+        gl.glTexCoord2d(0,1);
+        gl.glVertex3dv(Util.coordToGL(Util.CAMPUS_NE[0],Util.CAMPUS_NE[1],0),0);
+
+        gl.glTexCoord2d(1,1);
+        gl.glVertex3dv(Util.coordToGL(Util.CAMPUS_NW[0],Util.CAMPUS_NW[1],0),0);
+        
+        gl.glEnd();
+
+        gl.glDisable(GL.GL_TEXTURE_2D);
 		gl.glPopMatrix();
 	}
 	
@@ -221,6 +243,7 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 		lastX = evt.getX();
 		lastY = evt.getY();
 		turn = evt.getButton() == MouseEvent.BUTTON1;
+		track = evt.getButton() == MouseEvent.BUTTON3;
 	}
 
 	@Override
@@ -232,6 +255,10 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 		if(turn){
 			eye.rotateH(-(evt.getX()-lastX)*turnAngle);
 			eye.pitch((evt.getY()-lastY)*turnAngle);
+		}
+		if(track){
+			eye.trackH(-(evt.getX()-lastX)*moveSpeed);
+			eye.trackV((evt.getY()-lastY)*moveSpeed);
 		}
 		lastX = evt.getX();
 		lastY = evt.getY();
