@@ -1,25 +1,26 @@
 package main;
 
-import javax.media.opengl.GLAutoDrawable;
-import javax.media.opengl.GLEventListener;
-
-import buildings.*;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 import javax.media.opengl.GL;
-import com.sun.opengl.util.GLUT;
+import javax.media.opengl.GLAutoDrawable;
+import javax.media.opengl.GLEventListener;
 import javax.media.opengl.glu.GLU;
 
 import util.Eye;
-import util.MyImage;
+import util.ImageTexture;
 import util.Vector;
+import buildings.Building;
+import buildings.Cube;
+
+import com.sun.opengl.util.GLUT;
 
 /**
  * The Central class for the project, runs OpenGL and manages all the buildings and other
@@ -44,6 +45,10 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	private int[] names; // the array of texture names;
 	private int nTex = 1; // the name of chosen texture
 	
+	//
+	// OPENGL METHODS
+	//
+	
 	@Override
 	/**
 	 * Defines buildings, textures, etc. at compile time (is called once)
@@ -57,64 +62,10 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
         gl.glLoadIdentity();
         gl.glMatrixMode(GL.GL_MODELVIEW);
 
-    //    addBuildings();
+        addBuildings(gl);
         addTextures(gl);
         
         gl.glEnable(GL.GL_DEPTH_TEST);
-	}
-	
-	/**
-	 * Creates and adds buildings to the buildings arraylist
-	 */
-	public void addBuildings(){
-		buildings.add(new Putnam());
-		buildings.add(new SmullinWalton());
-		buildings.add(new Gatke());
-		buildings.add(new Library());
-	}
-	
-	/**
-	 * Adds textures to openGl
-	 */
-	public void addTextures(GL gl){
-		// TODO this should use ImageTexture, not MyImage - ImageTexture improves on how MyImage works and works inside Jars
-		MyImage image = new MyImage("src/textures/CampusMap.jpg");
-		
-		names = new int[1];
-        gl.glGenTextures(1, names, 0);
-        // Assign each of the textures an ID
-        bind(names[0], image, gl);
-
-        nTex = names[0]; 
-        gl.glEnable(GL.GL_TEXTURE_2D);
-	}
-	
-	/**
-	 * Helper method for addTextures.
-	 */
-	public void bind(int name, MyImage image, GL gl) {
-		// set the current texture 
-		gl.glBindTexture(GL.GL_TEXTURE_2D, // target
-                name);             // texture ID
-
-        // glTexParameter sets the texture state parameters, i.e. how texturing is done, e.g antialiasing, wrapping, etc
-        gl.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_MAG_FILTER, GL.GL_LINEAR);
-        gl.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_MIN_FILTER, GL.GL_LINEAR);
-        gl.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_WRAP_S, GL.GL_REPEAT);
-        gl.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_WRAP_T, GL.GL_REPEAT);
-        
-        gl.glTexEnvi(GL.GL_TEXTURE_ENV, GL.GL_TEXTURE_ENV_MODE, GL.GL_DECAL);
-        
-        gl.glTexImage2D(GL.GL_TEXTURE_2D, // target
-                0, // level (used for mipmaps)
-                GL.GL_RGB, // internalFormat
-                image.getHeight(), // image height
-                image.getHeight(), // image width
-                0, // border 0 or 1
-                GL.GL_RGB, // format of texture image data
-                GL.GL_UNSIGNED_BYTE, // type of texture image data
-                image.convert() // buffer containing image (byte buffer in this case)
-                );
 	}
 	
 	@Override
@@ -129,8 +80,82 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
         gl.glLoadIdentity();
         eye.positionCamera(gl);
 		
-	//	drawBuildings(gl);
+		drawBuildings(gl);
 		drawGround(gl);
+	}
+	
+	@Override
+	/**
+	 * Handles what happens when the display is reshaped (resized)
+	 */
+	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
+		GL gl = drawable.getGL();
+
+        if (height <= 0) { // avoid a divide by zero error!
+        
+            height = 1;
+        }
+        gl.glViewport(0, 0, width, height);
+        gl.glMatrixMode(GL.GL_PROJECTION);
+        gl.glLoadIdentity();
+        glu.gluPerspective(60., (double) width / height, 0.1, 3000.0);
+        gl.glMatrixMode(GL.GL_MODELVIEW);
+        gl.glLoadIdentity();
+	}
+
+	@Override
+	/**
+	 * What to do when the display changes.  We do not use this method at all.
+	 */
+	public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) {
+		// Nothing to do
+	}
+	
+	//
+	// HELPER METHODS
+	//
+	
+	/**
+	 * Creates and adds buildings to the buildings arraylist
+	 */
+	public void addBuildings(GL gl){
+		// The following block of code loads all children of Building in the buildings package into a hash map        
+        // FIXME this will not work in a Jar, since it's not using getResource()
+        File buildingDir = new File("bin/buildings");
+        for(String file : buildingDir.list()){
+        	file = file.replaceAll("\\.class", "");
+        	if(!file.equals("Building")){
+        		try {
+					Class<?> c = Class.forName("buildings."+file);
+					if(Building.class.isAssignableFrom(c)){ // if class is a building
+						Building b = (Building) c.newInstance();
+						b.init(gl);
+						buildings.add(b);
+					}
+				} catch (ClassNotFoundException e) {
+					// Do nothing - if it's not a Class, we don't care about it.
+				} catch (InstantiationException e) {
+					// Do nothing - if it failed to instantiate, we don't care about it.
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					// Do nothing - if we weren't supposed to access the Class, we don't care about it.
+				}
+        	}
+        }
+	}
+	
+	/**
+	 * Adds textures to openGl
+	 */
+	public void addTextures(GL gl){
+		ImageTexture image = new ImageTexture("textures/CampusMap.jpg");
+		
+		names = new int[1];
+        gl.glGenTextures(1, names, 0);
+        // Assign each of the textures an ID
+        image.bind(names[0], gl);
+
+        nTex = names[0]; 
 	}
 
 	/**
@@ -147,39 +172,19 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	 */
 	public void drawGround(GL gl){
 		gl.glPushMatrix();
+        gl.glEnable(GL.GL_TEXTURE_2D);
+        
 		Cube cube = new Cube();
 		gl.glBindTexture(GL.GL_TEXTURE_2D, names[0]);
 		cube.draw(gl);
+
+		gl.glDisable(GL.GL_TEXTURE_2D);
 		gl.glPopMatrix();
 	}
 	
-	@Override
-	/**
-	 * What to do when the display is reshaped (resized)
-	 */
-	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
-		GL gl = drawable.getGL();
-
-        if (height <= 0) { // avoid a divide by zero error!
-        
-            height = 1;
-        }
-        final float h = (float) width / (float) height;
-        gl.glViewport(0, 0, width, height);
-        gl.glMatrixMode(GL.GL_PROJECTION);
-        gl.glLoadIdentity();
-        glu.gluPerspective(60., (double) width / height, 0.1, 3000.0);
-        gl.glMatrixMode(GL.GL_MODELVIEW);
-        gl.glLoadIdentity();
-	}
-
-	@Override
-	/**
-	 * What to do when the display changes.  We do not use this method at all.
-	 */
-	public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) {
-		// Nothing to do
-	}
+	//
+	// LISTENER METHODS
+	//
 
 	@Override
 	public void keyPressed(KeyEvent evt) {
