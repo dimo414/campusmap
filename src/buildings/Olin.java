@@ -2,6 +2,8 @@ package buildings;
 
 import javax.media.opengl.GL;
 
+import util.Util;
+
 public class Olin extends Building{
 
 	//1 - left cube of Olin, 2 - right cube of Olin
@@ -22,24 +24,44 @@ public class Olin extends Building{
 		double[] position1 = { 0, 0, 0 };
 		double textures1[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 	//----------------------------------------------------------------------------------------------------
-		double length2 = 65;		//55' - 0 7/8 + 20' - 2 7/6
+		double length2 = 75;		//55' - 0 7/8 + 20' - 2 7/6
 		double width2 = 33;		//33' - 5 1/4
 		double height2 = 50;
 		
-		double[][] vertices2 = { { 0, 0, 0 }, { 0, 0, width1 }, { length1, 0, width1 },
-				{ length1, 0, 0 }, { 0, height1, 0 }, { 0, height1, width1 },
-				{ length1, height1, width1 }, { length1, height1, 0 } };
+		double[][] vertices2 = { { 0, 0, 0 }, { 0, 0, width2 }, { length2, 0, width2 },
+				{ length2, 0, 0 }, { 0, height2, 0 }, { 0, height2, width2 },
+				{ length2, height2, width2 }, { length2, height2, 0 } };
 		int[][] faces2 = { { 4, 0, 1, 5 }, { 5, 1, 2, 6 }, { 6, 2, 3, 7 },
 				{ 7, 3, 0, 4 }, { 0, 1, 2, 3 }, { 4, 5, 6, 7 } }; // West, South,
 																	// East, North,
 																	// Bottom, Top
 		double[][] normals2 = { { -1, 0, 0 }, { 0, 0, 1 }, { 1, 0, 0 },
 				{ 0, 0, -1 }, { 0, -1, 0 }, { 0, 1, 0 } };
-		double[] position2 = { 122, 0, 11};
+		double[] position2 = { 13, 0, 122};
 		double textures2[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
+		
+		
+		private double[] glPos;
+		private double posEast = 7546415.465;
+		private double posNorth = 473550.03;
+		private double posElevation = 0; // TODO Get Elevation of building
 		
 		@Override
 		public void draw(GL gl) {
+			gl.glPushMatrix();
+			
+			// Universal positioning
+			if(!drawOrigin){
+				gl.glTranslated(glPos[0],glPos[1],glPos[2]);
+				gl.glRotated(buildingRotation, 0, 1, 0);
+			}
+			else
+				// this is the appx centerpoint of the building
+				gl.glTranslated(-Util.feetToGL(205.0/2), 0, Util.feetToGL(238.0/2));
+			// End universal positioning
+			
+			gl.glRotated(90, 0, 1, 0);
+			
 			gl.glPushMatrix();
 			gl.glTranslated(position1[0], position1[1], position1[2]);
 			for (int i = 0; i < faces1.length; i++) {
@@ -67,11 +89,13 @@ public class Olin extends Building{
 				gl.glEnd();
 			}
 			gl.glPopMatrix();	
+			
+			gl.glPopMatrix();
 		}
 
 		@Override
 		public void init(GL gl) {
 			// TODO Auto-generated method stub
-			
+			glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		}
 }

@@ -2,6 +2,8 @@ package buildings;
 
 import javax.media.opengl.GL;
 
+import util.Util;
+
 public class Baxter extends Building{
 
 	//1 - bottom left cube of baxter, 2 - middle cube of baxter, 3 - right cube of baxter
@@ -26,36 +28,56 @@ public class Baxter extends Building{
 	double width2 = 202;		//202' - 10 1/8
 	double height2 = 50;
 	
-	double[][] vertices2 = { { 0, 0, 0 }, { 0, 0, width1 }, { length1, 0, width1 },
-			{ length1, 0, 0 }, { 0, height1, 0 }, { 0, height1, width1 },
-			{ length1, height1, width1 }, { length1, height1, 0 } };
+	double[][] vertices2 = { { 0, 0, 0 }, { 0, 0, width2 }, { length2, 0, width2 },
+			{ length2, 0, 0 }, { 0, height2, 0 }, { 0, height2, width2 },
+			{ length2, height2, width2 }, { length2, height2, 0 } };
 	int[][] faces2 = { { 4, 0, 1, 5 }, { 5, 1, 2, 6 }, { 6, 2, 3, 7 },
 			{ 7, 3, 0, 4 }, { 0, 1, 2, 3 }, { 4, 5, 6, 7 } }; // West, South,
 																// East, North,
 																// Bottom, Top
 	double[][] normals2 = { { -1, 0, 0 }, { 0, 0, 1 }, { 1, 0, 0 },
 			{ 0, 0, -1 }, { 0, -1, 0 }, { 0, 1, 0 } };
-	double[] position2 = { 0, 0, 134 - 66 };
+	double[] position2 = { 134 - 66, 0, 0 };
 	double textures2[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 //----------------------------------------------------------------------------------------------------	
 	double length3 = 205;		//205' - 0 9/16
 	double width3 = 36;		//36' - 4
 	double height3 = 50;
 	
-	double[][] vertices3 = { { 0, 0, 0 }, { 0, 0, width1 }, { length1, 0, width1 },
-			{ length1, 0, 0 }, { 0, height1, 0 }, { 0, height1, width1 },
-			{ length1, height1, width1 }, { length1, height1, 0 } };
+	double[][] vertices3 = { { 0, 0, 0 }, { 0, 0, width3 }, { length3, 0, width3 },
+			{ length3, 0, 0 }, { 0, height3, 0 }, { 0, height3, width3 },
+			{ length3, height3, width3 }, { length3, height3, 0 } };
 	int[][] faces3 = { { 4, 0, 1, 5 }, { 5, 1, 2, 6 }, { 6, 2, 3, 7 },
 			{ 7, 3, 0, 4 }, { 0, 1, 2, 3 }, { 4, 5, 6, 7 } }; // West, South,
 																// East, North,
 																// Bottom, Top
 	double[][] normals3 = { { -1, 0, 0 }, { 0, 0, 1 }, { 1, 0, 0 },
 			{ 0, 0, -1 }, { 0, -1, 0 }, { 0, 1, 0 } };
-	double[] position3 = { 202, 0, 205 - 66 };
+	double[] position3 = { 0, 0, 202 };
 	double textures3[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
+	
+	private double[] glPos;
+	private double posEast = 7547365.465;
+	private double posNorth = 473130.03;
+	private double posElevation = 0; // TODO Get Elevation of building
 	
 	@Override
 	public void draw(GL gl) {
+		gl.glPushMatrix();
+		
+		// Universal positioning
+		if(!drawOrigin){
+			gl.glTranslated(glPos[0],glPos[1],glPos[2]);
+			gl.glRotated(buildingRotation, 0, 1, 0);
+		}
+		else
+			// this is the appx centerpoint of the building
+			gl.glTranslated(-Util.feetToGL(205.0/2), 0, Util.feetToGL(238.0/2));
+		// End universal positioning
+		
+		
+		gl.glRotated(90, 0, 1, 0);
+		
 		gl.glPushMatrix();
 		gl.glTranslated(position1[0], position1[1], position1[2]);
 		for (int i = 0; i < faces1.length; i++) {
@@ -97,11 +119,15 @@ public class Baxter extends Building{
 			gl.glEnd();
 		}
 		gl.glPopMatrix();	
+		
+		
+		
+		gl.glPopMatrix();
 	}
 
 	@Override
 	public void init(GL gl) {
 		// TODO Auto-generated method stub
-		
+		glPos = Util.coordToGL(posEast, posNorth, posElevation);
 	}
 }
