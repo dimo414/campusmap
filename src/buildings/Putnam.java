@@ -9,6 +9,11 @@ import util.Util;
 
 import com.sun.opengl.util.BufferUtil;
 
+/**
+ * Putnam University Center
+ * 
+ * THIS JAVADOC OR SOME OTHER COMMENT SHOULD CONTAIN DETAILS LIKE POSITION AND DIMENSIONS OF THE BUILDING
+ */
 public class Putnam extends Building {
 
 

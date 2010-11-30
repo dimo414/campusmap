@@ -2,6 +2,11 @@ package buildings;
 
 import javax.media.opengl.GL;
 
+/**
+ * Smullin / Walton Hall
+ *
+ * THIS JAVADOC OR SOME OTHER COMMENT SHOULD CONTAIN DETAILS LIKE POSITION AND DIMENSIONS OF THE BUILDING
+ */
 public class SmullinWalton extends Building{
 	double length = 167 + 4. / 12;
 	double width = 95 + 2. / 12;

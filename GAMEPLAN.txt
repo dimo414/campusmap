@@ -1,9 +1,9 @@
 11/23/10:
-	Basic graphical interface
-	Main part of campus map laid down as textured quad
-	Squares plotted appx. accurately
+	Basic graphical interface, other backbone code
 
 11/30/10:
+	Main part of campus map laid down as textured quad
+	Squares plotted appx. accurately
 	Ability to fly around, look around
 	No more immediate mode, all vertex arrays
 	Basic lattice ground, maybe paths

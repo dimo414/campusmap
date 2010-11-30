@@ -70,22 +70,28 @@ public class CampusFrame extends JFrame implements ActionListener, KeyListener {
 
 		main = new JPanel(new BorderLayout());
 		main.addKeyListener(this);
+		main.addKeyListener(campus);
 		
 		canvas.setFocusable(true);
 		canvas.requestFocusInWindow();
         canvas.addGLEventListener(campus);
         canvas.addKeyListener(this);
+        canvas.addKeyListener(campus);
+        canvas.addMouseListener(campus);
+        canvas.addMouseMotionListener(campus);
         main.add(canvas, BorderLayout.CENTER);
         int fps = 20;
         animator = new FPSAnimator(canvas, fps);
         
         bottomControls = new JPanel();
         bottomControls.addKeyListener(this);
+        bottomControls.addKeyListener(campus);
         main.add(bottomControls,BorderLayout.SOUTH);
         
         fullScreenButton = new JButton("Full Screen");
         fullScreenButton.addActionListener(this);
         fullScreenButton.addKeyListener(this);
+        fullScreenButton.addKeyListener(campus);
         bottomControls.add(fullScreenButton);
         
         setSize(700,500);
@@ -109,6 +115,7 @@ public class CampusFrame extends JFrame implements ActionListener, KeyListener {
 		// Probably not a problem, but worth being aware of. 
 		fullScreen = fs;
 		
+		// http://stackoverflow.com/questions/875132/how-to-call-setundecorated-after-a-frame-is-made-visible
 		dispose();
         setUndecorated(fullScreen);
         setResizable(!fullScreen);

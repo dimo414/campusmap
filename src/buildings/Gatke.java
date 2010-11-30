@@ -2,10 +2,15 @@ package buildings;
 
 import javax.media.opengl.GL;
 
+/**
+ * Gatke Hall:
+ * 
+ * THIS JAVADOC OR SOME OTHER COMMENT SHOULD CONTAIN DETAILS LIKE POSITION AND DIMENSIONS OF THE BUILDING
+ */
 public class Gatke extends Building{
 
-	double length = 167 + 4. / 12;
-	double width = 95 + 2. / 12;
+	double length = 45; //45' - 10 3/4
+	double width = 98; //98' - 11 4/4
 	double height;
 
 	double[][] vertices = { { 0, 0, 0 }, { 0, 0, width }, { length, 0, width },
@@ -28,8 +33,19 @@ public class Gatke extends Building{
 
 	@Override
 	public void draw(GL gl) {
-		// TODO Auto-generated method stub
-		
+		gl.glPushMatrix();
+		gl.glTranslated(position[0], position[1], position[2]);
+		for (int i = 0; i < faces.length; i++) {
+			// gl.glBindTexture(GL.GL_TEXTURE_2D, BUILDING_TEX);
+			gl.glBegin(GL.GL_QUADS);
+			for (int j = 0; j < 4; j++) {
+				gl.glNormal3dv(normals[i], 0);
+				gl.glTexCoord2dv(textures[j], 0);
+				gl.glVertex3dv(vertices[faces[i][j]], 0);
+			}
+			gl.glEnd();
+		}
+		gl.glPopMatrix();
 	}
 
 }
