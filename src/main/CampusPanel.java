@@ -34,7 +34,7 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	private Eye eye;
 	private HashSet<Integer> keys = new HashSet<Integer>();
 
-	private double moveSpeed = 2;
+	private double moveSpeed = 10;
     private double turnAngle = .01;
 	private int lastX;
 	private int lastY;
