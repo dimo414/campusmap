@@ -4,12 +4,12 @@ import javax.media.opengl.GL;
 
 import util.Util;
 
-public class Collins extends Building{
+public class WestSide extends Building{
 
-	//1 - bottom cube of collins, 2 - middle cube of collins, 3 - top cube of collins
+	//1 - Laussane, 2 - Campus Safety, 3 - right cube of Doney
 	//--------------------------------------------------------------------------------------------------	
-		double length1 = 47; 	//47' - 4       
-		double width1 = 58; 	//58' - 4 1/2
+		double length1 = 184;      
+		double width1 = 61;
 		double height1 = 50;
 
 		double[][] vertices1 = { { 0, 0, 0 }, { 0, 0, width1 }, { length1, 0, width1 },
@@ -24,8 +24,8 @@ public class Collins extends Building{
 		double[] position1 = { 0, 0, 0 };
 		double textures1[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 	//----------------------------------------------------------------------------------------------------
-		double length2 = 48;		//48' -3
-		double width2 = 28;		//28' - 4
+		double length2 = 59;
+		double width2 = 76;
 		double height2 = 50;
 		
 		double[][] vertices2 = { { 0, 0, 0 }, { 0, 0, width2 }, { length2, 0, width2 },
@@ -37,15 +37,15 @@ public class Collins extends Building{
 																	// Bottom, Top
 		double[][] normals2 = { { -1, 0, 0 }, { 0, 0, 1 }, { 1, 0, 0 },
 				{ 0, 0, -1 }, { 0, -1, 0 }, { 0, 1, 0 } };
-		double[] position2 = { 24, 0, 58};
+		double[] position2 = { 125, 0, 61};
 		double textures2[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
-	//----------------------------------------------------------------------------------------------------	
-		double length3 = 59;		//59' - 10
-		double width3 = 142;		//142
+		//----------------------------------------------------------------------------------------------------
+		double length3 = 161;	
+		double width3 = 40;
 		double height3 = 50;
 		
 		double[][] vertices3 = { { 0, 0, 0 }, { 0, 0, width3 }, { length3, 0, width3 },
-				{ length3, 0, 0 }, { 0, height3, 0 }, { 0, height3, width3 },
+				{ length1, 0, 0 }, { 0, height1, 0 }, { 0, height1, width3 },
 				{ length3, height3, width3 }, { length3, height3, 0 } };
 		int[][] faces3 = { { 4, 0, 1, 5 }, { 5, 1, 2, 6 }, { 6, 2, 3, 7 },
 				{ 7, 3, 0, 4 }, { 0, 1, 2, 3 }, { 4, 5, 6, 7 } }; // West, South,
@@ -53,12 +53,12 @@ public class Collins extends Building{
 																	// Bottom, Top
 		double[][] normals3 = { { -1, 0, 0 }, { 0, 0, 1 }, { 1, 0, 0 },
 				{ 0, 0, -1 }, { 0, -1, 0 }, { 0, 1, 0 } };
-		double[] position3 = { 24 + 59 , 0, 58 - 46};
+		double[] position3 = { 23, 0, 137};
 		double textures3[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
-			
+		
 		private double[] glPos;
-		private double posEast = 7546585.465;
-		private double posNorth = 473460.03;
+		private double posEast = 7546415.465;
+		private double posNorth = 473260.03;
 		private double posElevation = 0; // TODO Get Elevation of building
 		
 		@Override
@@ -72,10 +72,10 @@ public class Collins extends Building{
 			}
 			else
 				// this is the appx centerpoint of the building
-				gl.glTranslated(-Util.feetToGL(147.0/2), 0, Util.feetToGL(147.0/2));
+				gl.glTranslated(-Util.feetToGL(184.0/2), 0, Util.feetToGL(177.0/2));
 			// End universal positioning
 			
-			gl.glRotated(90, 0, 1, 0);
+			gl.glRotated(90, 0, 1, 0);		
 			
 			gl.glPushMatrix();
 			gl.glTranslated(position1[0], position1[1], position1[2]);
@@ -103,7 +103,7 @@ public class Collins extends Building{
 				}
 				gl.glEnd();
 			}
-			gl.glPopMatrix();
+			gl.glPopMatrix();	
 			//-----------------------------------------------------------------
 			gl.glPushMatrix();
 			gl.glTranslated(position3[0], position3[1], position3[2]);
@@ -119,6 +119,7 @@ public class Collins extends Building{
 			}
 			gl.glPopMatrix();	
 			
+			
 			gl.glPopMatrix();
 		}
 
@@ -127,4 +128,5 @@ public class Collins extends Building{
 			// TODO Auto-generated method stub
 			glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		}
+	
 }

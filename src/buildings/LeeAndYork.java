@@ -2,6 +2,8 @@ package buildings;
 
 import javax.media.opengl.GL;
 
+import util.Util;
+
 public class LeeAndYork extends Building{
 
 	//1 - top left cube of Lee, 2 - top right cube, 3 - bottom left, 4 - bottom cube, 5 - bottom right cube
@@ -26,68 +28,90 @@ public class LeeAndYork extends Building{
 		double width2 = 87;		//87' - 10 5/8
 		double height2 = 50;
 		
-		double[][] vertices2 = { { 0, 0, 0 }, { 0, 0, width1 }, { length1, 0, width1 },
-				{ length1, 0, 0 }, { 0, height1, 0 }, { 0, height1, width1 },
-				{ length1, height1, width1 }, { length1, height1, 0 } };
+		double[][] vertices2 = { { 0, 0, 0 }, { 0, 0, width2 }, { length2, 0, width2 },
+				{ length2, 0, 0 }, { 0, height2, 0 }, { 0, height2, width2 },
+				{ length2, height2, width2 }, { length2, height2, 0 } };
 		int[][] faces2 = { { 4, 0, 1, 5 }, { 5, 1, 2, 6 }, { 6, 2, 3, 7 },
 				{ 7, 3, 0, 4 }, { 0, 1, 2, 3 }, { 4, 5, 6, 7 } }; // West, South,
 																	// East, North,
 																	// Bottom, Top
 		double[][] normals2 = { { -1, 0, 0 }, { 0, 0, 1 }, { 1, 0, 0 },
 				{ 0, 0, -1 }, { 0, -1, 0 }, { 0, 1, 0 } };
-		double[] position2 = { 60, 0, -26};
+		double[] position2 = { 63, 0,60};
 		double textures2[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 	//----------------------------------------------------------------------------------------------------	
 		double length3 = 63;		//63'
 		double width3 = 49;		//49 - 4 3/16
 		double height3 = 50;
 		
-		double[][] vertices3 = { { 0, 0, 0 }, { 0, 0, width1 }, { length1, 0, width1 },
-				{ length1, 0, 0 }, { 0, height1, 0 }, { 0, height1, width1 },
-				{ length1, height1, width1 }, { length1, height1, 0 } };
+		double[][] vertices3 = { { 0, 0, 0 }, { 0, 0, width3 }, { length3, 0, width3 },
+				{ length3, 0, 0 }, { 0, height3, 0 }, { 0, height3, width3 },
+				{ length3, height3, width3 }, { length3, height3, 0 } };
 		int[][] faces3 = { { 4, 0, 1, 5 }, { 5, 1, 2, 6 }, { 6, 2, 3, 7 },
 				{ 7, 3, 0, 4 }, { 0, 1, 2, 3 }, { 4, 5, 6, 7 } }; // West, South,
 																	// East, North,
 																	// Bottom, Top
 		double[][] normals3 = { { -1, 0, 0 }, { 0, 0, 1 }, { 1, 0, 0 },
 				{ 0, 0, -1 }, { 0, -1, 0 }, { 0, 1, 0 } };
-		double[] position3 = { 22, 0, -126};
+		double[] position3 = { -63, 0, 22};
 		double textures3[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 		//----------------------------------------------------------------------------------------------------
 		double length4 = 63 - 36;		//63' - 36'
 		double width4 = 20;		//20' - 4 1/6
 		double height4 = 50;
 		
-		double[][] vertices4 = { { 0, 0, 0 }, { 0, 0, width1 }, { length1, 0, width1 },
-				{ length1, 0, 0 }, { 0, height1, 0 }, { 0, height1, width1 },
-				{ length1, height1, width1 }, { length1, height1, 0 } };
+		double[][] vertices4 = { { 0, 0, 0 }, { 0, 0, width4 }, { length4, 0, width4 },
+				{ length4, 0, 0 }, { 0, height4, 0 }, { 0, height4, width4 },
+				{ length4, height4, width4 }, { length4, height4, 0 } };
 		int[][] faces4 = { { 4, 0, 1, 5 }, { 5, 1, 2, 6 }, { 6, 2, 3, 7 },
 				{ 7, 3, 0, 4 }, { 0, 1, 2, 3 }, { 4, 5, 6, 7 } }; // West, South,
 																	// East, North,
 																	// Bottom, Top
 		double[][] normals4 = { { -1, 0, 0 }, { 0, 0, 1 }, { 1, 0, 0 },
 				{ 0, 0, -1 }, { 0, -1, 0 }, { 0, 1, 0 } };
-		double[] position4 = { 22 + 49, 0, -126 - 36};
+		double[] position4 = { -63, 0, 22+49};
 		double textures4[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 	//----------------------------------------------------------------------------------------------------	
 		double length5 = 109;		//109' - 8 1/6
 		double width5 = 29;		//29' - 6 1/8
 		double height5 = 50;
 		
-		double[][] vertices5 = { { 0, 0, 0 }, { 0, 0, width1 }, { length1, 0, width1 },
-				{ length1, 0, 0 }, { 0, height1, 0 }, { 0, height1, width1 },
-				{ length1, height1, width1 }, { length1, height1, 0 } };
+		double[][] vertices5 = { { 0, 0, 0 }, { 0, 0, width5 }, { length5, 0, width5 },
+				{ length5, 0, 0 }, { 0, height5, 0 }, { 0, height5, width5 },
+				{ length5, height5, width5 }, { length5, height5, 0 } };
 		int[][] faces5 = { { 4, 0, 1, 5 }, { 5, 1, 2, 6 }, { 6, 2, 3, 7 },
 				{ 7, 3, 0, 4 }, { 0, 1, 2, 3 }, { 4, 5, 6, 7 } }; // West, South,
 																	// East, North,
 																	// Bottom, Top
 		double[][] normals5 = { { -1, 0, 0 }, { 0, 0, 1 }, { 1, 0, 0 },
 				{ 0, 0, -1 }, { 0, -1, 0 }, { 0, 1, 0 } };
-		double[] position5 = { 22+49+20, 0, -26-29-23};
+		double[] position5 = { -63, 0, 42+49};
 		double textures5[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
+		
+		private double[] glPos;
+		private double posEast = 7546225.465;
+		private double posNorth = 472920.03;
+		private double posElevation = 0; // TODO Get Elevation of building
+		
 		
 		@Override
 		public void draw(GL gl) {
+			gl.glPushMatrix();
+			
+			// Universal positioning
+			if(!drawOrigin){
+				gl.glTranslated(glPos[0],glPos[1],glPos[2]);
+				gl.glRotated(buildingRotation, 0, 1, 0);
+			}
+			else
+				// this is the appx centerpoint of the building
+				gl.glTranslated(-Util.feetToGL(189.0/2), 0, Util.feetToGL(120.0/2));
+			// End universal positioning
+			
+			
+			gl.glRotated(90, 0, 1, 0);
+			
+			
 			gl.glPushMatrix();
 			gl.glTranslated(position1[0], position1[1], position1[2]);
 			for (int i = 0; i < faces1.length; i++) {
@@ -129,11 +153,41 @@ public class LeeAndYork extends Building{
 				gl.glEnd();
 			}
 			gl.glPopMatrix();	
+			//-----------------------------------------------------------------
+			gl.glPushMatrix();
+			gl.glTranslated(position4[0], position4[1], position4[2]);
+			for (int i = 0; i < faces4.length; i++) {
+				// gl.glBindTexture(GL.GL_TEXTURE_2D, BUILDING_TEX);
+				gl.glBegin(GL.GL_QUADS);
+				for (int j = 0; j < 4; j++) {
+					gl.glNormal3dv(normals4[i], 0);
+					gl.glTexCoord2dv(textures4[j], 0);
+					gl.glVertex3dv(vertices4[faces4[i][j]], 0);
+				}
+				gl.glEnd();
+			}
+			gl.glPopMatrix();	
+			//-----------------------------------------------------------------
+			gl.glPushMatrix();
+			gl.glTranslated(position5[0], position5[1], position5[2]);
+			for (int i = 0; i < faces5.length; i++) {
+				// gl.glBindTexture(GL.GL_TEXTURE_2D, BUILDING_TEX);
+				gl.glBegin(GL.GL_QUADS);
+				for (int j = 0; j < 4; j++) {
+					gl.glNormal3dv(normals5[i], 0);
+					gl.glTexCoord2dv(textures5[j], 0);
+					gl.glVertex3dv(vertices5[faces5[i][j]], 0);
+				}
+				gl.glEnd();
+			}
+			gl.glPopMatrix();	
+			
+			gl.glPopMatrix();
 		}
 
 		@Override
 		public void init(GL gl) {
 			// TODO Auto-generated method stub
-			
+			glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		}
 }

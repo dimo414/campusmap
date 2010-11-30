@@ -42,8 +42,8 @@ public class Olin extends Building{
 		
 		
 		private double[] glPos;
-		private double posEast = 7546415.465;
-		private double posNorth = 473550.03;
+		private double posEast = 7546515.465;
+		private double posNorth = 473650.03;
 		private double posElevation = 0; // TODO Get Elevation of building
 		
 		@Override
@@ -57,10 +57,8 @@ public class Olin extends Building{
 			}
 			else
 				// this is the appx centerpoint of the building
-				gl.glTranslated(-Util.feetToGL(205.0/2), 0, Util.feetToGL(238.0/2));
+				gl.glTranslated(-Util.feetToGL(92.0/2), 0, Util.feetToGL(155.0/2));
 			// End universal positioning
-			
-			gl.glRotated(90, 0, 1, 0);
 			
 			gl.glPushMatrix();
 			gl.glTranslated(position1[0], position1[1], position1[2]);
