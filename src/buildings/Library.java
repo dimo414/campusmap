@@ -20,8 +20,8 @@ import util.Util;
  * @author Michael Diamond
  */
 public class Library extends Building {
-	private double posEast = 7546866.465;
-	private double posNorth = 472717.03;
+	private double posEast = 7546826.465;
+	private double posNorth = 472747.03;
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos;
 	private GLUT glut = new GLUT();
