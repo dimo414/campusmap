@@ -63,11 +63,22 @@ public class Util {
 	}
 
 	/**
+	 * Takes a measurement in feet and inches, and converts it to the appropriate distance
+	 * in OpenGL.  This method corresponds to coordToGL() - cordToGL(x,y,z)[0]+feetToGL(f) is exactly equivalent to cordToGL(x+f,y,z)[0].
+	 * 
+	 * @param feet measurement (in feet).
+	 * @param inches remainder (in inches) 
+	 * @return the distance in OpenGL units
+	 */
+	public static double feetToGL(int feet, double inches) {
+		return feetToGL(f(feet,inches));
+	}
+
+	/**
 	 * Helper method to turn feet and inches into a double
 	 * 
-	 * @param feet
-	 *            number of feet
-	 * @param inches
+	 * @param feet number of feet
+	 * @param inches number of inches
 	 * @return a double of feet and inches
 	 */
 	public static double f(int feet, double inches) {
