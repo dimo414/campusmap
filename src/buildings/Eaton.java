@@ -89,7 +89,7 @@ public class Eaton extends Building{
 			}
 			else
 				// this is the appx centerpoint of the building
-				gl.glTranslated(-Util.feetToGL(205.0/2), 0, Util.feetToGL(238.0/2));
+				gl.glTranslated(-Util.feetToGL(68.0/2), 0, Util.feetToGL(151.0/2));
 			// End universal positioning
 			
 			
