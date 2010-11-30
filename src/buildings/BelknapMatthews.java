@@ -19,7 +19,7 @@ public class BelknapMatthews extends Building {
 	private double posNorth = 472892.399;
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
-	private double[] midpoint = new double[]{Util.f(207,2)/2,Util.f(39+155+31,2+8)/2};
+	private double[] midpoint = new double[]{Util.feetToGL(207,2)/2,Util.feetToGL(39+155+31,2+8)/2};
 	private GLUT glut = new GLUT();
 	
 	@Override
