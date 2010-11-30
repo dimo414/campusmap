@@ -7,19 +7,19 @@ import com.sun.opengl.util.GLUT;
 import util.Util;
 
 /**
- * <h3>Grounds Building</h3>
+ * <h3>Delta Gamma House</h3>
  * 
  * <h4>Identifying Location - Southwest Corner</h4>
- * <p><strong>7547137.071E 472887.578N</strong></p>
+ * <p><strong>7546257.405E 472563.988N</strong></p>
  *  
  * @author Michael Diamond
  */
-public class Grounds extends Building {
-	private double posEast = 7547137.071;
-	private double posNorth = 472887.578;
+public class DG extends Building {
+	private double posEast = 7546257.405;
+	private double posNorth = 472563.988;
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
-	private double[] midpoint = new double[]{Util.feetToGL(35,4)/2,Util.feetToGL(25+17,4)/2};
+	private double[] midpoint = new double[]{Util.feetToGL(78)/2,Util.feetToGL(110,7)/2};
 	private GLUT glut = new GLUT();
 	
 	@Override
@@ -40,25 +40,25 @@ public class Grounds extends Building {
 			gl.glTranslated(-midpoint[0], 0, midpoint[1]);
 		// End universal positioning
 		
-		// front - 25'4"x25'4"
+		// south wing
 		gl.glPushMatrix();
-		gl.glScaled(Util.feetToGL(25,4), Util.feetToGL(15), Util.feetToGL(25,4));
+		gl.glScaled(Util.feetToGL(78), Util.feetToGL(30), Util.feetToGL(34));
 		gl.glTranslated(.5,.5,-.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
-		// side - 17'x15'4"
+		// middle
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(25,4),0,0);
-		gl.glScaled(Util.feetToGL(17), Util.feetToGL(15), Util.feetToGL(15,4));
+		gl.glTranslated(0,0,-Util.feetToGL(34));
+		gl.glScaled(Util.feetToGL(78-36,0-5), Util.feetToGL(30), Util.feetToGL(41,6));
 		gl.glTranslated(.5,.5,-.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
-		// back - 10'x12'
+		// north wing
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(30,4),0,Util.feetToGL(10));
-		gl.glScaled(Util.feetToGL(12), Util.feetToGL(15), Util.feetToGL(10));
+		gl.glTranslated(0,0,-Util.feetToGL(34+41,6));
+		gl.glScaled(Util.feetToGL(78), Util.feetToGL(30), Util.feetToGL(36));
 		gl.glTranslated(.5,.5,-.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
