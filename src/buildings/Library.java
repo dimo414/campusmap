@@ -61,6 +61,14 @@ public class Library extends Building {
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
+		// clocktower - 102'2" south,  from northwest corner
+		gl.glPushMatrix();
+		gl.glTranslated(-Util.feetToGL(27+11,2+4),0,-Util.feetToGL(116-21,4-9));
+		gl.glScaled(Util.feetToGL(11,4), Util.feetToGL(100), Util.feetToGL(11,4));
+		gl.glTranslated(0, .5, 0);
+		glut.glutSolidCube(1);
+		gl.glPopMatrix();
+		
 		gl.glPopMatrix();
 	}
 
