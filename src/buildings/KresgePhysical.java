@@ -10,14 +10,14 @@ import com.sun.opengl.util.GLUT;
  * <h3>Kresge Playhouse / Physical Plant</h3>
  * 
  * <h4>Identifying Location - SW Corner</h4>
- * <p><strong>SOMETHING-E SOMETHING-N</strong></p>
-
+ * <p>This is a guess - a better reference point would be the corner of Rogers.  
+ * <strong>7547046.11E 472980.9N</strong></p>
  * 
  * @author Brian Forbis
  */
 public class KresgePhysical extends Building{
-	private double posEast = 7547083.302; // TODO Find position East
-	private double posNorth = 472960.16; // TODO Find position North
+	private double posEast = 7547046.11;
+	private double posNorth = 472980.9;
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos;
 	private GLUT glut = new GLUT();

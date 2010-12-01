@@ -10,14 +10,14 @@ import com.sun.opengl.util.GLUT;
  * <h3>Smullin / Walton Hall</h3>
  * 
  * <h4>Identifying Location - SW Corner</h4>
- * <p><strong>SOMETHING-E SOMETHING-N</strong></p>
+ * <p><strong>7547138.978E 473205.738N</strong></p>
 
  * 
  * @author Brian Forbis
  */
 public class SmullinWalton extends Building{
-	private double posEast = 7547193.302; // TODO Find position East
-	private double posNorth = 473208.16; // TODO Find position North
+	private double posEast = 7547138.978;
+	private double posNorth = 473205.738;
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos;
 	private GLUT glut = new GLUT();
