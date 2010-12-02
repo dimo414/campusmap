@@ -55,7 +55,6 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	 */
 	public void init(GLAutoDrawable drawable) {
 		// Setup Eye
-		// TODO this could be better positioned, but is perfectly good for right now
 		Vector pos = new Vector(Util.coordToGL((Util.CAMPUS_SE[0]+Util.CAMPUS_SW[0])/2, (Util.CAMPUS_SE[1]+Util.CAMPUS_SW[1])/2, 1000));
 		Vector lookAt = new Vector(Util.coordToGL((Util.CAMPUS_NE[0]+Util.CAMPUS_NW[0])/2, (Util.CAMPUS_NE[1]+Util.CAMPUS_NW[1])/2, 0));
 		eye = new Eye(pos, lookAt);
