@@ -4,6 +4,11 @@ import javax.media.opengl.GL;
 
 import util.Util;
 
+/**
+ * Olin Hall
+ * 
+ * @author Jose Alvarado
+ */
 public class Olin extends Building{
 
 	//1 - left cube of Olin, 2 - right cube of Olin
@@ -40,11 +45,10 @@ public class Olin extends Building{
 		double[] position2 = { 13, 0, 122};
 		double textures2[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 		
-		
-		private double[] glPos;
 		private double posEast = 7546495.123;
 		private double posNorth = 473657.192;
 		private double posElevation = 0; // TODO Get Elevation of building
+		private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		
 		@Override
 		public void draw(GL gl) {
@@ -93,7 +97,5 @@ public class Olin extends Building{
 
 		@Override
 		public void init(GL gl) {
-			// TODO Auto-generated method stub
-			glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		}
 }
