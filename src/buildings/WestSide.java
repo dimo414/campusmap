@@ -4,6 +4,11 @@ import javax.media.opengl.GL;
 
 import util.Util;
 
+/**
+ * WestSide - Lausanne, Doney, Campus Safety / ResLife
+ * 
+ * @author Jose Alvarado
+ */
 public class WestSide extends Building{
 
 	//1 - Laussane, 2 - Campus Safety, 3 - right cube of Doney
@@ -56,10 +61,10 @@ public class WestSide extends Building{
 		double[] position3 = { 23, 0, 137};
 		double textures3[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 		
-		private double[] glPos;
 		private double posEast = 7546390.251;
 		private double posNorth = 473271.586;
 		private double posElevation = 0; // TODO Get Elevation of building
+		private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		
 		@Override
 		public void draw(GL gl) {
@@ -125,8 +130,6 @@ public class WestSide extends Building{
 
 		@Override
 		public void init(GL gl) {
-			// TODO Auto-generated method stub
-			glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		}
 	
 }

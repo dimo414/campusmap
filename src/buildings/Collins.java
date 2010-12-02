@@ -4,6 +4,11 @@ import javax.media.opengl.GL;
 
 import util.Util;
 
+/**
+ * Collins Hall
+ * 
+ * @author Jose Alvarado
+ */
 public class Collins extends Building{
 
 	//1 - bottom cube of collins, 2 - middle cube of collins, 3 - top cube of collins
@@ -56,10 +61,10 @@ public class Collins extends Building{
 		double[] position3 = { 24 + 59 , 0, 58 - 46};
 		double textures3[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 			
-		private double[] glPos;
 		private double posEast = 7546541.912;
 		private double posNorth = 473453.902;
 		private double posElevation = 0; // TODO Get Elevation of building
+		private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		
 		@Override
 		public void draw(GL gl) {
@@ -124,7 +129,5 @@ public class Collins extends Building{
 
 		@Override
 		public void init(GL gl) {
-			// TODO Auto-generated method stub
-			glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		}
 }

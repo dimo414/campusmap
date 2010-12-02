@@ -4,6 +4,11 @@ import javax.media.opengl.GL;
 
 import util.Util;
 
+/**
+ * Lee and York Halls
+ * 
+ * @author Jose Alvarado
+ */
 public class LeeAndYork extends Building{
 
 	//1 - top left cube of Lee, 2 - top right cube, 3 - bottom left, 4 - bottom cube, 5 - bottom right cube
@@ -88,12 +93,11 @@ public class LeeAndYork extends Building{
 		double[] position5 = { -63, 0, 42+49};
 		double textures5[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 		
-		private double[] glPos;
 		private double posEast = 7546199.868;
 		private double posNorth = 472923.088;
 		private double posElevation = 0; // TODO Get Elevation of building
-		
-		
+		private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
+				
 		@Override
 		public void draw(GL gl) {
 			gl.glPushMatrix();
@@ -187,7 +191,5 @@ public class LeeAndYork extends Building{
 
 		@Override
 		public void init(GL gl) {
-			// TODO Auto-generated method stub
-			glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		}
 }

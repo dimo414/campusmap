@@ -20,15 +20,12 @@ import util.Util;
 import util.Vector;
 import buildings.Building;
 
-import com.sun.opengl.util.GLUT;
-
 /**
  * The Central class for the project, runs OpenGL and manages all the buildings and other
  * features.
  */
 public class CampusPanel implements GLEventListener, KeyListener, MouseListener, MouseMotionListener {
 	private GLU glu = new GLU();  // OpenGL Utility Library - used to set camera view
-    private GLUT glut = new GLUT();  // OpenGL Utility Toolkit - contains teapot
 
 	//glu.gluLookAt(-5.0, 5.0, -5.0, 3.0, 0.0, 3.0, 0.0, 1.0, 0.0);
 	private Eye eye;
@@ -46,7 +43,6 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	private  ArrayList<Building> buildings = new ArrayList<Building>();
 	
 	private int[] names; // the array of texture names;
-	private int nTex = 1; // the name of chosen texture
 	
 	//
 	// OPENGL METHODS
@@ -168,14 +164,13 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	 * Adds textures to openGl
 	 */
 	public void addTextures(GL gl){
+		// TODO create a textures library
 		ImageTexture image = new ImageTexture("textures/CampusMap.jpg");
 		
 		names = new int[1];
         gl.glGenTextures(1, names, 0);
         // Assign each of the textures an ID
         image.bind(names[0], gl);
-
-        nTex = names[0]; 
 	}
 
 	/**

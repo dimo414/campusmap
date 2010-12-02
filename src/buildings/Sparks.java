@@ -4,6 +4,11 @@ import javax.media.opengl.GL;
 
 import util.Util;
 
+/**
+ * Sparks Center
+ * 
+ * @author Jose Alvarado
+ */
 public class Sparks extends Building{
 
 	//1 - left cube of sparks, 2 - top cube of sparks, 3 - right cube of sparks
@@ -56,10 +61,10 @@ public class Sparks extends Building{
 		double[] position3 = { 14, 0, 89};
 		double textures3[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 		
-		private double[] glPos;
 		private double posEast = 7547348.62;
 		private double posNorth = 472451.971;
 		private double posElevation = 0; // TODO Get Elevation of building
+		private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		
 		@Override
 		public void draw(GL gl) {
@@ -126,7 +131,5 @@ public class Sparks extends Building{
 
 		@Override
 		public void init(GL gl) {
-			// TODO Auto-generated method stub
-			glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		}
 }
