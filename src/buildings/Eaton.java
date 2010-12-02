@@ -4,6 +4,11 @@ import javax.media.opengl.GL;
 
 import util.Util;
 
+/**
+ * Eaton Hall
+ * 
+ * @author Jose
+ */
 public class Eaton extends Building{
 
 	//1 - bottom cube of eaton, 2 - middle cube of eaton, 3 - top cube of eaton
@@ -72,12 +77,11 @@ public class Eaton extends Building{
 		double[] position4 = { 44 + 15 + 5, 0, 19 + 32 + 15 };
 		double textures4[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 		
-		private double[] glPos;
 		private double posEast = 7546945.266;
 		private double posNorth = 473382.912;
 		private double posElevation = 0; // TODO Get Elevation of building
-		
-		
+		private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
+				
 		@Override
 		public void draw(GL gl) {
 			gl.glPushMatrix();
@@ -156,7 +160,5 @@ public class Eaton extends Building{
 
 		@Override
 		public void init(GL gl) {
-			// TODO Auto-generated method stub
-			glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		}
 }

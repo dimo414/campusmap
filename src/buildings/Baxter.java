@@ -4,6 +4,11 @@ import javax.media.opengl.GL;
 
 import util.Util;
 
+/**
+ * Baxter Hall and Complex - Sigma Chi, Phi Delt, SAE and Montag
+ * 
+ * @author Jose Alvarado
+ */
 public class Baxter extends Building{
 
 	//1 - bottom left cube of baxter, 2 - middle cube of baxter, 3 - right cube of baxter
@@ -56,10 +61,10 @@ public class Baxter extends Building{
 	double[] position3 = { 0, 0, 202 };
 	double textures3[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 	
-	private double[] glPos;
 	private double posEast = 7547348.62;
 	private double posNorth = 473129.605;
 	private double posElevation = 0; // TODO Get Elevation of building
+	private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
 	
 	@Override
 	public void draw(GL gl) {
@@ -127,7 +132,5 @@ public class Baxter extends Building{
 
 	@Override
 	public void init(GL gl) {
-		// TODO Auto-generated method stub
-		glPos = Util.coordToGL(posEast, posNorth, posElevation);
 	}
 }

@@ -17,13 +17,15 @@ import com.sun.opengl.util.BufferUtil;
  * 
  * <h3>Shapes</h3>
  * <h4>Cube</h4>
- * <p>A unit cube drawn from the origin to 1,1,1</p>
+ * <p>A unit cube drawn from the origin to 1,1,-1</p>
  * 
  * @author Michael Diamond
  */
 public class Shape {
 	// choices for the sides parameter
+	/** Indicates the shape consists of triangles */
 	public static final int TRIANGLE = 3;
+	/** Indicates the shape consists of quads */
 	public static final int QUADS = 4;
 	
 	//   v6------v7
@@ -40,6 +42,9 @@ public class Shape {
 		{.7f,.7f,.7f}, {.7f,.7f,.7f}, {.7f,.7f,.7f}, {.7f,.7f,.7f}};
 	private static int[][] CUBE_FACE = {{0,1,3,2}, {1,5,7,3}, {5,4,6,7}, {4,0,2,6}, {2,3,7,6}, {0,1,5,4}};
 	private static float[][] CUBE_NORM = {{0,0,1}, {1,0,0}, {0,0,-1}, {-1,0,0}, {0,1,0}, {0,-1,0}};
+	/**
+	 * A unit cube with standard normals drawn from the origin (v0: 0,0,0) to (v7: 1,1,-1)
+	 */
 	public static final Shape Cube = new Shape(QUADS, CUBE_VERT, CUBE_COL, CUBE_FACE, CUBE_NORM);
 	
 	
@@ -83,6 +88,10 @@ public class Shape {
 		vertBuff.rewind();
 	}
 	
+	/**
+	 * Draw the shape described
+	 * @param gl the GL object to draw with
+	 */
 	public void draw(GL gl){
 		gl.glEnableClientState(GL.GL_VERTEX_ARRAY);
         gl.glEnableClientState(GL.GL_COLOR_ARRAY);
