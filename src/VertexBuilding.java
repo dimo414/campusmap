@@ -1,4 +1,4 @@
-package buildings;
+
 
 import com.sun.opengl.util.BufferUtil;
 import java.nio.ByteBuffer;

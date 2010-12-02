@@ -1,6 +1,9 @@
-package buildings;
+
+
 
 import javax.media.opengl.GL;
+
+import buildings.Building;
 
 import util.Util;
 import util.Vector;
