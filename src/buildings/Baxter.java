@@ -132,5 +132,6 @@ public class Baxter extends Building{
 
 	@Override
 	public void init(GL gl) {
+		glPos = Util.coordToGL(posEast, posNorth, posElevation);
 	}
 }
