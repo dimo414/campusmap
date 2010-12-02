@@ -89,8 +89,8 @@ public class LeeAndYork extends Building{
 		double textures5[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 		
 		private double[] glPos;
-		private double posEast = 7546225.465;
-		private double posNorth = 472920.03;
+		private double posEast = 7546199.868;
+		private double posNorth = 472923.088;
 		private double posElevation = 0; // TODO Get Elevation of building
 		
 		

@@ -28,8 +28,8 @@ public class Gatke extends Building{
 	double textures[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 	
 	private double[] glPos;
-	private double posEast = 7547585.465;
-	private double posNorth = 473300.03;
+	private double posEast = 7547561.591;
+	private double posNorth = 473329.699;
 	private double posElevation = 0; // TODO Get Elevation of building
 	
 	
