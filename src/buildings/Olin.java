@@ -42,8 +42,8 @@ public class Olin extends Building{
 		
 		
 		private double[] glPos;
-		private double posEast = 7546515.465;
-		private double posNorth = 473650.03;
+		private double posEast = 7546495.123;
+		private double posNorth = 473657.192;
 		private double posElevation = 0; // TODO Get Elevation of building
 		
 		@Override

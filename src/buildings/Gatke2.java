@@ -27,6 +27,7 @@ public class Gatke2 extends Building{
 		cube.createBuffers();
 	}
 	
+	@SuppressWarnings("static-access")
 	public void draw(GL gl) {
 		gl.glPushMatrix();
 		

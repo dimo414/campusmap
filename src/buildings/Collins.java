@@ -57,8 +57,8 @@ public class Collins extends Building{
 		double textures3[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 			
 		private double[] glPos;
-		private double posEast = 7546585.465;
-		private double posNorth = 473460.03;
+		private double posEast = 7546541.912;
+		private double posNorth = 473453.902;
 		private double posElevation = 0; // TODO Get Elevation of building
 		
 		@Override

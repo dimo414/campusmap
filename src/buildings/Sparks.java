@@ -57,8 +57,8 @@ public class Sparks extends Building{
 		double textures3[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 		
 		private double[] glPos;
-		private double posEast = 7547305.465;
-		private double posNorth = 472450.03;
+		private double posEast = 7547348.62;
+		private double posNorth = 472451.971;
 		private double posElevation = 0; // TODO Get Elevation of building
 		
 		@Override
