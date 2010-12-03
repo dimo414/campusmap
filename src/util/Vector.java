@@ -63,6 +63,16 @@ public class Vector {
   /** Set the z component */
   public Vector setZ(double z) { return new Vector(x,y,z); }
   
+  /** Get the vector as an array */
+  public double[] toArray(){
+	  return new double[]{x,y,z};
+  }
+  
+  /** Get the vector as a float array */
+  public float[] toFArray(){
+	  return new float[]{(float)x,(float)y,(float)z};
+  }
+  
   /** Returns the spherical coordinates of the vector, with {0,0,0}
    * as the center of the sphere. */
   public double[] toSpherical(){

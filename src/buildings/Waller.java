@@ -18,7 +18,7 @@ public class Waller extends Building {
 	private double posNorth = 473421.257;
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
-	private double[] midpoint = new double[]{Util.feetToGL(226,10)/2,Util.feetToGL(116,4)/2};
+	private double[] midpoint = new double[]{Util.feetToGL(44)/2,Util.feetToGL(84.2)/2};
 	
 	@Override
 	public void init(GL gl) {
@@ -60,9 +60,16 @@ public class Waller extends Building {
 		
 		// tower
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(17),Util.feetToGL(50),-Util.feetToGL(37,1));
-		gl.glScaled(Util.feetToGL(10), Util.feetToGL(20), Util.feetToGL(10));
+		gl.glTranslated(Util.feetToGL(12),Util.feetToGL(50),-Util.feetToGL(32,1));
+		gl.glScaled(Util.feetToGL(20), Util.feetToGL(25), Util.feetToGL(20));
 		Shape.Cube.draw(gl);
+		gl.glPopMatrix();
+		
+		// tower head
+		gl.glPushMatrix();
+		gl.glTranslated(Util.feetToGL(12),Util.feetToGL(75),-Util.feetToGL(32,1));
+		gl.glScaled(Util.feetToGL(20), Util.feetToGL(10), Util.feetToGL(20));
+		Shape.Pyramid.draw(gl);
 		gl.glPopMatrix();
 				
 		gl.glPopMatrix();
