@@ -27,6 +27,7 @@ import com.sun.opengl.util.FPSAnimator;
  * </ul>
  */
 public class CampusFrame extends JFrame implements ActionListener, KeyListener {
+	private static final long serialVersionUID = -1954240765714070506L;
 	private CampusPanel campus;
 	private GLCanvas canvas;
 	private FPSAnimator animator;
