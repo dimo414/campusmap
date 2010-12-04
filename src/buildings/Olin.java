@@ -2,6 +2,7 @@ package buildings;
 
 import javax.media.opengl.GL;
 
+import util.Shape;
 import util.Util;
 
 /**
@@ -12,43 +13,12 @@ import util.Util;
 public class Olin extends Building{
 
 	//1 - left cube of Olin, 2 - right cube of Olin
-	//--------------------------------------------------------------------------------------------------	
-		double length1 = 81; 	//81' - 8       
-		double width1 = 122; 	//122'
-		double height1 = 50;
-
-		double[][] vertices1 = { { 0, 0, 0 }, { 0, 0, width1 }, { length1, 0, width1 },
-				{ length1, 0, 0 }, { 0, height1, 0 }, { 0, height1, width1 },
-				{ length1, height1, width1 }, { length1, height1, 0 } };
-		int[][] faces1 = { { 4, 0, 1, 5 }, { 5, 1, 2, 6 }, { 6, 2, 3, 7 },
-				{ 7, 3, 0, 4 }, { 0, 1, 2, 3 }, { 4, 5, 6, 7 } }; // West, South,
-																	// East, North,
-																	// Bottom, Top
-		double[][] normals1 = { { -1, 0, 0 }, { 0, 0, 1 }, { 1, 0, 0 },
-				{ 0, 0, -1 }, { 0, -1, 0 }, { 0, 1, 0 } };
-		double[] position1 = { 0, 0, 0 };
-		double textures1[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
-	//----------------------------------------------------------------------------------------------------
-		double length2 = 75;		//55' - 0 7/8 + 20' - 2 7/6
-		double width2 = 33;		//33' - 5 1/4
-		double height2 = 50;
 		
-		double[][] vertices2 = { { 0, 0, 0 }, { 0, 0, width2 }, { length2, 0, width2 },
-				{ length2, 0, 0 }, { 0, height2, 0 }, { 0, height2, width2 },
-				{ length2, height2, width2 }, { length2, height2, 0 } };
-		int[][] faces2 = { { 4, 0, 1, 5 }, { 5, 1, 2, 6 }, { 6, 2, 3, 7 },
-				{ 7, 3, 0, 4 }, { 0, 1, 2, 3 }, { 4, 5, 6, 7 } }; // West, South,
-																	// East, North,
-																	// Bottom, Top
-		double[][] normals2 = { { -1, 0, 0 }, { 0, 0, 1 }, { 1, 0, 0 },
-				{ 0, 0, -1 }, { 0, -1, 0 }, { 0, 1, 0 } };
-		double[] position2 = { 13, 0, 122};
-		double textures2[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
-		
-		private double posEast = 7546495.123;
-		private double posNorth = 473657.192;
+		private double posEast = 7546446.576;
+		private double posNorth = 473514.619;
 		private double posElevation = 0; // TODO Get Elevation of building
 		private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
+		private double[] midpoint = new double[]{Util.feetToGL(205/2),Util.feetToGL(238/2)};
 		
 		@Override
 		public void draw(GL gl) {
@@ -61,42 +31,28 @@ public class Olin extends Building{
 			}
 			else
 				// this is the appx centerpoint of the building
-				gl.glTranslated(-Util.feetToGL(92.0/2), 0, Util.feetToGL(155.0/2));
+				gl.glTranslated(-midpoint[0], 0, midpoint[1]);
 			// End universal positioning
 			
+//			gl.glRotated(90, 0, 1, 0);
+			
+			// 1st Cube
 			gl.glPushMatrix();
-			gl.glTranslated(position1[0], position1[1], position1[2]);
-			for (int i = 0; i < faces1.length; i++) {
-				// gl.glBindTexture(GL.GL_TEXTURE_2D, BUILDING_TEX);
-				gl.glBegin(GL.GL_QUADS);
-				for (int j = 0; j < 4; j++) {
-					gl.glNormal3dv(normals1[i], 0);
-					gl.glTexCoord2dv(textures1[j], 0);
-					gl.glVertex3dv(vertices1[faces1[i][j]], 0);
-				}
-				gl.glEnd();
-			}
+			gl.glScaled(Util.feetToGL(53+20), Util.feetToGL(50), Util.feetToGL(33));
+			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
-			//-----------------------------------------------------------------
+			
+			// 2nd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(position2[0], position2[1], position2[2]);
-			for (int i = 0; i < faces2.length; i++) {
-				// gl.glBindTexture(GL.GL_TEXTURE_2D, BUILDING_TEX);
-				gl.glBegin(GL.GL_QUADS);
-				for (int j = 0; j < 4; j++) {
-					gl.glNormal3dv(normals2[i], 0);
-					gl.glTexCoord2dv(textures2[j], 0);
-					gl.glVertex3dv(vertices2[faces2[i][j]], 0);
-				}
-				gl.glEnd();
-			}
-			gl.glPopMatrix();	
+			gl.glTranslated(-Util.feetToGL(13),0,-Util.feetToGL(33));
+			gl.glScaled(Util.feetToGL(81), Util.feetToGL(50), Util.feetToGL(122));
+			Shape.Cube.draw(gl);
+			gl.glPopMatrix();
 			
 			gl.glPopMatrix();
 		}
 
 		@Override
 		public void init(GL gl) {
-			glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		}
 }
