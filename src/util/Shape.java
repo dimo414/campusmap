@@ -125,7 +125,13 @@ public class Shape {
 	}
 	
 	/**
-	 * Sets the color of the object, should match the number of faces, in order
+	 * <p>Sets the color of the object, should match the number of faces, in order</p>
+	 * 
+	 * <p>WARNING: Because of how OpenGL handles colors, the color used by immediate mode
+	 * is the same as the color used by vertex arrays and therefore this class.  This means
+	 * immediate mode will be set to the last color in the array that is drawn to the screen.
+	 * Therefore, if using a combination of this class, you may find that you need to reset
+	 * the immediate mode color after calling draw here.</p>
 	 * @param cols the list 
 	 */
 	public void setColor(float[][] cols){
@@ -138,8 +144,7 @@ public class Shape {
 	 * @param col a color, three 0-1 floats
 	 */
 	public void setColor(float[] col){
-		colors = new float[][]{col};
-		buffersGen = false;
+		setColor(new float[][]{col});
 	}
 	
 	/**
@@ -154,7 +159,7 @@ public class Shape {
 	 * Generates the buffers for the shape.  Called automatically by draw when needed.
 	 */
 	public void genBuffers(){
-		if(faces.length != normals.length || (colors.length != 1 && colors.length != faces.length))
+		if(faces.length != normals.length || (colors.length != 1 && colors.length <= faces.length))
 			throw new RuntimeException("Faces, Normals, and Colors all need to be the same length.");
 		
 		int triCount = 0;

@@ -62,20 +62,21 @@ public class Waller extends Building {
 		gl.glPushMatrix();
 		gl.glTranslated(Util.feetToGL(12),Util.feetToGL(50),-Util.feetToGL(32,1));
 		gl.glScaled(Util.feetToGL(20), Util.feetToGL(25), Util.feetToGL(20));
-	//	float[][] col = Shape.Cube.getColor();
-	//	Shape.Cube.setColor(new float[]{1,1,1});
+		float[][] col = Shape.Cube.getColor();
+		Shape.Cube.setColor(new float[]{1,1,1});
 		Shape.Cube.draw(gl);
-	//	Shape.Cube.setColor(col);
+		Shape.Cube.setColor(col);
 		gl.glPopMatrix();
 		
 		// tower head
 		gl.glPushMatrix();
 		gl.glTranslated(Util.feetToGL(12),Util.feetToGL(75),-Util.feetToGL(32,1));
 		gl.glScaled(Util.feetToGL(20), Util.feetToGL(10), Util.feetToGL(20));
-	//	col = Shape.Pyramid.getColor();
-	//	Shape.Pyramid.setColor(new float[]{1,1,1});
+		col = Shape.Pyramid.getColor();
+		Shape.Pyramid.setColor(new float[]{1,1,1});
 		Shape.Pyramid.draw(gl);
-	//	Shape.Pyramid.setColor(col);
+		Shape.Pyramid.setColor(col);
+		gl.glColor3f(col[0][0],col[0][1],col[0][2]);
 		gl.glPopMatrix();
 				
 		gl.glPopMatrix();
