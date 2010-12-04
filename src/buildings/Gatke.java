@@ -2,6 +2,7 @@ package buildings;
 
 import javax.media.opengl.GL;
 
+import util.Shape;
 import util.Util;
 
 /**
@@ -27,23 +28,21 @@ public class Gatke extends Building{
 	double[] position = { 0, 0, 0 };
 	double textures[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 	
-	private double[] glPos;
-	private double posEast = 7547561.591;
-	private double posNorth = 473329.699;
+	private double posEast = 7547654.973;
+	private double posNorth = 473298.811;
 	private double posElevation = 0; // TODO Get Elevation of building
-	
+	private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
+	private double[] midpoint = new double[]{Util.feetToGL(45/2),Util.feetToGL(98/2)};
 	
 	@Override
 	public void init(GL gl) {
 		// TODO Auto-generated method stub
-		glPos = Util.coordToGL(posEast, posNorth, posElevation);
+		
 	}
 
 	@Override
 	public void draw(GL gl) {
-		gl.glPushMatrix();
-		
-		
+		gl.glPushMatrix();		
 		
 		// Universal positioning
 		if(!drawOrigin){
@@ -52,25 +51,17 @@ public class Gatke extends Building{
 		}
 		else
 			// this is the appx centerpoint of the building
-			gl.glTranslated(-Util.feetToGL(45.0/2), 0, Util.feetToGL(98.0/2));
+			gl.glTranslated(-midpoint[0], 0, midpoint[1]);
 		// End universal positioning
 		
 		gl.glRotated(90, 0, 1, 0);
-		gl.glTranslated(position[0], position[1], position[2]);
-		for (int i = 0; i < faces.length; i++) {
-			// gl.glBindTexture(GL.GL_TEXTURE_2D, BUILDING_TEX);
-			gl.glBegin(GL.GL_QUADS);
-			for (int j = 0; j < 4; j++) {
-				gl.glNormal3dv(normals[i], 0);
-				gl.glTexCoord2dv(textures[j], 0);
-				gl.glVertex3dv(vertices[faces[i][j]], 0);
-			}
-			gl.glEnd();
-		}
+		
+		// 1st Cube
+		gl.glPushMatrix();
+		gl.glScaled(Util.feetToGL(45), Util.feetToGL(50), Util.feetToGL(98));
+		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
-		
-		
+		gl.glPopMatrix();
 	}
-
 }
