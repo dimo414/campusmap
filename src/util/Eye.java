@@ -160,6 +160,27 @@ public class Eye {
     	look = look.add(right.scale(angle)).normalize();
     	right = look.cross(up).normalize();
     }
+    
+    /**
+     * Rotate in the vertical, works like pitch, but stops before reaching straight up
+     * or straight down.  This prevents poor behavior when using with rotateH.
+     * @param angle the angle (0-1) to turn
+     */
+    public void rotateV(double angle){
+    	// need to determine if the rotation would put us too close to vertical orientation
+    	// we use a fixed angle to ensure a minimum distance from vertical
+    	double testAngle = angle/(Math.abs(angle))*.25;
+    	Vector testLook = look.add(up.scale(testAngle)).normalize();
+    	Vector tempLook = look.add(up.scale(angle)).normalize();
+    	if(look.distance(tempLook) > look.distance(testLook))
+    		testLook = tempLook;
+    	// test if x or z switch signs - that is, it tries to move past vertical
+    	if(look.x() > 0 != testLook.x() > 0 || look.z() > 0 != testLook.z() > 0){
+    		return;
+    	}
+    	look = tempLook;
+    	up = right.cross(look).normalize();
+    }
 
     /**
      * Rotate in the horizontal, works like yaw, but turns around the y axis
@@ -168,9 +189,9 @@ public class Eye {
     // like yaw, but always rotates around the y axis
 	public void rotateH(double angle) {
 		Vector tempUp = new Vector(0,1,0);
-		Vector tempRight = tempUp.cross(look);
-		look = look.add(tempRight.scale(angle)).normalize();
+		look = look.add(right.scale(angle)).normalize();
     	right = look.cross(tempUp).normalize();
+    	up = right.cross(look).normalize();
 	}
     
     /**

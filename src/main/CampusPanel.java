@@ -259,8 +259,8 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	@Override
 	public void mouseDragged(MouseEvent evt) {
 		if(turn){
-			eye.rotateH(-(evt.getX()-lastX)*turnAngle);
-			eye.pitch((evt.getY()-lastY)*turnAngle);
+			eye.rotateH((evt.getX()-lastX)*turnAngle);
+			eye.rotateV((evt.getY()-lastY)*turnAngle);
 		}
 		if(track){
 			eye.trackH(-(evt.getX()-lastX)*moveSpeed);
