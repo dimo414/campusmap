@@ -1,0 +1,63 @@
+Since Willamette University does not have any easy to access / standardized resources
+detailing building heights, we have had to go around campus measuring heights ourselves.
+This document contains the measurements we have made.
+
+All measurements should be treated as approximations at best, however measurements starting
+with a '~' are outright educated guesses.
+
+The primary technique used to measure heights is detailed in the "Pencil Method" of this
+website: http://www.wikihow.com/Measure-the-Height-of-a-Tree
+In summary, you line a small object up with the vertical distance to measure, then turn
+it horizontal and measure the distance along the ground covered by the small object.
+
+This document should be treated as the primary reference for campus building heights, and
+updated as necessary.  When other files in this project differ from this document, they
+should be presumed to be incorrect.
+
+
+Goudy Commons
+	Main Hall south outcrop:	19'
+	Main Hall south base of roof:	24'4"
+	Main Hall south top of roof:	33'6"
+	Roof standard height:			19'
+	Roof penthouse:					~25'
+	Smokestack penthouse:			~30'
+	Wall standard height:			9'9"
+	Dumpster wall:					8'
+
+Grounds
+	East section to base of roof:	6'6"
+	West section to base of roof:	9'
+
+Kresge
+	SE Corner:							29'
+	East wing center to top of roof:	23'
+
+Mark O. Hatfield Library
+	Ground to bottom of balcony:			11'
+	Ground to bottom of roof:				28'
+	Height of roof:							~6'
+	Clock tower, ground to arch:			8'6"
+	Clock tower, ground to base of roof:	44'
+
+Physical Plant
+	SE corner:	16'
+
+Putnum University Center
+	Ground to balcony floor:	13'10"
+	Balcony to bottom of roof:	21'6"
+	Height of roof:				~6'
+
+Rogers Music Hall
+	West overhang:	17'
+	South wing:		13'
+
+Smith Fine Arts
+	FAW NW corner:			27'6"
+	Smith north overhang:	19'
+	Auditorium roof:		44'
+
+Westside
+	Lausanne - SE corner to base of roof:		48'
+	Doney - south outcrop:						23'
+	Doney/ResServices ground to base of roof:	29'
