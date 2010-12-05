@@ -40,7 +40,12 @@ public class Shape {
 	 * A unit triangular prism with standard normals drawn with the right
 	 * angle running along (0,0,0) to (0,0,-1)
 	 */
-	public static final Shape TrianglePrism;
+	public static final Shape RightTriangle;
+	
+	/**
+	 * A unit triangular prism with standard normals drawn such that it's base and height are 1
+	 */
+	public static final Shape UnitTriangle;
 	
 	/**
 	 * A unit pyramid with standard normals drawn with a corner at (0,0,0)
@@ -65,12 +70,22 @@ public class Shape {
 		
 		Cube = new Shape(CUBE_VERT, CUBE_FACE, CUBE_NORM);
 		
-		// TRIANGULAR PRISM
+		// RIGHT TRIANGULAR PRISM
 		float[][] TRIAG_VERT = {{0,0,0}, {1,0,0},{0,1,0}, {0,0,-1}, {1,0,-1}, {0,1,-1}}; 
 		int[][] TRIAG_FACE = {{0,1,2},{3,4,5},{0,1,4,3},{1,4,5,2},{3,0,2,5}};
 		float[][] TRIAG_NORM = {{0,0,1},{0,0,-1},{0,-1,0},new Vector(1,1,0).normalize().toFArray(),{-1,0,0}};
 		
-		TrianglePrism = new Shape(TRIAG_VERT, TRIAG_FACE, TRIAG_NORM);
+		RightTriangle = new Shape(TRIAG_VERT, TRIAG_FACE, TRIAG_NORM);
+		
+		float[][] U_TRIAG_VERT = {{0,0,0},{1,0,0},{.5f,1,0},{0,0,-1},{1,0,-1},{.5f,1,-1}};
+		int[][] U_TRIAG_FACE = {{0,1,2},{1,4,5,2},{2,5,3,0},{0,1,4,3},{3,4,5}};
+		float[][] U_TRIAG_NORM = {{0,0,1},
+				new Vector(0,0,-1).cross(new Vector(-.5,1,0)).toFArray(),
+				new Vector(0,0,1).cross(new Vector(.5,1,0)).toFArray(),
+				{0,-1,0},
+				{0,0,-1}};
+		
+		UnitTriangle = new Shape(U_TRIAG_VERT,U_TRIAG_FACE,U_TRIAG_NORM);
 		
 		// PYRAMID
 		float[][] PYRAMID_VERT = {{0,0,0},{1,0,0},{1,0,-1},{0,0,-1},{.5f,1,-.5f}};
