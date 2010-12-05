@@ -72,6 +72,11 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
         gl.glEnable(GL.GL_LIGHTING);
         gl.glEnable(GL.GL_NORMALIZE);
 
+        gl.glLightModelfv(GL.GL_LIGHT_MODEL_AMBIENT, new float[]{.3f,.3f,.3f,1f},0);
+        gl.glLightfv(GL.GL_LIGHT0, GL.GL_AMBIENT, new float[]{0f,0f,0f,0f},0);
+        gl.glLightfv(GL.GL_LIGHT0, GL.GL_DIFFUSE, new float[]{.8f,.8f,.8f,1f},0);
+        gl.glLightfv(GL.GL_LIGHT0, GL.GL_SPECULAR, new float[]{.4f,.4f,.4f,1f},0);
+
         addBuildings(gl);
         addTextures(gl);
         
