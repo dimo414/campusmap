@@ -32,7 +32,7 @@ public class BuildingViewer implements GLEventListener, ActionListener {
     
     private GLU glu = new GLU(); // OpenGL Utility Library - used to set camera view
     
-    private Eye eye = new Eye(new Vector(0.0, 150.0, 300.0), new Vector(0,4,0));
+    private Eye eye = new Eye(new Vector(0.0, 120.0, 240.0), new Vector(0,30,0));
     private HashMap<String, Building> buildings = new HashMap<String,Building>();
     private Building bld = null;
     

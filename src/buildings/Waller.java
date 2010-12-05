@@ -58,27 +58,138 @@ public class Waller extends Building {
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
-		// tower
+		// east-west roof
+		gl.glPushMatrix();
+		gl.glTranslated(-Util.feetToGL(23,3),Util.feetToGL(50),-Util.feetToGL(67,3));
+		gl.glScaled(Util.feetToGL(90,6), Util.feetToGL(15), Util.feetToGL(50,4));
+		gl.glRotated(-90, 0, 1, 0);
+		Shape.UnitTriangle.draw(gl);
+		gl.glPopMatrix();
+		
+		// north-south roof
+		gl.glPushMatrix();
+		gl.glTranslated(-Util.feetToGL(3,2),Util.feetToGL(50),Util.feetToGL(3,2));
+		gl.glScaled(Util.feetToGL(50,4), Util.feetToGL(15), Util.feetToGL(90,6));
+		Shape.UnitTriangle.draw(gl);
+		gl.glPopMatrix();
+		
+		// tower - base of tower in this model is from the base of the roof, not the top of the roof
 		gl.glPushMatrix();
 		gl.glTranslated(Util.feetToGL(12),Util.feetToGL(50),-Util.feetToGL(32,1));
-		gl.glScaled(Util.feetToGL(20), Util.feetToGL(25), Util.feetToGL(20));
-		float[][] col = Shape.Cube.getColor();
-		Shape.Cube.setColor(new float[]{1,1,1});
-		Shape.Cube.draw(gl);
-		Shape.Cube.setColor(col);
+		gl.glScaled(Util.feetToGL(20), Util.feetToGL(30), Util.feetToGL(20));
+		float[][] col = Shape.Octagon.getColor();
+		Shape.Octagon.setColor(new float[]{1,1,1});
+		Shape.Octagon.draw(gl);
+		Shape.Octagon.setColor(col);
 		gl.glPopMatrix();
 		
 		// tower head
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(12),Util.feetToGL(75),-Util.feetToGL(32,1));
+		gl.glTranslated(Util.feetToGL(12),Util.feetToGL(80),-Util.feetToGL(32,1));
 		gl.glScaled(Util.feetToGL(20), Util.feetToGL(10), Util.feetToGL(20));
-		col = Shape.Pyramid.getColor();
-		Shape.Pyramid.setColor(new float[]{1,1,1});
-		Shape.Pyramid.draw(gl);
-		Shape.Pyramid.setColor(col);
+		col = Shape.OctaPyramid.getColor();
+		Shape.OctaPyramid.setColor(new float[]{1,1,1});
+		Shape.OctaPyramid.draw(gl);
+		Shape.OctaPyramid.setColor(col);
 		gl.glColor3f(col[0][0],col[0][1],col[0][2]);
 		gl.glPopMatrix();
-				
+		
+		// spacer between stairs and hall proper
+		gl.glPushMatrix();
+		gl.glTranslated(Util.feetToGL(12,6), 0, Util.feetToGL(1,5));
+		gl.glScaled(Util.feetToGL(4,6),Util.feetToGL(12),Util.feetToGL(1,5));
+		Shape.Cube.draw(gl);
+		gl.glPopMatrix();
+		gl.glPushMatrix();
+		gl.glTranslated(Util.feetToGL(27), 0, Util.feetToGL(1,5));
+		gl.glScaled(Util.feetToGL(4,6),Util.feetToGL(12),Util.feetToGL(1,5));
+		Shape.Cube.draw(gl);
+		gl.glPopMatrix();
+		
+		// west half of south stairs
+		// I cannot figure out why, but by my math these components are 3'8" and 11'1" left of origin
+		// however visually it works at 2'3"
+		gl.glPushMatrix();
+		gl.glTranslated(-Util.feetToGL(2,3), 0, Util.feetToGL(10,10));
+		gl.glScaled(Util.feetToGL(19,3), Util.feetToGL(6), Util.feetToGL(9,5));
+		Shape.Cube.draw(gl);
+		gl.glPopMatrix();
+		gl.glPushMatrix();
+		gl.glTranslated(-Util.feetToGL(9,8), 0, Util.feetToGL(18));
+		gl.glScaled(Util.feetToGL(7,5), Util.feetToGL(6), Util.feetToGL(16,7));
+		Shape.Cube.draw(gl);
+		gl.glPopMatrix();
+		gl.glPushMatrix();
+		gl.glTranslated(-Util.feetToGL(2,3), 0, Util.feetToGL(18));
+		gl.glScaled(Util.feetToGL(10,10), Util.feetToGL(6), Util.feetToGL(8));
+		Shape.RightTriangle.draw(gl);
+		gl.glPopMatrix();
+		gl.glPushMatrix();
+		gl.glTranslated(-Util.feetToGL(2,3), Util.feetToGL(6), Util.feetToGL(9,5));
+		gl.glScaled(Util.feetToGL(10,10), Util.feetToGL(6), Util.feetToGL(8));
+		gl.glTranslated(1, 0, 0);
+		gl.glScaled(-1,1,1);
+		Shape.RightTriangle.draw(gl);
+		gl.glPopMatrix();
+		
+		// east half of south stairs
+		gl.glPushMatrix();
+		gl.glTranslated(Util.feetToGL(27), 0, Util.feetToGL(10,10));
+		gl.glScaled(Util.feetToGL(19,3), Util.feetToGL(6), Util.feetToGL(9,5));
+		Shape.Cube.draw(gl);
+		gl.glPopMatrix();
+		gl.glPushMatrix();
+		gl.glTranslated(Util.feetToGL(46,3), 0, Util.feetToGL(18));
+		gl.glScaled(Util.feetToGL(7,5), Util.feetToGL(6), Util.feetToGL(16,7));
+		Shape.Cube.draw(gl);
+		gl.glPopMatrix();
+		gl.glPushMatrix();
+		gl.glTranslated(Util.feetToGL(35,5), 0, Util.feetToGL(18));
+		gl.glScaled(Util.feetToGL(10,10), Util.feetToGL(6), Util.feetToGL(8));
+		gl.glTranslated(1, 0, 0);
+		gl.glScaled(-1,1,1);
+		Shape.RightTriangle.draw(gl);
+		gl.glPopMatrix();
+		gl.glPushMatrix();
+		gl.glTranslated(Util.feetToGL(35,5), Util.feetToGL(6), Util.feetToGL(9,5));
+		gl.glScaled(Util.feetToGL(10,10), Util.feetToGL(6), Util.feetToGL(8));
+		Shape.RightTriangle.draw(gl);
+		gl.glPopMatrix();
+		
+		// south porch
+		gl.glPushMatrix();
+		gl.glTranslated(Util.feetToGL(8,7), Util.feetToGL(6), Util.feetToGL(10,10));
+		gl.glScaled(Util.feetToGL(8,5), Util.feetToGL(6), Util.feetToGL(9,5));
+		Shape.Cube.draw(gl);
+		gl.glPopMatrix();
+		gl.glPushMatrix();
+		gl.glTranslated(Util.feetToGL(27), Util.feetToGL(6), Util.feetToGL(10,10));
+		gl.glScaled(Util.feetToGL(8,5), Util.feetToGL(6), Util.feetToGL(9,5));
+		Shape.Cube.draw(gl);
+		gl.glPopMatrix();
+		gl.glPushMatrix();
+		gl.glTranslated(Util.feetToGL(17), Util.feetToGL(10), Util.feetToGL(10,10));
+		gl.glScaled(Util.feetToGL(10), Util.feetToGL(2), Util.feetToGL(10,10));
+		Shape.Cube.draw(gl);
+		gl.glPopMatrix();
+		
+		// south overhang
+		gl.glPushMatrix();
+		gl.glTranslated(Util.feetToGL(13,2), Util.feetToGL(22), Util.feetToGL(13));
+		gl.glScaled(Util.feetToGL(17,10), Util.feetToGL(4), Util.feetToGL(13));
+		Shape.UnitTriangle.draw(gl);
+		gl.glPopMatrix();
+		gl.glPushMatrix();
+		gl.glTranslated(Util.feetToGL(13,8), Util.feetToGL(12), Util.feetToGL(10,10));
+		gl.glScaled(Util.feetToGL(1,8), Util.feetToGL(10), Util.feetToGL(1,8));
+		Shape.Cube.draw(gl);
+		gl.glPopMatrix();
+		gl.glPushMatrix();
+		gl.glTranslated(Util.feetToGL(28,10), Util.feetToGL(12), Util.feetToGL(10,10));
+		gl.glScaled(Util.feetToGL(1,8), Util.feetToGL(10), Util.feetToGL(1,8));
+		Shape.Cube.draw(gl);
+		gl.glPopMatrix();
+		
 		gl.glPopMatrix();
 	}
 

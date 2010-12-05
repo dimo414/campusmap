@@ -53,6 +53,16 @@ public class Shape {
 	 */
 	public static final Shape Pyramid;
 	
+	/**
+	 * A unit octagonal prism with standard normals oriented vertically
+	 */
+	public static final Shape Octagon;
+
+	/**
+	 * A unit octagonal pyramid with standard normals oriented vertically
+	 */
+	public static final Shape OctaPyramid;
+	
 	static {
 		// CUBE
 		//   v6------v7
@@ -98,6 +108,40 @@ public class Shape {
 				{0,-1,0}};
 				
 		Pyramid = new Shape(PYRAMID_VERT, PYRAMID_FACE, PYRAMID_NORM);
+		
+		// OCTAGONAL PRISM
+		float sq2 = (float)Math.sqrt(2);
+		float a = 1/(1+sq2);
+		float aSq = a/sq2;
+		
+		float[][] OCTA_VERT = {{aSq,0,0},{a+aSq,0,0},{1,0,-aSq},{1,0,-a-aSq},{a+aSq,0,-1},{aSq,0,-1},{0,0,-a-aSq},{0,0,-aSq},
+				{aSq,1,0},{a+aSq,1,0},{1,1,-aSq},{1,1,-a-aSq},{a+aSq,1,-1},{aSq,1,-1},{0,1,-a-aSq},{0,1,-aSq}};
+		int[][] OCTA_FACE = {{0,5,6,7},{0,1,4,5},{1,2,3,4},
+				{0,1,9,8},{1,2,10,9},{2,3,11,10},{3,4,12,11},{4,5,13,12},{5,6,14,13},{6,7,15,14},{7,0,8,15},
+				{8,13,14,15},{8,9,12,13},{9,10,11,12}};
+		float[][] OCTA_NORM = {{0,-1,0},{0,-1,0},{0,-1,0},
+				{0,0,1},{1,0,1},{1,0,0},{1,0,-1},{0,0,-1},{-1,0,-1},{-1,0,0},{-1,0,1},
+				{0,1,0},{0,1,0},{0,1,0}};
+		
+		Octagon = new Shape(OCTA_VERT, OCTA_FACE,OCTA_NORM);
+		
+		// OCTAGONAL PYRAMID
+		float[][] OCTAP_VERT = {{aSq,0,0},{a+aSq,0,0},{1,0,-aSq},{1,0,-a-aSq},{a+aSq,0,-1},{aSq,0,-1},{0,0,-a-aSq},{0,0,-aSq},
+				{.5f,1,-.5f}};
+		int[][] OCTAP_FACE = {{0,5,6,7},{0,1,4,5},{1,2,3,4},
+				{0,1,8},{1,2,8},{2,3,8},{3,4,8},{4,5,8},{5,6,8},{6,7,8},{7,0,8}};
+		float[][] OCTAP_NORM = {{0,-1,0},{0,-1,0},{0,-1,0},
+				new Vector(OCTAP_VERT[0]).cross(new Vector(0,1,-.5)).toFArray(),
+				new Vector(OCTAP_VERT[1]).cross(new Vector(-.5,1,-.5)).toFArray(),
+				new Vector(OCTAP_VERT[2]).cross(new Vector(-.5,1,0)).toFArray(),
+				new Vector(OCTAP_VERT[3]).cross(new Vector(-.5,1,.5)).toFArray(),
+				new Vector(OCTAP_VERT[4]).cross(new Vector(0,1,.5)).toFArray(),
+				new Vector(OCTAP_VERT[5]).cross(new Vector(.5,1,.5)).toFArray(),
+				new Vector(OCTAP_VERT[6]).cross(new Vector(.5,1,0)).toFArray(),
+				new Vector(OCTAP_VERT[7]).cross(new Vector(.5,1,-.5)).toFArray(),
+				};
+		
+		OctaPyramid = new Shape(OCTAP_VERT, OCTAP_FACE, OCTAP_NORM);
 	}
 	
 	
