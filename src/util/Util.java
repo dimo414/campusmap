@@ -49,6 +49,20 @@ public class Util {
 		// If the application is developed properly, changing the origin should be trivial
 		return new double[]{easting-CAMPUS_SW[0],elevation,-(northing-CAMPUS_SW[1])};
 	}
+	
+	/**
+	 * Same as coordToGL(), however returns a float array instead of a double array
+	 * @param easting
+	 *            The number of feet east of the Oregon North origin
+	 * @param northing
+	 *            The number of feet north of the Oregon North origin
+	 * @param elevation
+	 *            The elevation of the point, from sea level
+	 * @return an OpenGL coordinate (x,y,z)
+	 */
+	public static float[] fCoordToGL(double easting, double northing, double elevation){
+		return dToF(coordToGL(easting,northing,elevation));
+	}
 
 	/**
 	 * Takes a measurement in feet, and converts it to the appropriate distance
@@ -83,5 +97,19 @@ public class Util {
 	 */
 	public static double f(int feet, double inches) {
 		return feet + inches / 12.0;
+	}
+	
+	/**
+	 * Takes an array of doubles and returns an array of floats.
+	 * Be warned, this causes a loss of precision, and should be avoided where possible.
+	 * @param arr the array of doubles to cast
+	 * @return the same data, as floats
+	 */
+	public static float[] dToF(double[] arr){
+		float[] out = new float[arr.length];
+		for(int i = 0; i < arr.length; i++){
+			out[i] = (float)arr[i];
+		}
+		return out;
 	}
 }

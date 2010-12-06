@@ -2,60 +2,39 @@ package landscape;
 
 import javax.media.opengl.GL;
 
-public class Ground {
-//    double vertices[][] = {{0, 0, 0}, {0, 0, 1}, {0, 1, 0},
-//            {0, 1, 1}, {1, 0, 0}, {1, 0, 1},
-//            {1, 1, 0}, {1, 1, 1}};
-        int faces[][] = {{0, 1, 3, 2}, {2, 3, 7, 6}, {6, 7, 5, 4}, {4, 5, 1, 0}, {1, 5, 7, 3}, {0, 2, 6, 4}};
-        double normals[][] = {{-1, 0, 0}, {0, 1, 0}, {1, 0, 0}, {0, -1, 0}, {0, 0, 1}, {0, 0, -1}};
-        double scale = 1;
-        double textures[][] = {{scale, 0}, {scale, scale}, {0, scale}, {0, 0}};
-        double position[] = {0, 0, 0};
+import util.Shape;
 
-        /** Creates a new instance of Cube */
+/**
+ * <p>This class represents the ground of Willamette University.  Initially, it will be an elevation-accurate version
+ * of the landscape, and if time is permitting will go on to include other details such as paths, trees, memorials,
+ * and other features of campus which are not buildings.</p>
+ * 
+ * <p>This class should, at the very least, do the following:</p>
+ * <ol>
+ * <li>Load a set of 3D coordinates representing easting, northing, and elevation - from a file, for instance</li>
+ * <li>With the easting and northing values, construct a 2D triangulation using a Delaunay Triangulation algorithm</li>
+ * <li>Construct a triangular lattice of the ground and its elevation using util.Shape and the generated triangulation</li>
+ * </ol>
+ *  
+ * @author Travis Lee
+ */
+public class Ground {        
+        private Shape shape = new Shape();
+
+        /**
+         * Constructs a representation of the ground
+         */
         public Ground() {
+        	// Construct shape, be sure when you pass the coordinates to shape you use Util.fCoordToGL()
+        	// to ensure the positions are accurately displayed.
         }
 
         /**
-         * set the position of center of cube.
-         * @param x x coordinate of new position
-         * @param y y coordinate of new position
-         * @param z z coordinate of new position
-         */
-        public void setPosition(double x, double y, double z) {
-            position[0] = x;
-            position[1] = y;
-            position[2] = z;
-        }
-
-        /** Set scaling for texture.
-         *
-         * @param s scale factor
-         */
-        public void setScale(double s) {
-            scale = s; //
-            double newTextures[][] = {{scale, 0}, {scale, scale}, {0, scale}, {0, 0}};
-            textures = newTextures;
-        }
-
-        /**
-         * draw the cube.
+         * draw the ground.
          * @param gl openGL object
          */
         public void draw(GL gl) {
-            gl.glPushMatrix();
-            gl.glTranslated(position[0], position[1], position[2]);
-            gl.glTranslatef(-.5f, -.5f, -.5f);
-            gl.glBegin(GL.GL_QUADS);
-            for (int i = 0; i < faces.length; i++) {
-                for (int j = 0; j < 4; j++) {
-                    gl.glNormal3dv(normals[i], 0);
-                    gl.glTexCoord2dv(textures[j], 0);
-                    gl.glVertex3dv(vertices[faces[i][j]], 0);
-                }
-            }
-            gl.glEnd();
-            gl.glPopMatrix();
+            shape.draw(gl);
         }
 
 }

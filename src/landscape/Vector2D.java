@@ -1,3 +1,5 @@
+package landscape;
+
 /**
  * DelaunayTriangulator.java
  * 
@@ -10,6 +12,10 @@
  * TODO: Implement exact arithmetic for ultimate robustness. 
  * 
  * @author trigger
+ */
+/*
+ * Taken from http://www.informatik.uni-oldenburg.de/~trigger/ Dec. 2010
+ * Website releases code for personal and educational use.
  */
 public class Vector2D {
 	

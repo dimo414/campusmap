@@ -1,3 +1,5 @@
+package landscape;
+
 import java.awt.Frame;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -6,8 +8,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Vector;
 
 import javax.media.opengl.GL;
 import javax.media.opengl.GLAutoDrawable;
@@ -27,6 +29,10 @@ import com.sun.opengl.util.Animator;
  * TODO: Implement exact arithmetic for ultimate robustness. 
  * 
  * @author trigger
+ */
+/*
+ * Taken from http://www.informatik.uni-oldenburg.de/~trigger/ Dec. 2010
+ * Website releases code for personal and educational use.
  */
 public class ExampleDelaunayTriangulation implements GLEventListener {
 	
@@ -73,13 +79,9 @@ public class ExampleDelaunayTriangulation implements GLEventListener {
 
 		gl.setSwapInterval(1);
 		
-		Vector<Vector2D> pointSet = loadPointSet("data/normal-formation.conf");
+		ArrayList<Vector2D> pointSet = loadPointSet("src/landscape/examplepoints.conf");
 		
-		try {
-			delaunayTriangulator = new DelaunayTriangulator(pointSet);
-		} catch (NotEnoughPointsException e) {
-			// handle exception here
-		}
+		delaunayTriangulator = new DelaunayTriangulator(pointSet);
 	
 		// delaunay is in general faster if the points of the point set are
 		// added in a random order. this is a custom permutation for
@@ -167,9 +169,9 @@ public class ExampleDelaunayTriangulation implements GLEventListener {
 	public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) {
 	}
 	
-	private Vector<Vector2D> loadPointSet(String fileName) {
+	private ArrayList<Vector2D> loadPointSet(String fileName) {
 		
-		Vector<Vector2D> pointSet = new Vector<Vector2D>();
+		ArrayList<Vector2D> pointSet = new ArrayList<Vector2D>();
 		int index = 0;
 		
 		try {
