@@ -33,6 +33,7 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 
 	private double moveSpeed = 10;
     private double turnAngle = .01;
+    private double trackSpeed = 5;
 	private int lastX;
 	private int lastY;
 	private boolean turn = false;
@@ -268,8 +269,8 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 			eye.rotateV((evt.getY()-lastY)*turnAngle);
 		}
 		if(track){
-			eye.trackH(-(evt.getX()-lastX)*moveSpeed);
-			eye.trackV((evt.getY()-lastY)*moveSpeed);
+			eye.trackH(-(evt.getX()-lastX)*trackSpeed);
+			eye.trackV((evt.getY()-lastY)*trackSpeed);
 		}
 		lastX = evt.getX();
 		lastY = evt.getY();
