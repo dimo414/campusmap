@@ -1,6 +1,8 @@
+package landscape;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Vector;
 
 /**
  * DelaunayTriangulator.java
@@ -15,21 +17,25 @@ import java.util.Vector;
  * 
  * @author trigger
  */
+/*
+ * Taken from http://www.informatik.uni-oldenburg.de/~trigger/ Dec. 2010
+ * Website releases code for personal and educational use.
+ */
 public class DelaunayTriangulator {
 	
-	Vector<Vector2D> pointSet;
+	ArrayList<Vector2D> pointSet;
 	TriangleSet triangleSet;
 	Triangle superTriangle;
 	
-	public DelaunayTriangulator(Vector<Vector2D> pointSet) throws NotEnoughPointsException {
+	public DelaunayTriangulator(ArrayList<Vector2D> pointSet) {
 		if(pointSet.size() < 3)
-			throw new NotEnoughPointsException("Less than three points in point set.");
+			throw new RuntimeException("Less than three points in point set.");
 		
 		this.pointSet = pointSet;
 		triangleSet = new TriangleSet();
 	}
 	
-	public void setPointSet(Vector<Vector2D> pointSet) {
+	public void setPointSet(ArrayList<Vector2D> pointSet) {
 		this.pointSet = pointSet;
 	}
 	
@@ -38,7 +44,7 @@ public class DelaunayTriangulator {
 	}
 	
 	public void shuffle(int [] permutation) {
-		Vector<Vector2D> temp = new Vector<Vector2D>();
+		ArrayList<Vector2D> temp = new ArrayList<Vector2D>();
 		
 		for(int i=0; i < permutation.length; i++) {
 			temp.add(pointSet.get(permutation[i]));
@@ -188,11 +194,11 @@ public class DelaunayTriangulator {
 		return null;
 	}
 	
-	public Vector<Vector2D> getPointSet() {
+	public ArrayList<Vector2D> getPointSet() {
 		return pointSet;
 	}
 	
-	public Vector<Triangle> getTriangleSet() {
+	public ArrayList<Triangle> getTriangleSet() {
 		return triangleSet.triangleSet;
 	}
 
@@ -200,15 +206,15 @@ public class DelaunayTriangulator {
 
 class TriangleSet {
 	
-	Vector<Triangle> triangleSet;
+	ArrayList<Triangle> triangleSet;
 	
 	public TriangleSet() {
-		this.triangleSet = new Vector<Triangle>();
+		this.triangleSet = new ArrayList<Triangle>();
 	}
 	
 	public Edge findEdgeThatContains(Vector2D point) {
 		
-		Vector<EdgeDistancePack> edgeVector = new Vector<EdgeDistancePack>();
+		ArrayList<EdgeDistancePack> edgeVector = new ArrayList<EdgeDistancePack>();
 		
 		for(Triangle triangle : triangleSet) {
 			edgeVector.add(triangle.findNearestEdge(point));
@@ -232,7 +238,7 @@ class TriangleSet {
 	}
 	
 	public void removeTrianglesUsing(Vector2D point) {
-		Vector<Triangle> removeList = new Vector<Triangle>();
+		ArrayList<Triangle> removeList = new ArrayList<Triangle>();
 		for(Triangle triangle : triangleSet) {
 			if(triangle.hasVertex(point)) {
 				removeList.add(triangle);

@@ -169,6 +169,9 @@ public class Shape {
 	 * Constructs a new shape with no components
 	 */
 	public Shape(){
+		vertices = new float[][]{};
+		faces = new int[][]{};
+		normals = new float[][]{};
 	}
 	
 	/**
@@ -270,6 +273,8 @@ public class Shape {
 	public void draw(GL gl){
 		if(!buffersGen)
 			genBuffers();
+		if(vertices.length == 0)
+			return;
 		
 		gl.glEnableClientState(GL.GL_VERTEX_ARRAY);
         gl.glEnableClientState(GL.GL_COLOR_ARRAY);

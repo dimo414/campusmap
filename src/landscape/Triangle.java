@@ -1,5 +1,6 @@
+package landscape;
+
 import java.util.Arrays;
-import java.util.Vector;
 
 /**
  * DelaunayTriangulator.java
@@ -13,6 +14,10 @@ import java.util.Vector;
  * TODO: Implement exact arithmetic for ultimate robustness. 
  * 
  * @author trigger
+ */
+/*
+ * Taken from http://www.informatik.uni-oldenburg.de/~trigger/ Dec. 2010
+ * Website releases code for personal and educational use.
  */
 public class Triangle {
 	

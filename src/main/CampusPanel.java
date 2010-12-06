@@ -14,6 +14,8 @@ import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
 import javax.media.opengl.glu.GLU;
 
+import landscape.Ground;
+
 import util.Eye;
 import util.ImageTexture;
 import util.Util;
@@ -42,6 +44,8 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	private double lAngle = 60;
 	
 	private  ArrayList<Building> buildings = new ArrayList<Building>();
+	
+	private Ground ground;
 	
 	private int[] names; // the array of texture names;
 	
@@ -80,6 +84,7 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 
         addBuildings(gl);
         addTextures(gl);
+        ground = new Ground();
         
         gl.glEnable(GL.GL_DEPTH_TEST);
 	}
@@ -191,6 +196,7 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	 * Draws the ground
 	 */
 	public void drawGround(GL gl){
+		// We should disable drawing the campus map when Ground works
 		gl.glPushMatrix();
         gl.glEnable(GL.GL_TEXTURE_2D);
         
@@ -214,6 +220,9 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 
         gl.glDisable(GL.GL_TEXTURE_2D);
 		gl.glPopMatrix();
+		// end drawing campus map
+		
+		ground.draw(gl);
 	}
 	
 	//
