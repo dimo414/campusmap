@@ -29,11 +29,16 @@ public class Putnam extends Building {
 	private GLUT glut = new GLUT();
 	
 	
-	private double balcony = 12+11./12;
+	private double balconyw = 12+11./12;
 	private double roofOverhang = 13+4.5/12;
 	private double width = 167+7./12;
 	private double length = 95+7./12;
 	
+	private double floor1 = 13+10./12;
+	private double balconyh = 1;
+	private double floor2 = 21.5 /2;
+	private double floor3 = 21.5/2;
+	private double roofh = 6;
 	private double height = 20;
 	@Override
 	public void init(GL gl) {
@@ -53,49 +58,49 @@ public class Putnam extends Building {
 			// this is the appx centerpoint of the building
 			gl.glTranslated(-Util.feetToGL(width/2), 0, Util.feetToGL(length/2));
 		// End universal positioning
-		gl.glTranslated(Util.feetToGL(balcony), 0, -Util.feetToGL(balcony));
+		gl.glTranslated(Util.feetToGL(balconyw), 0, -Util.feetToGL(balconyw));
 		//First Floor
 		gl.glPushMatrix();//mainbuilding
-		gl.glScaled(Util.feetToGL(width), Util.feetToGL(height), Util.feetToGL(length));
+		gl.glScaled(Util.feetToGL(width), Util.feetToGL(floor1), Util.feetToGL(length));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //left square
 		gl.glTranslated(0, 0, -Util.feetToGL(length));
-		gl.glScaled(Util.feetToGL(47+9./12), Util.feetToGL(height), Util.feetToGL(22+1./12));
+		gl.glScaled(Util.feetToGL(47+9./12), Util.feetToGL(floor1), Util.feetToGL(22+1./12));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //right square
 		gl.glTranslated(Util.feetToGL(71+10./12), 0, -Util.feetToGL(95+7./12));
-		gl.glScaled(Util.feetToGL(95+9./12), Util.feetToGL(height), Util.feetToGL(22+1./12));
+		gl.glScaled(Util.feetToGL(95+9./12), Util.feetToGL(floor1), Util.feetToGL(22+1./12));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //staircase
 		gl.glTranslated(Util.feetToGL(167+7./12), 0, -Util.feetToGL(72));
-		gl.glScaled(Util.feetToGL(12), Util.feetToGL(height), Util.feetToGL(35+8./12));
+		gl.glScaled(Util.feetToGL(12), Util.feetToGL(floor1), Util.feetToGL(35+8./12));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
 		//Second Floor
-		gl.glTranslated(0, Util.feetToGL(height), 0);
+		gl.glTranslated(0, Util.feetToGL(floor1), 0);
 		
 		gl.glPushMatrix();//mainbuilding
-		gl.glScaled(Util.feetToGL(width), Util.feetToGL(height), Util.feetToGL(length));
+		gl.glScaled(Util.feetToGL(width), Util.feetToGL(floor2), Util.feetToGL(length));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
-		double b = 1; //Balcony Width
+		double b = 1; //Balcony Height
 		//Balconies
 		gl.glPushMatrix(); //Balcony 3
-		gl.glTranslated(-Util.feetToGL(balcony), -Util.feetToGL(b), Util.feetToGL(balcony));
-		gl.glScaled(Util.feetToGL(193+5./12), Util.feetToGL(b), Util.feetToGL(balcony));
+		gl.glTranslated(-Util.feetToGL(balconyw), -Util.feetToGL(b), Util.feetToGL(balconyw));
+		gl.glScaled(Util.feetToGL(193+5./12), Util.feetToGL(b), Util.feetToGL(balconyw));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
@@ -108,15 +113,15 @@ public class Putnam extends Building {
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Balcony 2
-		gl.glTranslated(-Util.feetToGL(balcony), -Util.feetToGL(b), 0);
-		gl.glScaled(Util.feetToGL(balcony), Util.feetToGL(b), Util.feetToGL(108+6./12));
+		gl.glTranslated(-Util.feetToGL(balconyw), -Util.feetToGL(b), 0);
+		gl.glScaled(Util.feetToGL(balconyw), Util.feetToGL(b), Util.feetToGL(108+6./12));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Balcony 4
 		gl.glTranslated(Util.feetToGL(width), -Util.feetToGL(b), 0);
-		gl.glScaled(Util.feetToGL(balcony), Util.feetToGL(b), Util.feetToGL(108+6./12));
+		gl.glScaled(Util.feetToGL(balconyw), Util.feetToGL(b), Util.feetToGL(108+6./12));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
@@ -130,23 +135,23 @@ public class Putnam extends Building {
 		
 		gl.glPushMatrix(); //Balcony 6
 		gl.glTranslated(Util.feetToGL(50), -Util.feetToGL(b), -Util.feetToGL(length));
-		gl.glScaled(Util.feetToGL(22), Util.feetToGL(b), Util.feetToGL(balcony));
+		gl.glScaled(Util.feetToGL(22), Util.feetToGL(b), Util.feetToGL(balconyw));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
 		//3rd Floor
-		gl.glTranslated(0, Util.feetToGL(height), 0);
+		gl.glTranslated(0, Util.feetToGL(floor2), 0);
 		
 		gl.glPushMatrix();//mainbuilding
-		gl.glScaled(Util.feetToGL(width), Util.feetToGL(height), Util.feetToGL(length));
+		gl.glScaled(Util.feetToGL(width), Util.feetToGL(floor3), Util.feetToGL(length));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix();//Roof
-		gl.glTranslated(-Util.feetToGL(roofOverhang), Util.feetToGL(height-b), Util.feetToGL(roofOverhang));
-		gl.glScaled(Util.feetToGL(194+4./12), Util.feetToGL(b), Util.feetToGL(122+4./12));
+		gl.glTranslated(-Util.feetToGL(roofOverhang), Util.feetToGL(floor3), Util.feetToGL(roofOverhang));
+		gl.glScaled(Util.feetToGL(194+4./12), Util.feetToGL(roofh), Util.feetToGL(122+4./12));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
