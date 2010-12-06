@@ -131,14 +131,14 @@ public class Shape {
 		int[][] OCTAP_FACE = {{0,5,6,7},{0,1,4,5},{1,2,3,4},
 				{0,1,8},{1,2,8},{2,3,8},{3,4,8},{4,5,8},{5,6,8},{6,7,8},{7,0,8}};
 		float[][] OCTAP_NORM = {{0,-1,0},{0,-1,0},{0,-1,0},
-				new Vector(OCTAP_VERT[0]).cross(new Vector(0,1,-.5)).toFArray(),
-				new Vector(OCTAP_VERT[1]).cross(new Vector(-.5,1,-.5)).toFArray(),
-				new Vector(OCTAP_VERT[2]).cross(new Vector(-.5,1,0)).toFArray(),
-				new Vector(OCTAP_VERT[3]).cross(new Vector(-.5,1,.5)).toFArray(),
-				new Vector(OCTAP_VERT[4]).cross(new Vector(0,1,.5)).toFArray(),
-				new Vector(OCTAP_VERT[5]).cross(new Vector(.5,1,.5)).toFArray(),
-				new Vector(OCTAP_VERT[6]).cross(new Vector(.5,1,0)).toFArray(),
-				new Vector(OCTAP_VERT[7]).cross(new Vector(.5,1,-.5)).toFArray(),
+				new Vector(1,0,0).cross(new Vector(0,1,-.5)).toFArray(),
+				new Vector(1,0,-1).cross(new Vector(-.5,1,-.5)).toFArray(),
+				new Vector(0,0,-1).cross(new Vector(-.5,1,0)).toFArray(),
+				new Vector(-1,0,-1).cross(new Vector(-.5,1,.5)).toFArray(),
+				new Vector(-1,0,0).cross(new Vector(0,1,.5)).toFArray(),
+				new Vector(-1,0,1).cross(new Vector(.5,1,.5)).toFArray(),
+				new Vector(0,0,1).cross(new Vector(.5,1,0)).toFArray(),
+				new Vector(1,0,1).cross(new Vector(.5,1,-.5)).toFArray(),
 				};
 		
 		OctaPyramid = new Shape(OCTAP_VERT, OCTAP_FACE, OCTAP_NORM);

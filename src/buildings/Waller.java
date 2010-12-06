@@ -73,20 +73,27 @@ public class Waller extends Building {
 		Shape.UnitTriangle.draw(gl);
 		gl.glPopMatrix();
 		
-		// tower - base of tower in this model is from the base of the roof, not the top of the roof
+		// cupola - porch
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(12),Util.feetToGL(50),-Util.feetToGL(32,1));
-		gl.glScaled(Util.feetToGL(20), Util.feetToGL(30), Util.feetToGL(20));
+		gl.glTranslated(Util.feetToGL(11,9),Util.feetToGL(50),-Util.feetToGL(31,10));
+		gl.glScaled(Util.feetToGL(20,6), Util.feetToGL(15), Util.feetToGL(20,6));
+		Shape.Octagon.draw(gl);
+		gl.glPopMatrix();
+		
+		// cupola - base of tower
+		gl.glPushMatrix();
+		gl.glTranslated(Util.feetToGL(16),Util.feetToGL(65),-Util.feetToGL(36,1));
+		gl.glScaled(Util.feetToGL(12), Util.feetToGL(10), Util.feetToGL(12));
 		float[][] col = Shape.Octagon.getColor();
 		Shape.Octagon.setColor(new float[]{1,1,1});
 		Shape.Octagon.draw(gl);
 		Shape.Octagon.setColor(col);
 		gl.glPopMatrix();
 		
-		// tower head
+		// cupola head
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(12),Util.feetToGL(80),-Util.feetToGL(32,1));
-		gl.glScaled(Util.feetToGL(20), Util.feetToGL(10), Util.feetToGL(20));
+		gl.glTranslated(Util.feetToGL(15),Util.feetToGL(75),-Util.feetToGL(35,1));
+		gl.glScaled(Util.feetToGL(14), Util.feetToGL(5), Util.feetToGL(14));
 		col = Shape.OctaPyramid.getColor();
 		Shape.OctaPyramid.setColor(new float[]{1,1,1});
 		Shape.OctaPyramid.draw(gl);
