@@ -4,6 +4,10 @@ import javax.media.opengl.GL;
 
 import util.Util;
 
+/**
+ * Collins Law Center
+ * @author Jose Alvarado
+ */
 public class LawSchool extends Building{
 
 	//1 - left building, 2 - middle, 3 - right
@@ -56,8 +60,8 @@ public class LawSchool extends Building{
 		double[] position3 = { 16-23, 0, 79+144};
 		double textures3[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 		
-		private double posEast = 7546051.18;
-		private double posNorth = 473320.315;
+		private double posEast = 7546042.785;
+		private double posNorth = 473270.915;
 		private double posElevation = 0; // TODO Get Elevation of building
 		private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		

@@ -39,7 +39,7 @@ public class Putnam extends Building {
 	private double floor2 = 21.5 /2;
 	private double floor3 = 21.5/2;
 	private double roofh = 6;
-	private double height = 20;
+	// private double height = 20; // TODO should this be used somewhere?
 	@Override
 	public void init(GL gl) {
 		glPos = Util.coordToGL(posEast, posNorth, posElevation);
@@ -96,46 +96,45 @@ public class Putnam extends Building {
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
-		double b = 1; //Balcony Height
 		//Balconies
 		gl.glPushMatrix(); //Balcony 3
-		gl.glTranslated(-Util.feetToGL(balconyw), -Util.feetToGL(b), Util.feetToGL(balconyw));
-		gl.glScaled(Util.feetToGL(193+5./12), Util.feetToGL(b), Util.feetToGL(balconyw));
+		gl.glTranslated(-Util.feetToGL(balconyw), -Util.feetToGL(balconyh), Util.feetToGL(balconyw));
+		gl.glScaled(Util.feetToGL(193+5./12), Util.feetToGL(balconyh), Util.feetToGL(balconyw));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Balcony 1
-		gl.glTranslated(0, -Util.feetToGL(b), -Util.feetToGL(length));
-		gl.glScaled(Util.feetToGL(50), Util.feetToGL(b), Util.feetToGL(23+2./12));
+		gl.glTranslated(0, -Util.feetToGL(balconyh), -Util.feetToGL(length));
+		gl.glScaled(Util.feetToGL(50), Util.feetToGL(balconyh), Util.feetToGL(23+2./12));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Balcony 2
-		gl.glTranslated(-Util.feetToGL(balconyw), -Util.feetToGL(b), 0);
-		gl.glScaled(Util.feetToGL(balconyw), Util.feetToGL(b), Util.feetToGL(108+6./12));
+		gl.glTranslated(-Util.feetToGL(balconyw), -Util.feetToGL(balconyh), 0);
+		gl.glScaled(Util.feetToGL(balconyw), Util.feetToGL(balconyh), Util.feetToGL(108+6./12));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Balcony 4
-		gl.glTranslated(Util.feetToGL(width), -Util.feetToGL(b), 0);
-		gl.glScaled(Util.feetToGL(balconyw), Util.feetToGL(b), Util.feetToGL(108+6./12));
+		gl.glTranslated(Util.feetToGL(width), -Util.feetToGL(balconyh), 0);
+		gl.glScaled(Util.feetToGL(balconyw), Util.feetToGL(balconyh), Util.feetToGL(108+6./12));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Balcony 5
-		gl.glTranslated(Util.feetToGL(72), -Util.feetToGL(b), -Util.feetToGL(length));
-		gl.glScaled(Util.feetToGL(98), Util.feetToGL(b), Util.feetToGL(23+2./12));
+		gl.glTranslated(Util.feetToGL(72), -Util.feetToGL(balconyh), -Util.feetToGL(length));
+		gl.glScaled(Util.feetToGL(98), Util.feetToGL(balconyh), Util.feetToGL(23+2./12));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Balcony 6
-		gl.glTranslated(Util.feetToGL(50), -Util.feetToGL(b), -Util.feetToGL(length));
-		gl.glScaled(Util.feetToGL(22), Util.feetToGL(b), Util.feetToGL(balconyw));
+		gl.glTranslated(Util.feetToGL(50), -Util.feetToGL(balconyh), -Util.feetToGL(length));
+		gl.glScaled(Util.feetToGL(22), Util.feetToGL(balconyh), Util.feetToGL(balconyw));
 		gl.glTranslated(.5, .5, -.5);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();

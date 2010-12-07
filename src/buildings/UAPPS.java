@@ -4,6 +4,10 @@ import javax.media.opengl.GL;
 
 import util.Util;
 
+/**
+ * University Apartments
+ * @author Jose Alvarado
+ */
 public class UAPPS extends Building{
 
 	//1 - left building, 2 - middle, 3 - right
@@ -88,8 +92,8 @@ public class UAPPS extends Building{
 		double[] position5 = { 19, 0, 70};
 		double textures5[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 
-		private double posEast = 7545901.18;
-		private double posNorth = 472900.315;
+		private double posEast = 7545738.017;
+		private double posNorth = 472840.221;
 		private double posElevation = 0; // TODO Get Elevation of building
 		private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		
