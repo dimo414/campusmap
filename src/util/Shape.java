@@ -4,6 +4,8 @@ import java.nio.FloatBuffer;
 
 import javax.media.opengl.GL;
 
+import buildings.Building;
+
 import com.sun.opengl.util.BufferUtil;
 
 /**
@@ -152,7 +154,7 @@ public class Shape {
 	//
 	
 	private float[][] vertices;
-	private float[][] colors = {{0.698039f, 0.133333f, 0.133333f}}; // default color, aproximately brick colored
+	private float[][] colors = {Building.brick};
 	private int[][] faces;
 	private float[][] normals;
 	
