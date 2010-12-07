@@ -123,7 +123,10 @@ public class Eye {
      * @param speed the amount to track
      */
     public void trackV(double speed){
-    	eye = eye.add(up.scale(speed));
+    	Vector temp = eye.add(up.scale(speed));
+    	if(temp.y() > 1){
+    		eye = temp;
+    	}
     }
     
     /**
@@ -131,7 +134,10 @@ public class Eye {
      * @param speed the amount to dolly
      */
     public void dolly(double speed){
-    	eye = eye.add(look.scale(speed));
+    	Vector temp = eye.add(look.scale(speed));
+    	if(temp.y() > 1){
+    		eye = eye.add(look.scale(speed));
+    	}
     }
     
     /**
