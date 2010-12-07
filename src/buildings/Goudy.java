@@ -143,6 +143,18 @@ public class Goudy extends Building{
 		Shape.Pyramid.draw(gl);
 		gl.glPopMatrix();
 		
+		gl.glPushMatrix(); //F6 Roof2
+		gl.glTranslated(Util.feetToGL(116, 4+3./8), Util.feetToGL(height), -Util.feetToGL(71-26, 3./8 - 6));
+		gl.glScaled(Util.feetToGL(20), Util.feetToGL(rheight-height), Util.feetToGL(38, 11));
+		Shape.UnitTriangle.draw(gl);
+		gl.glPopMatrix();
+		
+		gl.glPushMatrix(); //F6 Roof3
+		gl.glTranslated(Util.feetToGL(126, 4+3./8), Util.feetToGL(height), -Util.feetToGL(45));
+		gl.glScaled(Util.feetToGL(112, 3), Util.feetToGL(rheight-height), Util.feetToGL(39, 19));
+		Shape.Cube.draw(gl);
+		gl.glPopMatrix();
+		
 		gl.glPushMatrix(); //F7
 		gl.glTranslated(Util.feetToGL(136, 4+3./8), 0, 0);
 		gl.glScaled(Util.feetToGL(102, 3), Util.feetToGL(height), Util.feetToGL(97, 11+3./8));
