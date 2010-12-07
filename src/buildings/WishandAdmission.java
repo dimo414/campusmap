@@ -4,6 +4,10 @@ import javax.media.opengl.GL;
 
 import util.Util;
 
+/**
+ * WISH Hall and Admissions office
+ * @author Jose Alvarado
+ */
 public class WishandAdmission extends Building{
 
 	//1 - left cube of Olin, 2 - right cube of Olin

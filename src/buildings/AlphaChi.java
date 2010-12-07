@@ -4,6 +4,10 @@ import javax.media.opengl.GL;
 
 import util.Util;
 
+/**
+ * Alpha Chi Omega Sorority House
+ * @author Jose Alvarado
+ */
 public class AlphaChi extends Building{
 
 	//1 - left building, 2 - middle, 3 - right

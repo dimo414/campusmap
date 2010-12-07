@@ -4,6 +4,10 @@ import javax.media.opengl.GL;
 
 import util.Util;
 
+/**
+ * Pi Beta Phi Sorority House
+ * @author Jose Alvarado
+ */
 public class PiPhi extends Building{
 
 	//1 - bottom cube of eaton, 2 - middle cube of eaton, 3 - top cube of eaton

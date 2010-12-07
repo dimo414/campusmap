@@ -4,6 +4,10 @@ import javax.media.opengl.GL;
 
 import util.Util;
 
+/**
+ * Shepard Hall
+ * @author Jose Alvarado
+ */
 public class Shepard extends Building{
 
 	//1 - left cube of Olin, 2 - right cube of Olin
