@@ -32,7 +32,7 @@ public class Library extends Building {
 	}
 
 	@Override
-	public void draw(GL gl) {//TODO find a better way to position the building at the origin or not
+	public void draw(GL gl) {
 		gl.glPushMatrix();
 		
 		// Universal positioning
@@ -57,14 +57,6 @@ public class Library extends Building {
 		gl.glTranslated(Util.feetToGL(60),0,-Util.feetToGL(186,1));
 		gl.glRotated(45, 0, 1, 0);
 		gl.glScaled(Util.feetToGL(20), Util.feetToGL(40), Util.feetToGL(20));
-		gl.glTranslated(0, .5, 0);
-		glut.glutSolidCube(1);
-		gl.glPopMatrix();
-		
-		// clocktower - 102'2" south,  from northwest corner
-		gl.glPushMatrix();
-		gl.glTranslated(-Util.feetToGL(27+11,2+4),0,-Util.feetToGL(116-21,4-9));
-		gl.glScaled(Util.feetToGL(11,4), Util.feetToGL(100), Util.feetToGL(11,4));
 		gl.glTranslated(0, .5, 0);
 		glut.glutSolidCube(1);
 		gl.glPopMatrix();
