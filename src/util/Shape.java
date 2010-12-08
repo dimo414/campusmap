@@ -1,6 +1,8 @@
 package util;
 
 import java.nio.FloatBuffer;
+import java.util.Arrays;
+import java.util.HashMap;
 
 import javax.media.opengl.GL;
 
@@ -165,15 +167,13 @@ public class Shape {
 	private FloatBuffer colorBuff;
 	private FloatBuffer normalBuff;
 	
-	private boolean buffersGen = false;
+	private HashMap<FAW,FloatBuffer> colorCache = new HashMap<FAW,FloatBuffer>();
 	
 	/**
 	 * Constructs a new shape with no components
 	 */
 	public Shape(){
-		vertices = new float[][]{};
-		faces = new int[][]{};
-		normals = new float[][]{};
+		this(new float[][]{}, new int[][]{}, new float[][]{});
 	}
 	
 	/**
@@ -186,43 +186,7 @@ public class Shape {
 		vertices = vert;
 		faces = fac;
 		normals = norm;
-	}
-	
-	/**
-	 * <p>Sets the color of the object, should match the number of faces, in order</p>
-	 * 
-	 * <p>WARNING: Because of how OpenGL handles colors, the color used by immediate mode
-	 * is the same as the color used by vertex arrays and therefore this class.  This means
-	 * immediate mode will be set to the last color in the array that is drawn to the screen.
-	 * Therefore, if using a combination of this class, you may find that you need to reset
-	 * the immediate mode color after calling draw here.</p>
-	 * @param cols the list 
-	 */
-	public void setColor(float[][] cols){
-		colors = cols;
-		buffersGen = false;
-	}
-	
-	/**
-	 * Set the color of the whole object, should be three indices, the color
-	 * @param col a color, three 0-1 floats
-	 */
-	public void setColor(float[] col){
-		setColor(new float[][]{col});
-	}
-	
-	/**
-	 * Gets the current color
-	 * @return the color array of the object currently.
-	 */
-	public float[][] getColor(){
-		return colors;
-	}
-	
-	/**
-	 * Generates the buffers for the shape.  Called automatically by draw when needed.
-	 */
-	public void genBuffers(){
+		
 		if(faces.length != normals.length || (colors.length != 1 && colors.length <= faces.length))
 			throw new RuntimeException("Faces, Normals, and Colors all need to be the same length.");
 		
@@ -265,16 +229,70 @@ public class Shape {
 		colorBuff.rewind();
 		vertBuff.rewind();
 		
-		buffersGen = true;
+		colorCache.put(new FAW(colors), colorBuff);
 	}
 	
+	/**
+	 * <p>Sets the color of the object, should match the number of faces, in order</p>
+	 * 
+	 * <p>WARNING: Because of how OpenGL handles colors, the color used by immediate mode
+	 * is the same as the color used by vertex arrays and therefore this class.  This means
+	 * immediate mode will be set to the last color in the array that is drawn to the screen.
+	 * Therefore, if using a combination of this class and immediate mode, you may find that
+	 * you need to reset the immediate mode color after calling draw here.</p>
+	 * @param cols the list of colors per face
+	 */
+	public void setColor(float[][] cols){
+		colors = cols;
+
+		FloatBuffer tempBuff = colorCache.get(new FAW(colors));
+		if(tempBuff != null){
+			colorBuff = tempBuff;
+			return;
+		}
+		
+		colorBuff = BufferUtil.newFloatBuffer(colorBuff.capacity());
+		// two separate loops for quads and triangles to put shapes in separate sections of buffer
+		for(int f = 0; f < faces.length; f++){
+			if(faces[f].length == 3){ // handle triangles first
+				for(int i = 0; i < faces[f].length; i++){
+					colorBuff.put(colors.length == 1 ? colors[0] : colors[f]);
+				}
+			}
+		}
+		for(int f = 0; f < faces.length; f++){
+			if(faces[f].length == 4){ // now quads
+				for(int i = 0; i < faces[f].length; i++){
+					colorBuff.put(colors.length == 1 ? colors[0] : colors[f]);
+				}
+			}
+		}
+		colorBuff.rewind();
+		
+		colorCache.put(new FAW(colors), colorBuff);
+	}
+	
+	/**
+	 * Set the color of the whole object, should be three indices, the color
+	 * @param col a color, three 0-1 floats
+	 */
+	public void setColor(float[] col){
+		setColor(new float[][]{col});
+	}
+	
+	/**
+	 * Gets the current color
+	 * @return the color array of the object currently.
+	 */
+	public float[][] getColor(){
+		return colors;
+	}
+		
 	/**
 	 * Draw the shape described
 	 * @param gl the GL object to draw with
 	 */
 	public void draw(GL gl){
-		if(!buffersGen)
-			genBuffers();
 		if(vertices.length == 0)
 			return;
 		
@@ -293,5 +311,32 @@ public class Shape {
         gl.glDisableClientState(GL.GL_VERTEX_ARRAY);
         gl.glDisableClientState(GL.GL_COLOR_ARRAY);
         gl.glDisableClientState(GL.GL_NORMAL_ARRAY);
+	}
+	
+	/**
+	 * Since arrays don't work as hash keys, we need to create a wrapper before
+	 * dropping them into our color cache
+	 */
+	private final class FAW{
+		public float[][] arr;
+		public FAW(float[][] a){
+			arr = a;
+		}
+		@Override
+		public int hashCode() {
+			return Arrays.hashCode(arr);
+		}
+		
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (!(obj instanceof FAW))
+				return false;
+			FAW other = (FAW)obj;
+			return arr == other.arr || Arrays.equals(arr, other.arr);
+		}
 	}
 }
