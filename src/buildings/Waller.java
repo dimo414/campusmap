@@ -84,21 +84,19 @@ public class Waller extends Building {
 		gl.glPushMatrix();
 		gl.glTranslated(Util.feetToGL(16),Util.feetToGL(65),-Util.feetToGL(36,1));
 		gl.glScaled(Util.feetToGL(12), Util.feetToGL(10), Util.feetToGL(12));
-		float[][] col = Shape.Octagon.getColor();
-		Shape.Octagon.setColor(new float[]{1,1,1});
+		Shape.Octagon.setColor(Building.white);
 		Shape.Octagon.draw(gl);
-		Shape.Octagon.setColor(col);
+		Shape.Octagon.setColor(Building.brick);
 		gl.glPopMatrix();
 		
 		// cupola head
 		gl.glPushMatrix();
 		gl.glTranslated(Util.feetToGL(15),Util.feetToGL(75),-Util.feetToGL(35,1));
 		gl.glScaled(Util.feetToGL(14), Util.feetToGL(5), Util.feetToGL(14));
-		col = Shape.OctaPyramid.getColor();
-		Shape.OctaPyramid.setColor(new float[]{1,1,1});
+		Shape.OctaPyramid.setColor(Building.white);
 		Shape.OctaPyramid.draw(gl);
-		Shape.OctaPyramid.setColor(col);
-		gl.glColor3f(col[0][0],col[0][1],col[0][2]);
+		Shape.OctaPyramid.setColor(Building.brick);
+		gl.glColor3f(Building.brick[0],Building.brick[1],Building.brick[2]);
 		gl.glPopMatrix();
 		
 		// spacer between stairs and hall proper
