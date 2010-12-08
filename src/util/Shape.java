@@ -24,9 +24,15 @@ import com.sun.opengl.util.BufferUtil;
  * the shape is needed.  Shapes can be reused, therefore only one instance of a given shape should
  * ever be constructed.</p>
  * 
+ * <p>The faces array should contain arrays of faces, each face is described by the index of the vertices
+ * that make it up.  A length 3 array describes a triangular face, length 4 a quad face, and any greater
+ * length describes a polygon (made of a triangle fan - therefore you must also specify a centerpoint for
+ * the triangles to radiate from).  Since you can only specify one normal per face, do not use the triangle
+ * fan to construct a fan that does not lie in a plane.</p>
+ * 
  * <p>You can dynamically change a shape's color using setColor().  Since shapes are likely to be reused,
- * be sure to get the current color and reset it after you are done, otherwise all shapes drawn after will retain
- * the color you set.</p>
+ * you may want to get the current color and reset it after you are done, otherwise all shapes drawn after
+ * will retain the color you set.</p>
  * 
  * <h3>Shapes</h3>
  * <h4>Cube</h4>
@@ -118,23 +124,26 @@ public class Shape {
 		float a = 1/(1+sq2);
 		float aSq = a/sq2;
 		
-		float[][] OCTA_VERT = {{aSq,0,0},{a+aSq,0,0},{1,0,-aSq},{1,0,-a-aSq},{a+aSq,0,-1},{aSq,0,-1},{0,0,-a-aSq},{0,0,-aSq},
-				{aSq,1,0},{a+aSq,1,0},{1,1,-aSq},{1,1,-a-aSq},{a+aSq,1,-1},{aSq,1,-1},{0,1,-a-aSq},{0,1,-aSq}};
-		int[][] OCTA_FACE = {{0,5,6,7},{0,1,4,5},{1,2,3,4},
-				{0,1,9,8},{1,2,10,9},{2,3,11,10},{3,4,12,11},{4,5,13,12},{5,6,14,13},{6,7,15,14},{7,0,8,15},
-				{8,13,14,15},{8,9,12,13},{9,10,11,12}};
-		float[][] OCTA_NORM = {{0,-1,0},{0,-1,0},{0,-1,0},
+		float[][] OCTA_VERT = {{.5f,0,-.5f},{aSq,0,0},{a+aSq,0,0},{1,0,-aSq},{1,0,-a-aSq},{a+aSq,0,-1},{aSq,0,-1},{0,0,-a-aSq},{0,0,-aSq},
+				{aSq,1,0},{a+aSq,1,0},{1,1,-aSq},{1,1,-a-aSq},{a+aSq,1,-1},{aSq,1,-1},{0,1,-a-aSq},{0,1,-aSq},{.5f,1,-.5f}};
+		int[][] OCTA_FACE = {{0,1,2,3,4,5,6,7,8,1},
+				{1,2,10,9},{2,3,11,10},{3,4,12,11},{4,5,13,12},{5,6,14,13},{6,7,15,14},{7,8,16,15},{8,1,9,16},
+				{17,9,10,11,12,13,14,15,16,9}
+				};
+		float[][] OCTA_NORM = {{0,-1,0},
 				{0,0,1},{1,0,1},{1,0,0},{1,0,-1},{0,0,-1},{-1,0,-1},{-1,0,0},{-1,0,1},
-				{0,1,0},{0,1,0},{0,1,0}};
+				{0,1,0}
+				};
 		
 		Octagon = new Shape(OCTA_VERT, OCTA_FACE,OCTA_NORM);
 		
 		// OCTAGONAL PYRAMID
-		float[][] OCTAP_VERT = {{aSq,0,0},{a+aSq,0,0},{1,0,-aSq},{1,0,-a-aSq},{a+aSq,0,-1},{aSq,0,-1},{0,0,-a-aSq},{0,0,-aSq},
+		float[][] OCTAP_VERT = {{.5f,0,-.5f},
+				{aSq,0,0},{a+aSq,0,0},{1,0,-aSq},{1,0,-a-aSq},{a+aSq,0,-1},{aSq,0,-1},{0,0,-a-aSq},{0,0,-aSq},
 				{.5f,1,-.5f}};
-		int[][] OCTAP_FACE = {{0,5,6,7},{0,1,4,5},{1,2,3,4},
-				{0,1,8},{1,2,8},{2,3,8},{3,4,8},{4,5,8},{5,6,8},{6,7,8},{7,0,8}};
-		float[][] OCTAP_NORM = {{0,-1,0},{0,-1,0},{0,-1,0},
+		int[][] OCTAP_FACE = {{0,1,2,3,4,5,6,7,8,1},
+				{1,2,9},{2,3,9},{3,4,9},{4,5,9},{5,6,9},{6,7,9},{7,8,9},{8,1,9}};
+		float[][] OCTAP_NORM = {{0,-1,0},
 				new Vector(1,0,0).cross(new Vector(0,1,-.5)).toFArray(),
 				new Vector(1,0,-1).cross(new Vector(-.5,1,-.5)).toFArray(),
 				new Vector(0,0,-1).cross(new Vector(-.5,1,0)).toFArray(),
@@ -160,8 +169,12 @@ public class Shape {
 	private int[][] faces;
 	private float[][] normals;
 	
+	private int[] fanLength;
+	private int[] fanDist;
+	
 	private int triangleCount;
 	private int quadCount;
+	private int fanCount;
 	
 	private FloatBuffer vertBuff;
 	private FloatBuffer colorBuff;
@@ -190,15 +203,24 @@ public class Shape {
 		if(faces.length != normals.length || (colors.length != 1 && colors.length <= faces.length))
 			throw new RuntimeException("Faces, Normals, and Colors all need to be the same length.");
 		
-		int triCount = 0;
+		int fCount = 0;
 		for(int[] a : faces){
 			if(a.length == 3){
-				triCount++;
+				triangleCount+=3;
+			}
+			if(a.length == 4){
+				quadCount+=4;
+			}
+			if(a.length > 4){
+				fCount++;
+				fanCount+=a.length;
 			}
 		}
-		triangleCount = triCount*3;
-		quadCount = (faces.length-triCount)*4;
-		int total = triangleCount*3+quadCount*3;
+		
+		int total = (triangleCount+quadCount+fanCount)*3;
+		
+		fanLength = new int[fCount];
+		fanDist = new int[fCount];
 		
 		normalBuff = BufferUtil.newFloatBuffer(total);
 		colorBuff = BufferUtil.newFloatBuffer(total);
@@ -221,6 +243,19 @@ public class Shape {
 					colorBuff.put(colors.length == 1 ? colors[0] : colors[f]);
 					vertBuff.put(vertices[faces[f][i]]);
 				}
+			}
+		}
+		int fanIndex = 0;
+		for(int f = 0; f < faces.length; f++){
+			if(faces[f].length > 4){ // triangle fan
+				for(int i = 0; i < faces[f].length; i++){
+					normalBuff.put(normals[f]);
+					colorBuff.put(colors.length == 1 ? colors[0] : colors[f]);
+					vertBuff.put(vertices[faces[f][i]]);
+				}
+				fanLength[fanIndex] = faces[f].length;
+				fanDist[fanIndex] = (fanIndex == 0 ? 0 : faces[f].length + fanDist[fanIndex-1]);
+				fanIndex++;
 			}
 		}
 		// potentially other polygons too?
@@ -267,6 +302,13 @@ public class Shape {
 				}
 			}
 		}
+		for(int f = 0; f < faces.length; f++){
+			if(faces[f].length > 4){ // triangle fan
+				for(int i = 0; i < faces[f].length; i++){
+					colorBuff.put(colors.length == 1 ? colors[0] : colors[f]);
+				}
+			}
+		}
 		colorBuff.rewind();
 		
 		colorCache.put(new FAW(colors), colorBuff);
@@ -307,6 +349,9 @@ public class Shape {
         // drawArrays count is num of points, not indices.
         gl.glDrawArrays(GL.GL_TRIANGLES, 0, triangleCount);
         gl.glDrawArrays(GL.GL_QUADS, triangleCount, quadCount);
+        for(int i = 0; i < fanLength.length; i++){
+        	gl.glDrawArrays(GL.GL_TRIANGLE_FAN, triangleCount+quadCount+fanDist[i], fanLength[i]);
+        }
 		
         gl.glDisableClientState(GL.GL_VERTEX_ARRAY);
         gl.glDisableClientState(GL.GL_COLOR_ARRAY);
