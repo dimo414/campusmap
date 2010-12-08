@@ -245,17 +245,18 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	}
 	
 	private void handleControls(){
+		boolean shift = keys.contains(KeyEvent.VK_SHIFT);
     	if(keys.contains((int)'W')){ // forward
-    		eye.dolly(moveSpeed);
+    		eye.dolly(moveSpeed * (shift ? .1 : 1));
     	}
     	if(keys.contains((int)'A')){ // left
-    		eye.trackH(-moveSpeed);
+    		eye.trackH(-moveSpeed * (shift ? .1 : 1));
     	}
     	if(keys.contains((int)'S')){ // backwards
-    		eye.dolly(-moveSpeed);
+    		eye.dolly(-moveSpeed * (shift ? .1 : 1));
     	}
     	if(keys.contains((int)'D')){ // right
-    		eye.trackH(moveSpeed);
+    		eye.trackH(moveSpeed * (shift ? .1 : 1));
     	}
     }
 
@@ -273,13 +274,14 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 
 	@Override
 	public void mouseDragged(MouseEvent evt) {
+		boolean shift = keys.contains(KeyEvent.VK_SHIFT);
 		if(turn){
 			eye.rotateH((evt.getX()-lastX)*turnAngle);
 			eye.rotateV((evt.getY()-lastY)*turnAngle);
 		}
 		if(track){
-			eye.trackH(-(evt.getX()-lastX)*trackSpeed);
-			eye.trackV((evt.getY()-lastY)*trackSpeed);
+			eye.trackH(-(evt.getX()-lastX)*trackSpeed * (shift ? .1 : 1));
+			eye.trackV((evt.getY()-lastY)*trackSpeed * (shift ? .1 : 1));
 		}
 		lastX = evt.getX();
 		lastY = evt.getY();
