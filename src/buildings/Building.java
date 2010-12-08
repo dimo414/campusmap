@@ -28,6 +28,8 @@ public abstract class Building {
 	public static final float[] brick = {0.698039f, 0.133333f, 0.133333f};
 	/** Green glass color */
 	public static final float[] greenGlass = {0x47/255f,0xC2/255f,0x9C/255f};
+	/** Slightly darker green glass color */
+	public static final float[] darkGreenGlass = {0x40/255f,0xB8/255f,0x94/255f};
 	/** Old copper color */
 	public static final float[] oldCopper = {0x07/255f,0x32/255f,0x18/255f};
 	/** Tile roof color - many of the buildings have different colored roofs, but this is a good start at least */
