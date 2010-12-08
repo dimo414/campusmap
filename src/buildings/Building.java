@@ -17,11 +17,15 @@ public abstract class Building {
 	 */
 	public static final double buildingRotation = -21.2999;
 	
+	// standard colors
+	/** White color */
+	public static final float[] white = {1,1,1};
+	/** Black color */
+	public static final float[] black = {0,0,0};
+	
 	// these colors are all loose approximations, change them if you see fit
 	/** Brick color */
 	public static final float[] brick = {0.698039f, 0.133333f, 0.133333f};
-	/** White paint color */
-	public static final float[] white = {1f,1f,1f};
 	/** Green glass color */
 	public static final float[] greenGlass = {0x47/255f,0xC2/255f,0x9C/255f};
 	/** Old copper color */
