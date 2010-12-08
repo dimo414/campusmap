@@ -20,6 +20,8 @@ public abstract class Building {
 	// these colors are all loose approximations, change them if you see fit
 	/** Brick color */
 	public static final float[] brick = {0.698039f, 0.133333f, 0.133333f};
+	/** White paint color */
+	public static final float[] white = {1f,1f,1f};
 	/** Green glass color */
 	public static final float[] greenGlass = {0x47/255f,0xC2/255f,0x9C/255f};
 	/** Old copper color */
