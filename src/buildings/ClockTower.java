@@ -1,5 +1,7 @@
 package buildings;
 
+import java.util.Calendar;
+
 import javax.media.opengl.GL;
 
 import util.Shape;
@@ -184,8 +186,68 @@ public class ClockTower extends Building {
 			Shape.Pyramid.draw(gl);
 			Shape.Pyramid.setColor(Building.brick);
 		gl.glPopMatrix();
+		
+//		gl.glPushMatrix();
+//	//	gl.glTranslated(0, 700, 200);
+//		gl.glScaled(Util.feetToGL(5), Util.feetToGL(5), 1);
+//		clock(gl);
+//		gl.glPopMatrix();
+		
+//		gl.glPushMatrix();
+//		gl.glTranslated(0, 700, 200);
+//		gl.glScaled(500, 500, 1);
+//		gl.glRotated(180, 0, 1, 0);
+//		clock(gl);
+//		gl.glPopMatrix();
 				
 		gl.glPopMatrix();
+	}
+	
+	/**
+	 * Generates a clockface for the clocktower.  This method could be migrated elsewhere
+	 * if there is need for clocks anywhere else on campus
+	 * @param gl
+	 */
+	public static void clock(GL gl){
+		Calendar time = Calendar.getInstance();
+	    double hourAngle = (time.get(Calendar.HOUR)+time.get(Calendar.MINUTE)/60.0)   /12.0*360;
+	    double minAngle = (time.get(Calendar.MINUTE)+time.get(Calendar.SECOND)/60.0)  /60.0*360;
+	    
+	    gl.glPushMatrix();
+	    gl.glTranslated(0,0,.5);
+	    gl.glRotated(90, 1, 0, 0);
+	    gl.glTranslated(-.5, -.5, .5);
+	    Shape.Octagon.setColor(greenGlass);
+	    Shape.Octagon.draw(gl);
+	    gl.glPopMatrix();
+	    
+	    Shape.Cube.setColor(Building.black);
+		for(int i = 0; i < 12; i++){
+		    gl.glPushMatrix();
+			gl.glRotated(i*360/12,0,0,1);
+		    gl.glTranslated(0, .35, 0);
+		    gl.glScaled(i % 3 == 0 ? .03 : .01, .1, .5);
+		    gl.glTranslated(-.5, 0, 0);
+		    Shape.Cube.draw(gl);
+		    gl.glPopMatrix();
+		}
+		// minute
+		gl.glPushMatrix();
+		gl.glRotated(minAngle,0,0,1);
+	    gl.glScaled(.025, .5, .5);
+	    gl.glTranslated(-.5, -.2, 0);
+	    Shape.Cube.draw(gl);
+	    gl.glPopMatrix();
+		// hour
+		gl.glPushMatrix();
+		gl.glRotated(hourAngle,0,0,1);
+	    gl.glScaled(.04, .3, .5);
+	    gl.glTranslated(-.5, -.2, 0);
+	    Shape.Cube.draw(gl);
+	    gl.glPopMatrix();
+	    
+	    Shape.Octagon.setColor(Building.brick);
+	    Shape.Cube.setColor(Building.brick);
 	}
 
 }
