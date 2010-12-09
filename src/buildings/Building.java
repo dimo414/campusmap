@@ -34,6 +34,8 @@ public abstract class Building {
 	public static final float[] oldCopper = {0x07/255f,0x32/255f,0x18/255f};
 	/** Tile roof color - many of the buildings have different colored roofs, but this is a good start at least */
 	public static final float[] tileRoof = {0x69/255f,0x69/255f,0x69/255f};
+	/** Concrete color */
+	public static final float[] concrete = {0xC0/255f,0xC0/255f,0xC0/255f};
 	
 	// composite colors, for objects with common color combinations
 	/** Composite color for right and unit triangles, brick on triangular faces and bottom quad, tile on top two quad faces */

@@ -33,7 +33,7 @@ public class Putnam extends Building {
 	private double lengthEW = 167+7./12;
 	private double lengthNS = 95+7./12;
 	
-	private double floor1 = 13+10./12;
+	private double floor1 = 13+10./12; // the 1st floor stops at the bottom of the balcony
 	private double balconyh = 1;
 	private double floor2 = 21.5 /2;
 	private double floor3 = 21.5/2;
@@ -58,7 +58,7 @@ public class Putnam extends Building {
 		// End universal positioning
 		gl.glTranslated(Util.feetToGL(balconyw), 0, -Util.feetToGL(balconyw));
 		//Pillars
-		Shape.Cube.setColor(Building.white);
+		Shape.Cube.setColor(Building.concrete);
 		for(int i = 0; i < 8; i++){//NS Pillars
 			for(int j = 0; j < 5; j++){
 			gl.glPushMatrix();
@@ -122,7 +122,7 @@ public class Putnam extends Building {
 		gl.glPushMatrix(); //staircase
 		gl.glTranslated(Util.feetToGL(167+7./12), 0, -Util.feetToGL(72));
 		gl.glScaled(Util.feetToGL(12), Util.feetToGL(floor1), Util.feetToGL(35+8./12));
-		
+		// TODO make this a right triangle, or otherwise more like a staircase
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
@@ -136,49 +136,51 @@ public class Putnam extends Building {
 		gl.glPopMatrix();
 		
 		//Balconies
+		Shape.Cube.setColor(Building.concrete);
 		gl.glPushMatrix(); //Balcony 3
-		gl.glTranslated(-Util.feetToGL(balconyw), -Util.feetToGL(balconyh), Util.feetToGL(balconyw));
+		gl.glTranslated(-Util.feetToGL(balconyw), 0, Util.feetToGL(balconyw));
 		gl.glScaled(Util.feetToGL(193+5./12), Util.feetToGL(balconyh), Util.feetToGL(balconyw));
 		
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Balcony 1
-		gl.glTranslated(0, -Util.feetToGL(balconyh), -Util.feetToGL(lengthNS));
+		gl.glTranslated(0, 0, -Util.feetToGL(lengthNS));
 		gl.glScaled(Util.feetToGL(50), Util.feetToGL(balconyh), Util.feetToGL(23+2./12));
 		
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Balcony 2
-		gl.glTranslated(-Util.feetToGL(balconyw), -Util.feetToGL(balconyh), 0);
+		gl.glTranslated(-Util.feetToGL(balconyw), 0, 0);
 		gl.glScaled(Util.feetToGL(balconyw), Util.feetToGL(balconyh), Util.feetToGL(108+6./12));
 		
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Balcony 4
-		gl.glTranslated(Util.feetToGL(lengthEW), -Util.feetToGL(balconyh), 0);
+		gl.glTranslated(Util.feetToGL(lengthEW), 0, 0);
 		gl.glScaled(Util.feetToGL(balconyw), Util.feetToGL(balconyh), Util.feetToGL(108+6./12));
 		
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Balcony 5
-		gl.glTranslated(Util.feetToGL(72), -Util.feetToGL(balconyh), -Util.feetToGL(lengthNS));
+		gl.glTranslated(Util.feetToGL(72), 0, -Util.feetToGL(lengthNS));
 		gl.glScaled(Util.feetToGL(98), Util.feetToGL(balconyh), Util.feetToGL(23+2./12));
 		
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Balcony 6
-		gl.glTranslated(Util.feetToGL(50), -Util.feetToGL(balconyh), -Util.feetToGL(lengthNS));
+		gl.glTranslated(Util.feetToGL(50), 0, -Util.feetToGL(lengthNS));
 		gl.glScaled(Util.feetToGL(22), Util.feetToGL(balconyh), Util.feetToGL(balconyw));
 		
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		//3rd Floor
+		Shape.Cube.setColor(Building.brick);
 		gl.glTranslated(0, Util.feetToGL(floor2), 0);
 		
 		gl.glPushMatrix();//mainbuilding
@@ -187,27 +189,14 @@ public class Putnam extends Building {
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
-		gl.glPushMatrix();//Roof
+		//Roof
+		gl.glPushMatrix();
+		Shape.Cube.setColor(Building.concrete);
 		gl.glTranslated(-Util.feetToGL(roofOverhang), Util.feetToGL(floor3), Util.feetToGL(roofOverhang));
 		gl.glScaled(Util.feetToGL(194+4./12), Util.feetToGL(roofh), Util.feetToGL(122+4./12));
 		
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
-//		// main building
-//		gl.glPushMatrix();
-//		gl.glScaled(Util.feetToGL(186.1), Util.feetToGL(40), Util.feetToGL(186.1));
-//		gl.glTranslated(.5,.5,-.5);
-//		Shape.Cube.draw(gl);
-//		gl.glPopMatrix();
-		
-//		// north outcrop - this position has not been measured yet - numbers are guesses
-//		gl.glPushMatrix();
-//		gl.glTranslated(Util.feetToGL(60),0,-Util.feetToGL(186.1));
-//		gl.glRotated(45, 0, 1, 0);
-//		gl.glScaled(Util.feetToGL(30), Util.feetToGL(40), Util.feetToGL(30));
-//		gl.glTranslated(0, .5, 0);
-//		Shape.Cube.draw(gl);
-//		gl.glPopMatrix();
 		
 		gl.glPopMatrix();
 	}
