@@ -48,8 +48,10 @@ public class Goudy extends Building{
 		// End universal positioning
 		
 		//Start Drawing, SouthWest Positions
+		Shape.Cube.setColor(Building.brick);
+		Shape.Pyramid.setColor(Building.tileRoof);
+		Shape.Pyramid.setColor(Building.tileRoof);
 		
-
 		gl.glPushMatrix(); //Wall1
 		gl.glScaled(Util.feetToGL(39,4), Util.feetToGL(8), Util.feetToGL(1));
 		Shape.Cube.draw(gl);
@@ -94,14 +96,14 @@ public class Goudy extends Building{
 		gl.glPushMatrix(); //F3 Roof1
 		gl.glTranslated(Util.feetToGL(39, 4), Util.feetToGL(height), 0);
 		gl.glRotated(90, 0, 1, 0);
-		gl.glScaled(Util.feetToGL(30), Util.feetToGL(rheight-height), Util.feetToGL(-198.25));
+		gl.glScaled(Util.feetToGL(30), Util.feetToGL(rheight-height), -Util.feetToGL(199,3+3./8));
 		Shape.UnitTriangle.draw(gl);
 		gl.glPopMatrix();
 		
-		gl.glPushMatrix(); //F3 Roof2 TODO Change x value so it lines up with Square.
+		gl.glPushMatrix(); //F3 Roof2
 		gl.glTranslated(Util.feetToGL(39, 4), Util.feetToGL(height), -Util.feetToGL(30));
 		gl.glRotated(90, 0, 1, 0);
-		gl.glScaled(Util.feetToGL(30), Util.feetToGL(rheight-height), Util.feetToGL(-198.25));
+		gl.glScaled(Util.feetToGL(30), Util.feetToGL(rheight-height), -Util.feetToGL(86, 3./8));
 		Shape.UnitTriangle.draw(gl);
 		gl.glPopMatrix();		
 		
@@ -109,7 +111,7 @@ public class Goudy extends Building{
 		gl.glTranslated(Util.feetToGL(54, 4), Util.feetToGL(rheight), -Util.feetToGL(45));
 		gl.glRotated(90, 0, 1, 0);
 		gl.glRotated(180, 0, 0, 1);
-		gl.glScaled(Util.feetToGL(30), Util.feetToGL(rheight-height), -Util.feetToGL(183.25));
+		gl.glScaled(Util.feetToGL(30), Util.feetToGL(rheight-height), -Util.feetToGL(73, 3./8));
 		Shape.UnitTriangle.draw(gl);
 		gl.glPopMatrix();
 		
@@ -137,23 +139,25 @@ public class Goudy extends Building{
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
-		gl.glPushMatrix(); //F6 Roof
+		gl.glPushMatrix(); //F6 Roof TODO Pyramid
 		gl.glTranslated(Util.feetToGL(116, 4+3./8), Util.feetToGL(height), -Util.feetToGL(71, 3./8));
 		gl.glScaled(Util.feetToGL(20), Util.feetToGL(rheight-height), Util.feetToGL(23, 11));
 		Shape.Pyramid.draw(gl);
 		gl.glPopMatrix();
-		
+
 		gl.glPushMatrix(); //F6 Roof2
-		gl.glTranslated(Util.feetToGL(116, 4+3./8), Util.feetToGL(height), -Util.feetToGL(71-26, 3./8 - 6));
-		gl.glScaled(Util.feetToGL(20), Util.feetToGL(rheight-height), Util.feetToGL(38, 11));
+		gl.glTranslated(Util.feetToGL(116, 4+3./8), Util.feetToGL(height), -Util.feetToGL(45));
+		gl.glScaled(Util.feetToGL(20), Util.feetToGL(rheight-height), Util.feetToGL(37, 11.5+3./8));
 		Shape.UnitTriangle.draw(gl);
 		gl.glPopMatrix();
-		
+
+		Shape.Cube.setColor(Building.tileRoof);
 		gl.glPushMatrix(); //F6 Roof3 TODO Change length so it overwrites unit triangle
-		gl.glTranslated(Util.feetToGL(126, 4+3./8), Util.feetToGL(height), -Util.feetToGL(45));
-		gl.glScaled(Util.feetToGL(112, 3), Util.feetToGL(rheight-height), Util.feetToGL(39, 19));
+		gl.glTranslated(Util.feetToGL(126, 4+3./8), Util.feetToGL(height), -Util.feetToGL(15));
+		gl.glScaled(Util.feetToGL(112, 3), Util.feetToGL(rheight-height), Util.feetToGL(67, 11.5+3./8));
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
+		Shape.Cube.setColor(Building.brick);
 		
 		gl.glPushMatrix(); //F7
 		gl.glTranslated(Util.feetToGL(136, 4+3./8), 0, 0);
@@ -162,9 +166,9 @@ public class Goudy extends Building{
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //F7 North Roof
-		gl.glTranslated(Util.feetToGL(136, 4+3./8), height, -Util.feetToGL(61+9+26,8+4+11+3./8));
+		gl.glTranslated(Util.feetToGL(126, 4+3./8), height, -Util.feetToGL(93,23+3./8));
 		gl.glRotated(-90, 0, 1, 0);
-		gl.glScaled(Util.feetToGL(26,11), Util.feetToGL(rheight-height), Util.feetToGL(102,3));
+		gl.glScaled(Util.feetToGL(23,11), Util.feetToGL(rheight-height), Util.feetToGL(112,3));
 		Shape.UnitTriangle.draw(gl);
 		gl.glPopMatrix();
 		
@@ -193,7 +197,6 @@ public class Goudy extends Building{
 		gl.glPushMatrix();
 		gl.glTranslated(i*Util.feetToGL(24, 11+6./8), 0, 0);
 		gl.glScaled(Util.feetToGL(15, 11+3./8), Util.feetToGL(height), Util.feetToGL(3));
-		
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		}
@@ -205,7 +208,6 @@ public class Goudy extends Building{
 		gl.glPushMatrix();
 		gl.glTranslated(i*Util.feetToGL(24, 11+6./8), Util.feetToGL(height), 0);
 		gl.glScaled(Util.feetToGL(15, 11+3./8), Util.feetToGL(rheight-height), Util.feetToGL(-15));
-		
 		Shape.UnitTriangle.draw(gl);
 		gl.glPopMatrix();
 		}
@@ -224,17 +226,32 @@ public class Goudy extends Building{
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //F14 Roof
-		gl.glTranslated(Util.feetToGL(178, 8), Util.feetToGL(height), Util.feetToGL(3));
-		gl.glScaled(Util.feetToGL(18, 7.5), Util.feetToGL(rheight-height), Util.feetToGL(15));
+		gl.glTranslated(Util.feetToGL(178, 8), Util.feetToGL(height), Util.feetToGL(8));
+		gl.glScaled(Util.feetToGL(18, 7.5), Util.feetToGL(rheight-height), Util.feetToGL(20));
 		Shape.Pyramid.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //F15 Roof
-		gl.glTranslated(Util.feetToGL(209, 11.5), Util.feetToGL(height), Util.feetToGL(3));
-		gl.glScaled(Util.feetToGL(18, 7.5), Util.feetToGL(rheight-height), Util.feetToGL(15));
+		gl.glTranslated(Util.feetToGL(209, 11.5), Util.feetToGL(height), Util.feetToGL(8));
+		gl.glScaled(Util.feetToGL(18, 7.5), Util.feetToGL(rheight-height), Util.feetToGL(20));
 		Shape.Pyramid.draw(gl);
 		gl.glPopMatrix();
 		
+		Shape.Cube.setColor(Building.white);//Pillars
+		gl.glPushMatrix();
+		gl.glTranslated(Util.feetToGL(178,8), 0, Util.feetToGL(8));
+		for(int i=0; i<2; i++){
+			gl.glTranslated(Util.feetToGL(i*(18+7.5/12+12+8./12)), 0, 0);
+			for(int j=0; j<2; j++){
+				gl.glPushMatrix();
+				gl.glTranslated(Util.feetToGL(j*(18+7.5/12 - 1.5)), 0, 0);
+				gl.glScaled(Util.feetToGL(1,6), Util.feetToGL(height), Util.feetToGL(1,6));
+				Shape.Cube.draw(gl);
+				gl.glPopMatrix();
+			}
+		}
+		gl.glPopMatrix();
+		Shape.Cube.setColor(Building.brick);
 		
 		gl.glPushMatrix(); //F16
 		gl.glTranslated(Util.feetToGL(243, 11+3./8), 0, Util.feetToGL(6));
