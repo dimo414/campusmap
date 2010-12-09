@@ -104,7 +104,6 @@ public class CampusFrame extends JFrame implements ActionListener, KeyListener {
         animator.start();
 	}
 
-	// FIXME switching in and out of full screen causes it to reset the eye position.
 	private void fullScreen(boolean fs) {
 		GraphicsDevice device = getGraphicsConfiguration().getDevice();
 		if(fullScreen == fs || !device.isFullScreenSupported())
