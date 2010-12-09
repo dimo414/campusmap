@@ -14,8 +14,8 @@ public class Baxter extends Building{
 
 	//1 - bottom left cube of baxter, 2 - middle cube of baxter, 3 - right cube of baxter
 	
-	double posEast = 7547580.116;
-	private double posNorth = 473020.902;
+	private double posEast = 7547580.116;	
+	private double posNorth = 473020.902;	
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
 	private double[] midpoint = new double[]{Util.feetToGL(205/2),Util.feetToGL(238/2)};
