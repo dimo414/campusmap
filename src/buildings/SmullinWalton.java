@@ -37,6 +37,7 @@ public class SmullinWalton extends Building{
 		
 		//Start Drawing, SouthWest Positions
 		
+		Shape.Cube.setColor(Building.brick);
 		gl.glPushMatrix(); //South extrusion
 		gl.glTranslated(Util.feetToGL(37+3./12), 0, Util.feetToGL(8+9./12));
 		gl.glScaled(Util.feetToGL(65+1./12), Util.feetToGL(height), Util.feetToGL(8+9./12));

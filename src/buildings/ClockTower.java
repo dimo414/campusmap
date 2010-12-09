@@ -42,6 +42,7 @@ public class ClockTower extends Building {
 			gl.glTranslated(-midpoint[0], 0, midpoint[1]);
 		// End universal positioning
 
+		Shape.Cube.setColor(Building.brick);
 		// SW Leg
 		gl.glPushMatrix();
 			gl.glScaled(Util.feetToGL(2,3.5), Util.feetToGL(43), Util.feetToGL(2,3.5));
@@ -68,12 +69,12 @@ public class ClockTower extends Building {
 			gl.glScaled(Util.feetToGL(6,8.5),Util.feetToGL(26),Util.feetToGL(0,1));
 			Shape.Cube.setColor(Building.greenGlass);
 			Shape.Cube.draw(gl);
-			Shape.Cube.setColor(Building.brick);
 		gl.glPopMatrix();
 		// W Face
 		gl.glPushMatrix();
 			gl.glTranslated(Util.feetToGL(0,8),Util.feetToGL(8,6),-Util.feetToGL(0,8));
 			gl.glScaled(Util.feetToGL(2,3.5),Util.feetToGL(3,6),Util.feetToGL(10));
+			Shape.Cube.setColor(Building.brick);
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
@@ -86,13 +87,13 @@ public class ClockTower extends Building {
 			gl.glScaled(Util.feetToGL(0,1),Util.feetToGL(26),Util.feetToGL(6,8.5));
 			Shape.Cube.setColor(Building.greenGlass);
 			Shape.Cube.draw(gl);
-			Shape.Cube.setColor(Building.brick);
 		gl.glPopMatrix();
 		
 		// NW Leg
 		gl.glTranslated(0, 0, -Util.feetToGL(9,.5));
 		gl.glPushMatrix();
 			gl.glScaled(Util.feetToGL(2,3.5), Util.feetToGL(43), Util.feetToGL(2,3.5));
+			Shape.Cube.setColor(Building.brick);
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
@@ -116,13 +117,13 @@ public class ClockTower extends Building {
 			gl.glScaled(Util.feetToGL(6,8.5),Util.feetToGL(26),Util.feetToGL(0,1));
 			Shape.Cube.setColor(Building.greenGlass);
 			Shape.Cube.draw(gl);
-			Shape.Cube.setColor(Building.brick);
 		gl.glPopMatrix();
 		
 		// NW Leg
 		gl.glTranslated(Util.feetToGL(9,.5),0,0);
 		gl.glPushMatrix();
 			gl.glScaled(Util.feetToGL(2,3.5), Util.feetToGL(43), Util.feetToGL(2,3.5));
+			Shape.Cube.setColor(Building.brick);
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
@@ -158,7 +159,6 @@ public class ClockTower extends Building {
 			gl.glScaled(Util.feetToGL(0,1),Util.feetToGL(26),Util.feetToGL(6,8.5));
 			Shape.Cube.setColor(Building.greenGlass);
 			Shape.Cube.draw(gl);
-			Shape.Cube.setColor(Building.brick);
 		gl.glPopMatrix();
 	
 		gl.glTranslated(-Util.feetToGL(9,.5),0,0);
@@ -167,6 +167,7 @@ public class ClockTower extends Building {
 		gl.glPushMatrix();
 			gl.glTranslated(0, Util.feetToGL(41), 0);
 			gl.glScaled(Util.feetToGL(11,4), Util.feetToGL(2), Util.feetToGL(11,4));
+			Shape.Cube.setColor(Building.brick);
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 
@@ -176,7 +177,6 @@ public class ClockTower extends Building {
 			gl.glScaled(Util.feetToGL(11,4), Util.feetToGL(1), Util.feetToGL(11,4));
 			Shape.Cube.setColor(Building.oldCopper);
 			Shape.Cube.draw(gl);
-			Shape.Cube.setColor(Building.brick);
 		gl.glPopMatrix();
 			
 		gl.glPushMatrix();
@@ -184,7 +184,6 @@ public class ClockTower extends Building {
 			gl.glScaled(Util.feetToGL(11,4), Util.feetToGL(5), Util.feetToGL(11,4));
 			Shape.Pyramid.setColor(Building.oldCopper);
 			Shape.Pyramid.draw(gl);
-			Shape.Pyramid.setColor(Building.brick);
 		gl.glPopMatrix();
 		
 		// clock faces
@@ -233,9 +232,6 @@ public class ClockTower extends Building {
 	    double hourAngle = (time.get(Calendar.HOUR)+time.get(Calendar.MINUTE)/60.0)   /12.0*360;
 	    double minAngle = (time.get(Calendar.MINUTE)+time.get(Calendar.SECOND)/60.0)  /60.0*360;
 	    
-	    float[][] octoColor = Shape.Octagon.getColor();
-	    float[][] cubeColor = Shape.Cube.getColor();
-	    
 	    gl.glPushMatrix();
 	    gl.glScaled(1, 1, .1);
 	    gl.glRotated(90, 1, 0, 0);
@@ -268,9 +264,6 @@ public class ClockTower extends Building {
 	    gl.glTranslated(-.5, -.2, 0);
 	    Shape.Cube.draw(gl);
 	    gl.glPopMatrix();
-	    
-	    Shape.Octagon.setColor(octoColor);
-	    Shape.Cube.setColor(cubeColor);
 	}
 
 }

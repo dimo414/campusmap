@@ -166,7 +166,7 @@ public class Shape {
 	//
 	
 	private float[][] vertices;
-	private float[][] colors = {Building.brick};
+	private float[][] colors = {Building.black};
 	private int[][] faces;
 	private float[][] normals;
 	

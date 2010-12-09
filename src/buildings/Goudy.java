@@ -50,7 +50,7 @@ public class Goudy extends Building{
 		//Start Drawing, SouthWest Positions
 		Shape.Cube.setColor(Building.brick);
 		Shape.Pyramid.setColor(Building.tileRoof);
-		Shape.Pyramid.setColor(Building.tileRoof);
+		Shape.UnitTriangle.setColor(Building.brickRoofTriangle);
 		
 		gl.glPushMatrix(); //Wall1
 		gl.glScaled(Util.feetToGL(39,4), Util.feetToGL(8), Util.feetToGL(1));
@@ -108,11 +108,11 @@ public class Goudy extends Building{
 		gl.glPopMatrix();		
 		
 		gl.glPushMatrix(); //F3 Roof Fill In
-		gl.glTranslated(Util.feetToGL(54, 4), Util.feetToGL(rheight), -Util.feetToGL(45));
-		gl.glRotated(90, 0, 1, 0);
-		gl.glRotated(180, 0, 0, 1);
-		gl.glScaled(Util.feetToGL(30), Util.feetToGL(rheight-height), -Util.feetToGL(73, 3./8));
-		Shape.UnitTriangle.draw(gl);
+		gl.glTranslated(Util.feetToGL(54, 4), Util.feetToGL(height), -Util.feetToGL(15));
+		gl.glScaled(Util.feetToGL(73, 3./8), Util.feetToGL(rheight-height), Util.feetToGL(30));
+		Shape.Cube.setColor(Building.tileRoof);
+		Shape.Cube.draw(gl);
+		Shape.Cube.setColor(Building.brick);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //F3 Roof Fill In2
@@ -237,7 +237,7 @@ public class Goudy extends Building{
 		Shape.Pyramid.draw(gl);
 		gl.glPopMatrix();
 		
-		Shape.Cube.setColor(Building.white);//Pillars
+		//Pillars
 		gl.glPushMatrix();
 		gl.glTranslated(Util.feetToGL(178,8), 0, Util.feetToGL(8));
 		for(int i=0; i<2; i++){
@@ -251,7 +251,6 @@ public class Goudy extends Building{
 			}
 		}
 		gl.glPopMatrix();
-		Shape.Cube.setColor(Building.brick);
 		
 		gl.glPushMatrix(); //F16
 		gl.glTranslated(Util.feetToGL(243, 11+3./8), 0, Util.feetToGL(6));

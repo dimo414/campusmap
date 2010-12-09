@@ -37,6 +37,7 @@ public class Art extends Building{
 		
 		//Start Drawing, SouthWest Positions
 		
+		Shape.Cube.setColor(Building.brick);
 		gl.glPushMatrix(); //Kiln
 		gl.glTranslated(-Util.feetToGL(22), 0, -Util.feetToGL(18+3./12));
 		gl.glScaled(Util.feetToGL(22), Util.feetToGL(height), Util.feetToGL(18+8./12));

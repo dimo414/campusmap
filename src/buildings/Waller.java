@@ -38,6 +38,7 @@ public class Waller extends Building {
 			gl.glTranslated(-midpoint[0], 0, midpoint[1]);
 		// End universal positioning
 		
+		Shape.Cube.setColor(Building.brick);
 		// south wing
 		gl.glPushMatrix();
 		gl.glScaled(Util.feetToGL(44), Util.feetToGL(50), Util.feetToGL(20,1));
@@ -88,7 +89,6 @@ public class Waller extends Building {
 		gl.glScaled(Util.feetToGL(12), Util.feetToGL(10), Util.feetToGL(12));
 		Shape.Octagon.setColor(Building.white);
 		Shape.Octagon.draw(gl);
-		Shape.Octagon.setColor(Building.brick);
 		gl.glPopMatrix();
 		
 		// cupola head
@@ -97,8 +97,6 @@ public class Waller extends Building {
 		gl.glScaled(Util.feetToGL(14), Util.feetToGL(5), Util.feetToGL(14));
 		Shape.OctaPyramid.setColor(Building.white);
 		Shape.OctaPyramid.draw(gl);
-		Shape.OctaPyramid.setColor(Building.brick);
-		gl.glColor3f(Building.brick[0],Building.brick[1],Building.brick[2]);
 		gl.glPopMatrix();
 		
 		// spacer between stairs and hall proper
@@ -196,8 +194,6 @@ public class Waller extends Building {
 		gl.glScaled(Util.feetToGL(1,8), Util.feetToGL(10), Util.feetToGL(1,8));
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
-		
-		Shape.UnitTriangle.setColor(Building.brick);
 		
 		gl.glPopMatrix();
 	}

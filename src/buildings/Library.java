@@ -43,6 +43,7 @@ public class Library extends Building {
 			gl.glTranslated(-Util.feetToGL(186,1/2), 0, Util.feetToGL(186,1/2));
 		// End universal positioning
 		
+		Shape.Cube.setColor(Building.brick);
 		// main building
 		gl.glPushMatrix();
 		gl.glScaled(Util.feetToGL(186,1), Util.feetToGL(40), Util.feetToGL(186,1));
