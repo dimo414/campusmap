@@ -60,8 +60,8 @@ public class Ford extends Building {
 		
 		// theater
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(30+59,8+10),0,Util.feetToGL(3,6));
-		gl.glScaled(Util.feetToGL(37,11), Util.feetToGL(18), Util.feetToGL(58));
+		gl.glTranslated(Util.feetToGL(30+59,8+10),0,-Util.feetToGL(3,6));
+		gl.glScaled(Util.feetToGL(58), Util.feetToGL(18), Util.feetToGL(37,11));
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 				
