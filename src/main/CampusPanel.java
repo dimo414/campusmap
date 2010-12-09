@@ -49,22 +49,32 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	
 	private int[] names; // the array of texture names;
 	
+	/**
+	 * Constructs a new CampusPanel object
+	 */
+	public CampusPanel(){
+		// Setup Eye - this is done in the constructor
+		// and not in init() since init is called every time
+		// the application full screens
+		Vector pos = new Vector(Util.coordToGL((Util.CAMPUS_SE[0]+Util.CAMPUS_SW[0])/2, (Util.CAMPUS_SE[1]+Util.CAMPUS_SW[1])/2, 1000));
+		Vector lookAt = new Vector(Util.coordToGL((Util.CAMPUS_NE[0]+Util.CAMPUS_NW[0])/2, (Util.CAMPUS_NE[1]+Util.CAMPUS_NW[1])/2, 0));
+		eye = new Eye(pos, lookAt);
+		eye.pitch(-.5);
+	}
+	
 	//
 	// OPENGL METHODS
 	//
 	
 	@Override
 	/**
-	 * Defines buildings, textures, etc. at compile time (is called once)
-	 * It also sets some default values
+	 * Sets up OpenGL with necessary configurations,
+	 * initializes buildings, textures, etc.
+	 * 
+	 * Note that this is called every time the application's
+	 * full screen state changes.
 	 */
 	public void init(GLAutoDrawable drawable) {
-		// Setup Eye
-		Vector pos = new Vector(Util.coordToGL((Util.CAMPUS_SE[0]+Util.CAMPUS_SW[0])/2, (Util.CAMPUS_SE[1]+Util.CAMPUS_SW[1])/2, 1000));
-		Vector lookAt = new Vector(Util.coordToGL((Util.CAMPUS_NE[0]+Util.CAMPUS_NW[0])/2, (Util.CAMPUS_NE[1]+Util.CAMPUS_NW[1])/2, 0));
-		eye = new Eye(pos, lookAt);
-		eye.pitch(-.5);
-		
 		GL gl = drawable.getGL();
         gl.glClearColor(.2f, .2f, .5f, 0);
 
@@ -245,17 +255,18 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	}
 	
 	private void handleControls(){
+		boolean shift = keys.contains(KeyEvent.VK_SHIFT);
     	if(keys.contains((int)'W')){ // forward
-    		eye.dolly(moveSpeed);
+    		eye.dolly(moveSpeed * (shift ? .1 : 1));
     	}
     	if(keys.contains((int)'A')){ // left
-    		eye.trackH(-moveSpeed);
+    		eye.trackH(-moveSpeed * (shift ? .1 : 1));
     	}
     	if(keys.contains((int)'S')){ // backwards
-    		eye.dolly(-moveSpeed);
+    		eye.dolly(-moveSpeed * (shift ? .1 : 1));
     	}
     	if(keys.contains((int)'D')){ // right
-    		eye.trackH(moveSpeed);
+    		eye.trackH(moveSpeed * (shift ? .1 : 1));
     	}
     }
 
@@ -273,13 +284,14 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 
 	@Override
 	public void mouseDragged(MouseEvent evt) {
+		boolean shift = keys.contains(KeyEvent.VK_SHIFT);
 		if(turn){
 			eye.rotateH((evt.getX()-lastX)*turnAngle);
 			eye.rotateV((evt.getY()-lastY)*turnAngle);
 		}
 		if(track){
-			eye.trackH(-(evt.getX()-lastX)*trackSpeed);
-			eye.trackV((evt.getY()-lastY)*trackSpeed);
+			eye.trackH(-(evt.getX()-lastX)*trackSpeed * (shift ? .1 : 1));
+			eye.trackV((evt.getY()-lastY)*trackSpeed * (shift ? .1 : 1));
 		}
 		lastX = evt.getX();
 		lastY = evt.getY();

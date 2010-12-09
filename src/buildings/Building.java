@@ -17,17 +17,27 @@ public abstract class Building {
 	 */
 	public static final double buildingRotation = -21.2999;
 	
+	// standard colors
+	/** White color */
+	public static final float[] white = {1,1,1};
+	/** Black color */
+	public static final float[] black = {0,0,0};
+	
 	// these colors are all loose approximations, change them if you see fit
 	/** Brick color */
 	public static final float[] brick = {0.698039f, 0.133333f, 0.133333f};
-	/** White paint color */
-	public static final float[] white = {1f,1f,1f};
 	/** Green glass color */
 	public static final float[] greenGlass = {0x47/255f,0xC2/255f,0x9C/255f};
+	/** Slightly darker green glass color */
+	public static final float[] darkGreenGlass = {0x40/255f,0xB8/255f,0x94/255f};
 	/** Old copper color */
 	public static final float[] oldCopper = {0x07/255f,0x32/255f,0x18/255f};
 	/** Tile roof color - many of the buildings have different colored roofs, but this is a good start at least */
 	public static final float[] tileRoof = {0x69/255f,0x69/255f,0x69/255f};
+	
+	// composite colors, for objects with common color combinations
+	/** Composite color for right and unit triangles, brick on triangular faces and bottom quad, tile on top two quad faces */
+	public static final float[][] brickRoofTriangle = {brick,tileRoof,tileRoof,brick,brick};
 	
 	protected boolean drawOrigin = false;
 	
