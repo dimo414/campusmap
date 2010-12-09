@@ -2,8 +2,7 @@ package buildings;
 
 import javax.media.opengl.GL;
 
-import com.sun.opengl.util.GLUT;
-
+import util.Shape;
 import util.Util;
 
 /**
@@ -20,14 +19,13 @@ public class BelknapMatthews extends Building {
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
 	private double[] midpoint = new double[]{Util.feetToGL(207,2)/2,Util.feetToGL(39+155+31,2+8)/2};
-	private GLUT glut = new GLUT();
 	
 	@Override
 	public void init(GL gl) {
 	}
 
 	@Override
-	public void draw(GL gl) {//TODO find a better way to position the building at the origin or not
+	public void draw(GL gl) {
 		gl.glPushMatrix();
 		
 		// Universal positioning
@@ -43,24 +41,21 @@ public class BelknapMatthews extends Building {
 		// belknap
 		gl.glPushMatrix();
 		gl.glScaled(Util.feetToGL(39,2), Util.feetToGL(30), Util.feetToGL(207,2));
-		gl.glTranslated(.5,.5,-.5);
-		glut.glutSolidCube(1);
+		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// matthews
 		gl.glPushMatrix();
 		gl.glTranslated(Util.feetToGL(39,2),0,-Util.feetToGL(59.8));
 		gl.glScaled(Util.feetToGL(155), Util.feetToGL(40), Util.feetToGL(95,4));
-		gl.glTranslated(.5,.5,-.5);
-		glut.glutSolidCube(1);
+		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// tera/beta
 		gl.glPushMatrix();
 		gl.glTranslated(Util.feetToGL(39+155,2),0,0);
 		gl.glScaled(Util.feetToGL(31,8), Util.feetToGL(30), Util.feetToGL(207,2));
-		gl.glTranslated(.5,.5,-.5);
-		glut.glutSolidCube(1);
+		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 				
 		gl.glPopMatrix();

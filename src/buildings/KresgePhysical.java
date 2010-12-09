@@ -2,9 +2,8 @@ package buildings;
 
 import javax.media.opengl.GL;
 
+import util.Shape;
 import util.Util;
-
-import com.sun.opengl.util.GLUT;
 
 /**
  * <h3>Kresge Playhouse / Physical Plant</h3>
@@ -20,7 +19,6 @@ public class KresgePhysical extends Building{
 	private double posNorth = 472980.9;
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos;
-	private GLUT glut = new GLUT();
 	
 	private double pheight = 16;
 	private double kheight = 29;
@@ -43,15 +41,13 @@ public class KresgePhysical extends Building{
 		//Physical Plant
 		gl.glPushMatrix(); //MainBuilding
 		gl.glScaled(Util.feetToGL(51), Util.feetToGL(pheight), Util.feetToGL(55));
-		gl.glTranslated(.5, .5, -.5);
-		glut.glutSolidCube(1);
+		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //East Extrusion (staircase)
 		gl.glTranslated(Util.feetToGL(51), 0, 0);
 		gl.glScaled(Util.feetToGL(32), Util.feetToGL(pheight), Util.feetToGL(29));
-		gl.glTranslated(.5, .5, -.5);
-		glut.glutSolidCube(1);
+		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glTranslated(0, 0, -Util.feetToGL(55));
@@ -59,22 +55,19 @@ public class KresgePhysical extends Building{
 		
 		gl.glPushMatrix(); //Southern Portion
 		gl.glScaled(Util.feetToGL(119), Util.feetToGL(kheight), Util.feetToGL(50+6./12));
-		gl.glTranslated(.5, .5, -.5);
-		glut.glutSolidCube(1);
+		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Middle Portion (w/ Staircase)
 		gl.glTranslated(0, 0, -Util.feetToGL(50+6./12));
 		gl.glScaled(Util.feetToGL(130+8./12), Util.feetToGL(kheight), Util.feetToGL(37+4./12));
-		gl.glTranslated(.5, .5, -.5);
-		glut.glutSolidCube(1);
+		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Northern Portion
 		gl.glTranslated(0, 0, -Util.feetToGL(87+10./12));
 		gl.glScaled(Util.feetToGL(120), Util.feetToGL(kheight), Util.feetToGL(21+2./12));
-		gl.glTranslated(.5, .5, -.5);
-		glut.glutSolidCube(1);
+		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPopMatrix();
