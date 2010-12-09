@@ -57,6 +57,12 @@ Smith Fine Arts
 	Smith north overhang:	19'
 	Auditorium roof:		44'
 
+University Apartments
+	Each floor:			8'8"
+	7th floor:			~15'
+	To base of roof:	~52'
+	To top of roof:		~72'	
+
 Westside
 	Lausanne - SE corner to base of roof:		48'
 	Doney - south outcrop:						23'
