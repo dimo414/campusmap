@@ -22,8 +22,8 @@ public class KresgePhysical extends Building{
 	private double[] glPos;
 	private GLUT glut = new GLUT();
 	
-	private double pheight = 20;
-	private double kheight = 40;
+	private double pheight = 16;
+	private double kheight = 29;
 	@Override
 	public void draw(GL gl) {
 		gl.glPushMatrix();

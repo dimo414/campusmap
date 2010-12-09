@@ -98,7 +98,7 @@ public class Goudy extends Building{
 		Shape.UnitTriangle.draw(gl);
 		gl.glPopMatrix();
 		
-		gl.glPushMatrix(); //F3 Roof2
+		gl.glPushMatrix(); //F3 Roof2 TODO Change x value so it lines up with Square.
 		gl.glTranslated(Util.feetToGL(39, 4), Util.feetToGL(height), -Util.feetToGL(30));
 		gl.glRotated(90, 0, 1, 0);
 		gl.glScaled(Util.feetToGL(30), Util.feetToGL(rheight-height), Util.feetToGL(-198.25));
@@ -149,7 +149,7 @@ public class Goudy extends Building{
 		Shape.UnitTriangle.draw(gl);
 		gl.glPopMatrix();
 		
-		gl.glPushMatrix(); //F6 Roof3
+		gl.glPushMatrix(); //F6 Roof3 TODO Change length so it overwrites unit triangle
 		gl.glTranslated(Util.feetToGL(126, 4+3./8), Util.feetToGL(height), -Util.feetToGL(45));
 		gl.glScaled(Util.feetToGL(112, 3), Util.feetToGL(rheight-height), Util.feetToGL(39, 19));
 		Shape.Cube.draw(gl);
