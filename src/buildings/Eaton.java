@@ -36,6 +36,7 @@ public class Eaton extends Building{
 			
 			gl.glRotated(90, 0, 1, 0);
 			
+			Shape.Cube.setColor(Building.brick);
 			// 1st Cube
 			gl.glPushMatrix();
 			gl.glScaled(Util.feetToGL(44), Util.feetToGL(50), Util.feetToGL(151));

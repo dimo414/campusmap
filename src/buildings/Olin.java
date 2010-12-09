@@ -36,6 +36,7 @@ public class Olin extends Building{
 			
 //			gl.glRotated(90, 0, 1, 0);
 			
+			Shape.Cube.setColor(Building.brick);
 			// 1st Cube
 			gl.glPushMatrix();
 			gl.glScaled(Util.feetToGL(53+20), Util.feetToGL(50), Util.feetToGL(33));

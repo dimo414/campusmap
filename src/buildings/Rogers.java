@@ -37,6 +37,7 @@ public class Rogers extends Building{
 		
 		//Start Drawing, SouthWest Positions
 		
+		Shape.Cube.setColor(Building.brick);
 		gl.glPushMatrix();
 		gl.glScaled(Util.feetToGL(20), Util.feetToGL(height), Util.feetToGL(170+3./12));
 		Shape.Cube.draw(gl);

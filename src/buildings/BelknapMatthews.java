@@ -38,6 +38,7 @@ public class BelknapMatthews extends Building {
 			gl.glTranslated(-midpoint[0], 0, midpoint[1]);
 		// End universal positioning
 		
+		Shape.Cube.setColor(Building.brick);
 		// belknap
 		gl.glPushMatrix();
 		gl.glScaled(Util.feetToGL(39,2), Util.feetToGL(30), Util.feetToGL(207,2));

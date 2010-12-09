@@ -38,6 +38,7 @@ public class Ford extends Building {
 			gl.glTranslated(-midpoint[0], 0, midpoint[1]);
 		// End universal positioning
 				
+		Shape.Cube.setColor(Building.brick);
 		// short part of west wing
 		gl.glPushMatrix();
 		gl.glTranslated(-Util.feetToGL(5),0,-Util.feetToGL(24,6));

@@ -38,6 +38,7 @@ public class KresgePhysical extends Building{
 		
 		//Start Drawing, SouthWest Positions
 		
+		Shape.Cube.setColor(Building.brick);
 		//Physical Plant
 		gl.glPushMatrix(); //MainBuilding
 		gl.glScaled(Util.feetToGL(51), Util.feetToGL(pheight), Util.feetToGL(55));

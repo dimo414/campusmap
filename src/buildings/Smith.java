@@ -38,6 +38,7 @@ public class Smith extends Building {
 			gl.glTranslated(-midpoint[0], 0, midpoint[1]);
 		// End universal positioning
 		
+		Shape.Cube.setColor(Building.brick);
 		// main
 		gl.glPushMatrix();
 		gl.glScaled(Util.feetToGL(177,10), Util.feetToGL(50), Util.feetToGL(82,6));

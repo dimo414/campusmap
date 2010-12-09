@@ -38,6 +38,7 @@ public class DG extends Building {
 			gl.glTranslated(-midpoint[0], 0, midpoint[1]);
 		// End universal positioning
 		
+		Shape.Cube.setColor(Building.brick);
 		// south wing
 		gl.glPushMatrix();
 		gl.glScaled(Util.feetToGL(78), Util.feetToGL(30), Util.feetToGL(34));

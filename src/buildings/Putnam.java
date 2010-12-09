@@ -56,6 +56,7 @@ public class Putnam extends Building {
 			// this is the appx centerpoint of the building
 			gl.glTranslated(-Util.feetToGL(lengthEW/2), 0, Util.feetToGL(lengthNS/2));
 		// End universal positioning
+		
 		gl.glTranslated(Util.feetToGL(balconyw), 0, -Util.feetToGL(balconyw));
 		//Pillars
 		Shape.Cube.setColor(Building.concrete);
