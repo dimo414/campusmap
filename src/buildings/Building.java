@@ -35,6 +35,10 @@ public abstract class Building {
 	/** Tile roof color - many of the buildings have different colored roofs, but this is a good start at least */
 	public static final float[] tileRoof = {0x69/255f,0x69/255f,0x69/255f};
 	
+	// composite colors, for objects with common color combinations
+	/** Composite color for right and unit triangles, brick on triangular faces and bottom quad, tile on top two quad faces */
+	public static final float[][] brickRoofTriangle = {brick,tileRoof,tileRoof,brick,brick};
+	
 	protected boolean drawOrigin = false;
 	
 	/**

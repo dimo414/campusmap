@@ -63,6 +63,7 @@ public class Waller extends Building {
 		gl.glTranslated(-Util.feetToGL(23,3),Util.feetToGL(50),-Util.feetToGL(67,3));
 		gl.glScaled(Util.feetToGL(90,6), Util.feetToGL(15), Util.feetToGL(50,4));
 		gl.glRotated(-90, 0, 1, 0);
+		Shape.UnitTriangle.setColor(Building.brickRoofTriangle);
 		Shape.UnitTriangle.draw(gl);
 		gl.glPopMatrix();
 		
@@ -77,6 +78,7 @@ public class Waller extends Building {
 		gl.glPushMatrix();
 		gl.glTranslated(Util.feetToGL(11,9),Util.feetToGL(50),-Util.feetToGL(31,10));
 		gl.glScaled(Util.feetToGL(20,6), Util.feetToGL(15), Util.feetToGL(20,6));
+		Shape.Octagon.setColor(Building.tileRoof);
 		Shape.Octagon.draw(gl);
 		gl.glPopMatrix();
 		
@@ -194,6 +196,8 @@ public class Waller extends Building {
 		gl.glScaled(Util.feetToGL(1,8), Util.feetToGL(10), Util.feetToGL(1,8));
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
+		
+		Shape.UnitTriangle.setColor(Building.brick);
 		
 		gl.glPopMatrix();
 	}
