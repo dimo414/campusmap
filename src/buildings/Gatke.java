@@ -11,22 +11,6 @@ import util.Util;
  * THIS JAVADOC OR SOME OTHER COMMENT SHOULD CONTAIN DETAILS LIKE POSITION AND DIMENSIONS OF THE BUILDING
  */
 public class Gatke extends Building{
-
-	double length = 45; //45' - 10 3/4
-	double width = 98; //98' - 11 4/4
-	double height= 40;
-
-	double[][] vertices = { { 0, 0, 0 }, { 0, 0, width }, { length, 0, width },
-			{ length, 0, 0 }, { 0, height, 0 }, { 0, height, width },
-			{ length, height, width }, { length, height, 0 } };
-	int[][] faces = { { 4, 0, 1, 5 }, { 5, 1, 2, 6 }, { 6, 2, 3, 7 },
-			{ 7, 3, 0, 4 }, { 0, 1, 2, 3 }, { 4, 5, 6, 7 } }; // West, South,
-																// East, North,
-																// Bottom, Top
-	double[][] normals = { { -1, 0, 0 }, { 0, 0, 1 }, { 1, 0, 0 },
-			{ 0, 0, -1 }, { 0, -1, 0 }, { 0, 1, 0 } };
-	double[] position = { 0, 0, 0 };
-	double textures[][] = {{0, 1}, {0,0}, {1,0}, {1,1}};
 	
 	private double posEast = 7547654.973;
 	private double posNorth = 473298.811;
