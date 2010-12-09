@@ -97,6 +97,7 @@ public class Shape {
 		
 		RightTriangle = new Shape(TRIAG_VERT, TRIAG_FACE, TRIAG_NORM);
 		
+		// UNIT TRIANGULAR PRISM
 		float[][] U_TRIAG_VERT = {{0,0,0},{1,0,0},{.5f,1,0},{0,0,-1},{1,0,-1},{.5f,1,-1}};
 		int[][] U_TRIAG_FACE = {{0,1,2},{1,4,5,2},{2,5,3,0},{0,1,4,3},{3,4,5}};
 		float[][] U_TRIAG_NORM = {{0,0,1},
@@ -254,7 +255,7 @@ public class Shape {
 					vertBuff.put(vertices[faces[f][i]]);
 				}
 				fanLength[fanIndex] = faces[f].length;
-				fanDist[fanIndex] = triangleCount+quadCount+(fanIndex == 0 ? 0 : faces[f].length + fanDist[fanIndex-1]);
+				fanDist[fanIndex] = (fanIndex == 0 ? 0 : faces[f].length + fanDist[fanIndex-1]);
 				fanIndex++;
 			}
 		}
@@ -349,11 +350,9 @@ public class Shape {
         // drawArrays count is num of points, not indices.
         gl.glDrawArrays(GL.GL_TRIANGLES, 0, triangleCount);
         gl.glDrawArrays(GL.GL_QUADS, triangleCount, quadCount);
-    /*    for(int i = 0; i < fanLength.length; i++){
+        for(int i = 0; i < fanLength.length; i++){
         	gl.glDrawArrays(GL.GL_TRIANGLE_FAN, triangleCount+quadCount+fanDist[i], fanLength[i]);
-        }*/
-        if(fanLength.length > 0)
-        	gl.glMultiDrawArrays(GL.GL_TRIANGLE_FAN, fanDist, 0, fanLength, 0, fanLength.length-1);
+        }
 		
         gl.glDisableClientState(GL.GL_VERTEX_ARRAY);
         gl.glDisableClientState(GL.GL_COLOR_ARRAY);
