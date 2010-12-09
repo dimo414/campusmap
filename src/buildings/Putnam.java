@@ -137,43 +137,43 @@ public class Putnam extends Building {
 		
 		//Balconies
 		Shape.Cube.setColor(Building.concrete);
-		gl.glPushMatrix(); //Balcony 3
+		gl.glPushMatrix(); //Balcony 3 - S
 		gl.glTranslated(-Util.feetToGL(balconyw), 0, Util.feetToGL(balconyw));
 		gl.glScaled(Util.feetToGL(193+5./12), Util.feetToGL(balconyh), Util.feetToGL(balconyw));
 		
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
-		gl.glPushMatrix(); //Balcony 1
-		gl.glTranslated(0, 0, -Util.feetToGL(lengthNS));
+		gl.glPushMatrix(); //Balcony 1 - NW
+		gl.glTranslated(-Util.feetToGL(1), 0, -Util.feetToGL(lengthNS));
 		gl.glScaled(Util.feetToGL(50), Util.feetToGL(balconyh), Util.feetToGL(23+2./12));
 		
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
-		gl.glPushMatrix(); //Balcony 2
+		gl.glPushMatrix(); //Balcony 2 - W
 		gl.glTranslated(-Util.feetToGL(balconyw), 0, 0);
 		gl.glScaled(Util.feetToGL(balconyw), Util.feetToGL(balconyh), Util.feetToGL(108+6./12));
 		
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
-		gl.glPushMatrix(); //Balcony 4
+		gl.glPushMatrix(); //Balcony 4 - E
 		gl.glTranslated(Util.feetToGL(lengthEW), 0, 0);
 		gl.glScaled(Util.feetToGL(balconyw), Util.feetToGL(balconyh), Util.feetToGL(108+6./12));
 		
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
-		gl.glPushMatrix(); //Balcony 5
-		gl.glTranslated(Util.feetToGL(72), 0, -Util.feetToGL(lengthNS));
+		gl.glPushMatrix(); //Balcony 5 - NE
+		gl.glTranslated(Util.feetToGL(71), 0, -Util.feetToGL(lengthNS));
 		gl.glScaled(Util.feetToGL(98), Util.feetToGL(balconyh), Util.feetToGL(23+2./12));
 		
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
-		gl.glPushMatrix(); //Balcony 6
-		gl.glTranslated(Util.feetToGL(50), 0, -Util.feetToGL(lengthNS));
+		gl.glPushMatrix(); //Balcony 6 - N mid
+		gl.glTranslated(Util.feetToGL(49), 0, -Util.feetToGL(lengthNS));
 		gl.glScaled(Util.feetToGL(22), Util.feetToGL(balconyh), Util.feetToGL(balconyw));
 		
 		Shape.Cube.draw(gl);
