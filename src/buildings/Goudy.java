@@ -42,9 +42,9 @@ public class Goudy extends Building{
 			gl.glTranslated(glPos[0],glPos[1],glPos[2]);
 			gl.glRotated(buildingRotation, 0, 1, 0);
 		}
-		else //TODO Find Centerpoint
+		else
 			// this is the appx centerpoint of the building
-			gl.glTranslated(-Util.feetToGL(30), 0, Util.feetToGL(100));
+			gl.glTranslated(-Util.feetToGL(170), 0, Util.feetToGL(55));
 		// End universal positioning
 		
 		//Start Drawing, SouthWest Positions
@@ -139,7 +139,7 @@ public class Goudy extends Building{
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
-		gl.glPushMatrix(); //F6 Roof TODO Pyramid
+		gl.glPushMatrix(); //F6 Roof 
 		gl.glTranslated(Util.feetToGL(116, 4+3./8), Util.feetToGL(height), -Util.feetToGL(71, 3./8));
 		gl.glScaled(Util.feetToGL(20), Util.feetToGL(rheight-height), Util.feetToGL(23, 11));
 		Shape.Pyramid.draw(gl);
@@ -152,7 +152,7 @@ public class Goudy extends Building{
 		gl.glPopMatrix();
 
 		Shape.Cube.setColor(Building.tileRoof);
-		gl.glPushMatrix(); //F6 Roof3 TODO Change length so it overwrites unit triangle
+		gl.glPushMatrix(); //F6 Roof3 
 		gl.glTranslated(Util.feetToGL(126, 4+3./8), Util.feetToGL(height), -Util.feetToGL(15));
 		gl.glScaled(Util.feetToGL(112, 3), Util.feetToGL(rheight-height), Util.feetToGL(67, 11.5+3./8));
 		Shape.Cube.draw(gl);
