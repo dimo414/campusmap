@@ -2,8 +2,7 @@ package buildings;
 
 import javax.media.opengl.GL;
 
-import com.sun.opengl.util.GLUT;
-
+import util.Shape;
 import util.Util;
 
 /**
@@ -24,7 +23,6 @@ public class Library extends Building {
 	private double posNorth = 472747.03;
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos;
-	private GLUT glut = new GLUT();
 	
 	@Override
 	public void init(GL gl) {
@@ -48,8 +46,7 @@ public class Library extends Building {
 		// main building
 		gl.glPushMatrix();
 		gl.glScaled(Util.feetToGL(186,1), Util.feetToGL(40), Util.feetToGL(186,1));
-		gl.glTranslated(.5,.5,-.5);
-		glut.glutSolidCube(1);
+		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// north outcrop - this position has not been measured yet - numbers are guesses
@@ -57,8 +54,8 @@ public class Library extends Building {
 		gl.glTranslated(Util.feetToGL(60),0,-Util.feetToGL(186,1));
 		gl.glRotated(45, 0, 1, 0);
 		gl.glScaled(Util.feetToGL(20), Util.feetToGL(40), Util.feetToGL(20));
-		gl.glTranslated(0, .5, 0);
-		glut.glutSolidCube(1);
+		gl.glTranslated(-.5, 0, .5);
+		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPopMatrix();

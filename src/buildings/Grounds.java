@@ -2,8 +2,6 @@ package buildings;
 
 import javax.media.opengl.GL;
 
-import com.sun.opengl.util.GLUT;
-
 import util.Shape;
 import util.Util;
 
@@ -21,14 +19,13 @@ public class Grounds extends Building {
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
 	private double[] midpoint = new double[]{Util.feetToGL(35,4)/2,Util.feetToGL(25+17,4)/2};
-	private GLUT glut = new GLUT();
 	
 	@Override
 	public void init(GL gl) {
 	}
 
 	@Override
-	public void draw(GL gl) {//TODO find a better way to position the building at the origin or not
+	public void draw(GL gl) {
 		gl.glPushMatrix();
 		
 		// Universal positioning

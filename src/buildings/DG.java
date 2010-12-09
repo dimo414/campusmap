@@ -2,8 +2,7 @@ package buildings;
 
 import javax.media.opengl.GL;
 
-import com.sun.opengl.util.GLUT;
-
+import util.Shape;
 import util.Util;
 
 /**
@@ -20,14 +19,13 @@ public class DG extends Building {
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
 	private double[] midpoint = new double[]{Util.feetToGL(78)/2,Util.feetToGL(110,7)/2};
-	private GLUT glut = new GLUT();
 	
 	@Override
 	public void init(GL gl) {
 	}
 
 	@Override
-	public void draw(GL gl) {//TODO find a better way to position the building at the origin or not
+	public void draw(GL gl) {
 		gl.glPushMatrix();
 		
 		// Universal positioning
@@ -43,24 +41,21 @@ public class DG extends Building {
 		// south wing
 		gl.glPushMatrix();
 		gl.glScaled(Util.feetToGL(78), Util.feetToGL(30), Util.feetToGL(34));
-		gl.glTranslated(.5,.5,-.5);
-		glut.glutSolidCube(1);
+		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// middle
 		gl.glPushMatrix();
 		gl.glTranslated(0,0,-Util.feetToGL(34));
 		gl.glScaled(Util.feetToGL(78-36,0-5), Util.feetToGL(30), Util.feetToGL(41,6));
-		gl.glTranslated(.5,.5,-.5);
-		glut.glutSolidCube(1);
+		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// north wing
 		gl.glPushMatrix();
 		gl.glTranslated(0,0,-Util.feetToGL(34+41,6));
 		gl.glScaled(Util.feetToGL(78), Util.feetToGL(30), Util.feetToGL(36));
-		gl.glTranslated(.5,.5,-.5);
-		glut.glutSolidCube(1);
+		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 				
 		gl.glPopMatrix();
