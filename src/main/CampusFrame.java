@@ -15,6 +15,7 @@ import java.util.Arrays;
 import javax.media.opengl.GLCanvas;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.sun.opengl.util.FPSAnimator;
@@ -169,6 +170,12 @@ public class CampusFrame extends JFrame implements ActionListener, KeyListener {
 		
 		boolean full = argsLs.contains("fullscreen");
 		
+		try{
 		new CampusFrame(full);
+		} catch (RuntimeException e){
+			String err = e.getClass().getName();
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Error: "+err.substring(err.lastIndexOf('.')+1), JOptionPane.ERROR_MESSAGE);
+			throw e;
+		}
 	}
 }
