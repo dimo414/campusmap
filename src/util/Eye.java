@@ -175,7 +175,7 @@ public class Eye {
     public void rotateV(double angle){
     	// need to determine if the rotation would put us too close to vertical orientation
     	// we use a fixed angle to ensure a minimum distance from vertical
-    	double testAngle = angle/(Math.abs(angle))*.25;
+    	double testAngle = Math.copySign(.25, angle);
     	Vector testLook = look.add(up.scale(testAngle)).normalize();
     	Vector tempLook = look.add(up.scale(angle)).normalize();
     	if(look.distance(tempLook) > look.distance(testLook))
