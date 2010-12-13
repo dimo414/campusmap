@@ -16,7 +16,7 @@ import util.Shape;
  * <li>Construct a triangular lattice of the ground and its elevation using util.Shape and the generated triangulation</li>
  * </ol>
  *  
- * @author Travis Lee
+ * @author Michael Diamond
  */
 public class Ground {        
         private Shape shape = new Shape();
@@ -25,8 +25,8 @@ public class Ground {
          * Constructs a representation of the ground
          */
         public Ground() {
-        	// Construct shape, be sure when you pass the coordinates to shape you use Util.fCoordToGL()
-        	// to ensure the positions are accurately displayed.
+        	shape = new Triangulator("landscape/elevations.txt").getShape();
+        	shape.setColor(new float[]{.1f,.8f,.1f});
         }
 
         /**

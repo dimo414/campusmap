@@ -1,0 +1,22 @@
+# This file contains elevation points for Willamette University.
+# It is used to generate the landscape the campus model sits on.
+# 
+# Building's maintain their own elevations, as will other objects eventually
+# 
+# Each line with content which does not start with a '#' is an
+# elevation datum.  It should contain three whitespace separated
+# decimal numbers - the Easting followed by the Northing (of the
+# Oregon North State Plane Coordinate System) followed by the 
+# elevation from sea level.  All measurements are international feet.
+# 
+
+# Corners of Main Campus
+
+# Northwest corner of main campus
+7546523.888 473824.754 0
+# Northeast corner of main campus
+7547756.519 473339.332 0
+# Southeast corner of main campus
+7547272.347 472011.012 0
+# Southwest corner of main campus
+7546005.950 472500.560 0
