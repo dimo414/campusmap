@@ -207,7 +207,7 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	 */
 	public void drawGround(GL gl){
 		// We should disable drawing the campus map when Ground works
-		gl.glPushMatrix();
+	/*	gl.glPushMatrix();
         gl.glEnable(GL.GL_TEXTURE_2D);
         
 		gl.glBindTexture(GL.GL_TEXTURE_2D, names[0]);
@@ -231,7 +231,7 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
         gl.glDisable(GL.GL_TEXTURE_2D);
 		gl.glPopMatrix();
 		// end drawing campus map
-		
+	*/	
 		ground.draw(gl);
 	}
 	
