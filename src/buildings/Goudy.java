@@ -15,6 +15,8 @@ import util.Util;
  * @author Brian Forbis
  */
 public class Goudy extends Building{
+	// FIXME Goudy is currently being positioned from the SW corner of the dumpster area
+	// but the plotted point is from the SW corner of the building proper.
 	private double posEast = 7546339.868; //TODO Confirm point
 	private double posNorth = 473053.088; //TODO Confirm point
 	private double posElevation = 0; // TODO Get Elevation of building
