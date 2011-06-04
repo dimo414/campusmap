@@ -9,14 +9,27 @@
 # Oregon North State Plane Coordinate System) followed by the 
 # elevation from sea level.  All measurements are international feet.
 # 
+# The best resource for these measurements as of this writing is
+# Campus Blueprints/campus_plans_maps/CAMPUS MAPS 3-20-07/Willamette Map_decimal.dwg
+# The file appears to have a unique number next to each elevation point,
+# try to incorporate that with each recorded elevation.
+# 
 
+#
 # Corners of Main Campus
+# For now, they're left at elevation 0, replace the 0 elevation lines with
+# the commented points to set the corners of campus to the correct elevation.
+#
 
-# Northwest corner of main campus
+# Northwest corner of main campus - appx. #312
 7546523.888 473824.754 0
-# Northeast corner of main campus
+#7546523.888 473824.754 160.98
+# Northeast corner of main campus - #763
 7547756.519 473339.332 0
-# Southeast corner of main campus
+#7547756.519 473339.332 165.87
+# Southeast corner of main campus - appx. #168
 7547272.347 472011.012 0
-# Southwest corner of main campus
+#7547272.347 472011.012 157.42
+# Southwest corner of main campus - #765
 7546005.950 472500.560 0
+#7546005.950 472500.560 145.84
