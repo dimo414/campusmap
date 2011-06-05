@@ -7,6 +7,9 @@ import util.Shape;
 /**
  * Olin Hall
  * 
+ * Identifying Location - Southwest Corner
+ * 7546446.576E 473514.619N
+ * 
  * @author Jose Alvarado
  */
 public class Olin extends Building{
@@ -27,8 +30,6 @@ public class Olin extends Building{
 		public void draw(GL gl) {
 			gl.glPushMatrix();
 			
-//			gl.glRotated(90, 0, 1, 0);
-			
 			Shape.Cube.setColor(Building.brick);
 			// 1st Cube
 			gl.glPushMatrix();
@@ -38,7 +39,7 @@ public class Olin extends Building{
 			
 			// 2nd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(-(13),0,-(33));
+			gl.glTranslated(-13,0,-33);
 			gl.glScaled(81, 50, 122);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();

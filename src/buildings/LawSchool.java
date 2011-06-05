@@ -6,6 +6,10 @@ import util.Shape;
 
 /**
  * Collins Law Center
+ * 
+ * Identifying Location - Southwest Corner
+ * 7546042.785E 473270.915N
+ * 
  * @author Jose Alvarado
  */
 public class LawSchool extends Building{
@@ -26,8 +30,6 @@ public class LawSchool extends Building{
 	public void draw(GL gl) {
 		gl.glPushMatrix();
 		
-	//	gl.glRotated(90, 0, 1, 0);		
-		
 		Shape.Cube.setColor(Building.brick);
 		// 1st Cube
 		gl.glPushMatrix();
@@ -37,7 +39,7 @@ public class LawSchool extends Building{
 		
 		// 2nd Cube
 		gl.glPushMatrix();
-		gl.glTranslated(23,0,-(78));
+		gl.glTranslated(23,0,-78);
 		gl.glScaled(76, 50, 144);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();

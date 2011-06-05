@@ -6,6 +6,10 @@ import util.Shape;
 
 /**
  * WISH Hall and Admissions office
+ * 
+ * Identifying Location - Southeast Corner
+ * 7546608.18E 472485.315N
+ * 
  * @author Jose Alvarado
  */
 public class WishandAdmission extends Building{
@@ -25,20 +29,18 @@ public class WishandAdmission extends Building{
 		@Override
 		public void draw(GL gl) {
 			gl.glPushMatrix();
-			
-			gl.glRotated(90, 0, 1, 0);
-			
+			//TODO When building proper model, consider making the southwest corner the canonical point
 			Shape.Cube.setColor(Building.brick);
 			// 1st Cube
 			gl.glPushMatrix();
-			gl.glScaled(31, 50, 19);
+			gl.glScaled(-19, 50, 31);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 2nd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(0,0,-(19));
-			gl.glScaled(72, 50, 112);
+			gl.glTranslated(-19,0,0);
+			gl.glScaled(-112, 50, 72);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();	
 			

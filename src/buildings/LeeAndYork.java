@@ -7,6 +7,9 @@ import util.Shape;
 /**
  * Lee and York Halls
  * 
+ * Identifying Location - Southeast Corner
+ * 7546282.605E 472812.244N
+ * 
  * @author Jose Alvarado
  */
 public class LeeAndYork extends Building{
@@ -26,41 +29,39 @@ public class LeeAndYork extends Building{
 		@Override
 		public void draw(GL gl) {
 			gl.glPushMatrix();
-			
-			gl.glRotated(90, 0, 1, 0);
-			
+			//TODO When building proper model, consider making the southwest corner the canonical point
 			Shape.Cube.setColor(Building.brick);
 			// 1st Cube
 			gl.glPushMatrix();
-			gl.glScaled(109, 50, 29);
+			gl.glScaled(-29, 50, 109);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 2nd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(0,0,-(29));
-			gl.glScaled(63-36, 50, 20);
+			gl.glTranslated(-29,0,0);
+			gl.glScaled(-20, 50, 63-36);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 3rd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(0,0,-(49));
-			gl.glScaled(63, 50, 49);
+			gl.glTranslated(-49,0,0);
+			gl.glScaled(-49, 50, 63);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 4th Cube
 			gl.glPushMatrix();
-			gl.glTranslated(63,0,-(49+11));
-			gl.glScaled(126, 50, 60);
+			gl.glTranslated(-(49+11),0,-63);
+			gl.glScaled(-60, 50, 126);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 5th Cube
 			gl.glPushMatrix();
-			gl.glTranslated(109+23,0,27);
-			gl.glScaled(29, 50, 87);
+			gl.glTranslated(27,0,-(109+23));
+			gl.glScaled(-87, 50, 29);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			

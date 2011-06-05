@@ -5,9 +5,12 @@ import javax.media.opengl.GL;
 import util.Shape;
 
 /**
- * Gatke Hall:
+ * Gatke Hall
  * 
- * THIS JAVADOC OR SOME OTHER COMMENT SHOULD CONTAIN DETAILS LIKE POSITION AND DIMENSIONS OF THE BUILDING
+ * Identifying Location - Southeast Corner
+ * 7547654.973E 473298.811N
+ * 
+ * @author Jose Alvarado
  */
 public class Gatke extends Building{
 	
@@ -24,13 +27,11 @@ public class Gatke extends Building{
 	@Override
 	public void draw(GL gl) {
 		gl.glPushMatrix();
-		
-		gl.glRotated(90, 0, 1, 0);
-		
+		//TODO When building proper model, consider making the southwest corner the canonical point
 		Shape.Cube.setColor(Building.brick);
 		// 1st Cube
 		gl.glPushMatrix();
-		gl.glScaled(45, 50, 98);
+		gl.glScaled(-98, 50, 45);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		

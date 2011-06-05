@@ -7,6 +7,9 @@ import util.Shape;
 /**
  * WestSide - Lausanne, Doney, Campus Safety / ResLife
  * 
+ * Identifying Location - Southeast Corner
+ * 7546544.602E 473207.586N
+ * 
  * @author Jose Alvarado
  */
 public class WestSide extends Building{
@@ -26,27 +29,25 @@ public class WestSide extends Building{
 		@Override
 		public void draw(GL gl) {
 			gl.glPushMatrix();
-			
-			gl.glRotated(90, 0, 1, 0);		
-			
+			//TODO When building proper model, consider making the southwest corner the canonical point
 			Shape.Cube.setColor(Building.brick);
 			// 1st Cube
 			gl.glPushMatrix();
-			gl.glScaled(161, 50, 40);
+			gl.glScaled(-40, 50, 161);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 2nd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(161-59,0,-(40));
-			gl.glScaled(59, 50, 76);
+			gl.glTranslated(-40,0,-(161-59));
+			gl.glScaled(-76, 50, 59);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 3rd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(-(184-161),0,-(40+76));
-			gl.glScaled(184, 50, 61);
+			gl.glTranslated(-(40+76),0,184-161);
+			gl.glScaled(-61, 50, 184);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			

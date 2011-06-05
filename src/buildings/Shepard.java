@@ -6,6 +6,10 @@ import util.Shape;
 
 /**
  * Shepard Hall
+ * 
+ * Identifying Location - Southeast Corner
+ * 7546121.405E 472643.988N
+ * 
  * @author Jose Alvarado
  */
 public class Shepard extends Building{
@@ -25,20 +29,18 @@ public class Shepard extends Building{
 	@Override
 	public void draw(GL gl) {
 		gl.glPushMatrix();
-		
-		gl.glRotated(90, 0, 1, 0);
-		
+		//TODO When building proper model, consider making the southwest corner the canonical point
 		Shape.Cube.setColor(Building.brick);
 		// 1st Cube
 		gl.glPushMatrix();
-		gl.glScaled(121, 50, 42);
+		gl.glScaled(-42, 50, 121);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// 2nd Cube
 		gl.glPushMatrix();
-		gl.glTranslated(73,0,-(42));
-		gl.glScaled(23, 50, 20);
+		gl.glTranslated(-42,0,-73);
+		gl.glScaled(-20, 50, 23);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();	
 		
