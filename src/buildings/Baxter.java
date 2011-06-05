@@ -18,7 +18,7 @@ public class Baxter extends Building{
 	private double posNorth = 473020.902;	
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
-	private double[] midpoint = new double[]{Util.feetToGL(205/2),Util.feetToGL(238/2)};
+	private double[] midpoint = new double[]{205/2,238/2};
 	
 	@Override
 	public void draw(GL gl) {
@@ -39,21 +39,21 @@ public class Baxter extends Building{
 		Shape.Cube.setColor(Building.brick);
 		// 1st Cube
 		gl.glPushMatrix();
-		gl.glScaled(Util.feetToGL(205), Util.feetToGL(50), Util.feetToGL(36));
+		gl.glScaled(205, 50, 36);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// 2nd Cube
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(66),0,-Util.feetToGL(36));
-		gl.glScaled(Util.feetToGL(134-66), Util.feetToGL(50), Util.feetToGL(202));
+		gl.glTranslated(66,0,-(36));
+		gl.glScaled(134-66, 50, 202);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// 3rd Cube
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(0),0,-Util.feetToGL(202));
-		gl.glScaled(Util.feetToGL(66), Util.feetToGL(50), Util.feetToGL(36));
+		gl.glTranslated(0,0,-(202));
+		gl.glScaled(66, 50, 36);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		

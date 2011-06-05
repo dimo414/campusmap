@@ -29,7 +29,7 @@ public class LawSchool extends Building{
 			}
 			else
 				// this is the appx centerpoint of the building
-				gl.glTranslated(-Util.feetToGL(184.0/2), 0, Util.feetToGL(177.0/2));
+				gl.glTranslated(-(184.0/2), 0, 177.0/2);
 			// End universal positioning
 			
 		//	gl.glRotated(90, 0, 1, 0);		
@@ -37,21 +37,21 @@ public class LawSchool extends Building{
 			Shape.Cube.setColor(Building.brick);
 			// 1st Cube
 			gl.glPushMatrix();
-			gl.glScaled(Util.feetToGL(125), Util.feetToGL(50), Util.feetToGL(78));
+			gl.glScaled(125, 50, 78);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 2nd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(23),0,-Util.feetToGL(78));
-			gl.glScaled(Util.feetToGL(76), Util.feetToGL(50), Util.feetToGL(144));
+			gl.glTranslated(23,0,-(78));
+			gl.glScaled(76, 50, 144);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 3rd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(23-16),0,-Util.feetToGL(78+144));
-			gl.glScaled(Util.feetToGL(122), Util.feetToGL(50), Util.feetToGL(79));
+			gl.glTranslated(23-16,0,-(78+144));
+			gl.glScaled(122, 50, 79);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			

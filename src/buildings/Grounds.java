@@ -18,7 +18,7 @@ public class Grounds extends Building {
 	private double posNorth = 472887.578;
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
-	private double[] midpoint = new double[]{Util.feetToGL(35,4)/2,Util.feetToGL(25+17,4)/2};
+	private double[] midpoint = new double[]{Util.f(35,4)/2,Util.f(25+17,4)/2};
 	
 	@Override
 	public void init(GL gl) {
@@ -43,52 +43,52 @@ public class Grounds extends Building {
 		Shape.UnitTriangle.setColor(tileRoof);
 		// front - 25'4"x25'4"
 		gl.glPushMatrix();
-		gl.glScaled(Util.feetToGL(25,4), Util.feetToGL(9), Util.feetToGL(25,4));
+		gl.glScaled(Util.f(25,4), 9, Util.f(25,4));
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		// roof
 		gl.glPushMatrix();
-		gl.glTranslated(-Util.feetToGL(1,6),Util.feetToGL(9),Util.feetToGL(1,6));
-		gl.glScaled(Util.feetToGL(28,4), Util.feetToGL(5), Util.feetToGL(28,4));
+		gl.glTranslated(-Util.f(1,6),9,Util.f(1,6));
+		gl.glScaled(Util.f(28,4), 5, Util.f(28,4));
 		Shape.Pyramid.draw(gl);
 		gl.glPopMatrix();
 		
 		// side - 17'x15'4"
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(25,4),0,0);
-		gl.glScaled(Util.feetToGL(17), Util.feetToGL(6,6), Util.feetToGL(15,4));
+		gl.glTranslated(Util.f(25,4),0,0);
+		gl.glScaled(17, Util.f(6,6), Util.f(15,4));
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		// straight roof
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(19,4),Util.feetToGL(6,6),Util.feetToGL(1,6));
-		gl.glScaled(-Util.feetToGL(17), Util.feetToGL(5), Util.feetToGL(18,4));
+		gl.glTranslated(Util.f(19,4),Util.f(6,6),Util.f(1,6));
+		gl.glScaled(-(17), 5, Util.f(18,4));
 		gl.glRotated(90, 0, 1, 0);
 		Shape.UnitTriangle.draw(gl);
 		gl.glPopMatrix();
 		// pyramid roof
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(28,10),Util.feetToGL(6,6),Util.feetToGL(1,6));
-		gl.glScaled(Util.feetToGL(15), Util.feetToGL(5), Util.feetToGL(18,4));
+		gl.glTranslated(Util.f(28,10),Util.f(6,6),Util.f(1,6));
+		gl.glScaled(15, 5, Util.f(18,4));
 		Shape.Pyramid.draw(gl);
 		gl.glPopMatrix();
 		
 		// back - 10'x12'
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(30,4),0,Util.feetToGL(10));
-		gl.glScaled(Util.feetToGL(12), Util.feetToGL(6,6), Util.feetToGL(10));
+		gl.glTranslated(Util.f(30,4),0,10);
+		gl.glScaled(12, Util.f(6,6), 10);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		// straight roof
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(28,10),Util.feetToGL(6,6),Util.feetToGL(5));
-		gl.glScaled(Util.feetToGL(15), Util.feetToGL(5), Util.feetToGL(12,8));
+		gl.glTranslated(Util.f(28,10),Util.f(6,6),5);
+		gl.glScaled(15, 5, Util.f(12,8));
 		Shape.UnitTriangle.draw(gl);
 		gl.glPopMatrix();
 		// pyramid roof
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(28,10),Util.feetToGL(6,6),Util.feetToGL(11,6));
-		gl.glScaled(Util.feetToGL(15), Util.feetToGL(5), Util.feetToGL(13));
+		gl.glTranslated(Util.f(28,10),Util.f(6,6),Util.f(11,6));
+		gl.glScaled(15, 5, 13);
 		Shape.Pyramid.draw(gl);
 		gl.glPopMatrix();
 				

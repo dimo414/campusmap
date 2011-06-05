@@ -29,7 +29,7 @@ public class PiPhi extends Building{
 			}
 			else
 				// this is the appx centerpoint of the building
-				gl.glTranslated(-Util.feetToGL(68.0/2), 0, Util.feetToGL(151.0/2));
+				gl.glTranslated(-(68.0/2), 0, 151.0/2);
 			// End universal positioning
 			
 			
@@ -38,28 +38,28 @@ public class PiPhi extends Building{
 			Shape.Cube.setColor(Building.brick);
 			// 1st Cube
 			gl.glPushMatrix();
-			gl.glScaled(Util.feetToGL(32), Util.feetToGL(50), Util.feetToGL(30));
+			gl.glScaled(32, 50, 30);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 2nd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(21),0,-Util.feetToGL(30));
-			gl.glScaled(Util.feetToGL(97), Util.feetToGL(50), Util.feetToGL(53));
+			gl.glTranslated(21,0,-(30));
+			gl.glScaled(97, 50, 53);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 3rd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(21-9),0,-Util.feetToGL(30));
-			gl.glScaled(Util.feetToGL(9), Util.feetToGL(50), Util.feetToGL(15));
+			gl.glTranslated(21-9,0,-(30));
+			gl.glScaled(9, 50, 15);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();	
 			
 			// 4th Cube
 			gl.glPushMatrix();
-			gl.glTranslated(-Util.feetToGL(4),0,-Util.feetToGL(30+15));
-			gl.glScaled(Util.feetToGL(25), Util.feetToGL(50), Util.feetToGL(31));
+			gl.glTranslated(-(4),0,-(30+15));
+			gl.glScaled(25, 50, 31);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			

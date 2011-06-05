@@ -40,21 +40,21 @@ public class Library extends Building {
 		}
 		else
 			// this is the appx centerpoint of the building
-			gl.glTranslated(-Util.feetToGL(186,1/2), 0, Util.feetToGL(186,1/2));
+			gl.glTranslated(-Util.f(186,1/2), 0, Util.f(186,1/2));
 		// End universal positioning
 		
 		Shape.Cube.setColor(Building.brick);
 		// main building
 		gl.glPushMatrix();
-		gl.glScaled(Util.feetToGL(186,1), Util.feetToGL(40), Util.feetToGL(186,1));
+		gl.glScaled(Util.f(186,1), 40, Util.f(186,1));
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// north outcrop - this position has not been measured yet - numbers are guesses
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(60),0,-Util.feetToGL(186,1));
+		gl.glTranslated(60,0,-Util.f(186,1));
 		gl.glRotated(45, 0, 1, 0);
-		gl.glScaled(Util.feetToGL(20), Util.feetToGL(40), Util.feetToGL(20));
+		gl.glScaled(20, 40, 20);
 		gl.glTranslated(-.5, 0, .5);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();

@@ -108,7 +108,7 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
         GL gl = drawable.getGL();
         
         // lightwork
-        float[] lightPosition = {(float)(Util.feetToGL(1000)*Math.sin(lAngle)), (float)(Util.feetToGL(1000)*Math.abs(Math.cos(lAngle))), (float)Util.feetToGL(500), 1.0f};
+        float[] lightPosition = {(float)(1000*Math.sin(lAngle)), (float)(1000*Math.abs(Math.cos(lAngle))), 500f, 1.0f};
         gl.glLightfv(GL.GL_LIGHT0, GL.GL_POSITION, lightPosition,0);
         
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);

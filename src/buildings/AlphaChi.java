@@ -29,7 +29,7 @@ public class AlphaChi extends Building{
 			}
 			else
 				// this is the appx centerpoint of the building
-				gl.glTranslated(-Util.feetToGL(184.0/2), 0, Util.feetToGL(177.0/2));
+				gl.glTranslated(-(184.0/2), 0, 177.0/2);
 			// End universal positioning
 			
 			gl.glRotated(90, 0, 1, 0);		
@@ -37,28 +37,28 @@ public class AlphaChi extends Building{
 			Shape.Cube.setColor(Building.brick);
 			// 1st Cube
 			gl.glPushMatrix();
-			gl.glScaled(Util.feetToGL(21), Util.feetToGL(50), Util.feetToGL(121));
+			gl.glScaled(21, 50, 121);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 2nd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(21),0,-Util.feetToGL(121-76));
-			gl.glScaled(Util.feetToGL(65), Util.feetToGL(50), Util.feetToGL(73));
+			gl.glTranslated(21,0,-(121-76));
+			gl.glScaled(65, 50, 73);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 3rd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(21+65),0,-Util.feetToGL(121-85));
-			gl.glScaled(Util.feetToGL(33), Util.feetToGL(50), Util.feetToGL(21));
+			gl.glTranslated(21+65,0,-(121-85));
+			gl.glScaled(33, 50, 21);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();	
 			
 			// 4th Cube
 			gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(21+65),0,-Util.feetToGL(121-30));
-			gl.glScaled(Util.feetToGL(26), Util.feetToGL(50), Util.feetToGL(40));
+			gl.glTranslated(21+65,0,-(121-30));
+			gl.glScaled(26, 50, 40);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			

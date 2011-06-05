@@ -32,44 +32,44 @@ public class Rogers extends Building{
 		}
 		else //TODO Find Centerpoint
 			// this is the appx centerpoint of the building
-			gl.glTranslated(-Util.feetToGL(30), 0, Util.feetToGL(30));
+			gl.glTranslated(-(30), 0, 30);
 		// End universal positioning
 		
 		//Start Drawing, SouthWest Positions
 		
 		Shape.Cube.setColor(Building.brick);
 		gl.glPushMatrix();
-		gl.glScaled(Util.feetToGL(20), Util.feetToGL(height), Util.feetToGL(170+3./12));
+		gl.glScaled(20, height, 170+3./12);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(30), 0, Util.feetToGL(10));
-		gl.glScaled(Util.feetToGL(178+6./12), Util.feetToGL(height), Util.feetToGL(10));
+		gl.glTranslated(30, 0, 10);
+		gl.glScaled(178+6./12, height, 10);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(20), 0, 0);
-		gl.glScaled(Util.feetToGL(168+6./12), Util.feetToGL(height), Util.feetToGL(25));
+		gl.glTranslated(20, 0, 0);
+		gl.glScaled(168+6./12, height, 25);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(20), 0, -Util.feetToGL(25));
-		gl.glScaled(Util.feetToGL(99), Util.feetToGL(height), Util.feetToGL(116+8./12));
+		gl.glTranslated(20, 0, -(25));
+		gl.glScaled(99, height, 116+8./12);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(20), 0, -Util.feetToGL(141+8./12));
-		gl.glScaled(Util.feetToGL(91), Util.feetToGL(height), Util.feetToGL(28+7./12));
+		gl.glTranslated(20, 0, -(141+8./12));
+		gl.glScaled(91, height, 28+7./12);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(20), 0, -Util.feetToGL(170+3./12));
-		gl.glScaled(Util.feetToGL(79), Util.feetToGL(height), Util.feetToGL(20));
+		gl.glTranslated(20, 0, -(170+3./12));
+		gl.glScaled(79, height, 20);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		

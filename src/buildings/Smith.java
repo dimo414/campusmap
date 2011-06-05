@@ -18,7 +18,7 @@ public class Smith extends Building {
 	private double posNorth = 473065.593;
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
-	private double[] midpoint = new double[]{Util.feetToGL(226,10)/2,Util.feetToGL(116,4)/2};
+	private double[] midpoint = new double[]{Util.f(226,10)/2,Util.f(116,4)/2};
 	
 	@Override
 	public void init(GL gl) {
@@ -41,42 +41,42 @@ public class Smith extends Building {
 		Shape.Cube.setColor(Building.brick);
 		// main
 		gl.glPushMatrix();
-		gl.glScaled(Util.feetToGL(177,10), Util.feetToGL(50), Util.feetToGL(82,6));
+		gl.glScaled(Util.f(177,10), 50, Util.f(82,6));
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// FAW
 		gl.glPushMatrix();
-		gl.glTranslated(0,0,-Util.feetToGL(82,6));
-		gl.glScaled(Util.feetToGL(64,4), Util.feetToGL(50), Util.feetToGL(33,10));
+		gl.glTranslated(0,0,-Util.f(82,6));
+		gl.glScaled(Util.f(64,4), 50, Util.f(33,10));
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 
 		// FAE back
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(177,10),0,-Util.feetToGL(19,8));
-		gl.glScaled(Util.feetToGL(46,6), Util.feetToGL(50), Util.feetToGL(62,8));
+		gl.glTranslated(Util.f(177,10),0,-Util.f(19,8));
+		gl.glScaled(Util.f(46,6), 50, Util.f(62,8));
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// FAE front
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(160),0,-Util.feetToGL(82,6));
-		gl.glScaled(Util.feetToGL(64,4), Util.feetToGL(50), Util.feetToGL(16,3));
+		gl.glTranslated(160,0,-Util.f(82,6));
+		gl.glScaled(Util.f(64,4), 50, Util.f(16,3));
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// FAE front east
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(200,2),0,-Util.feetToGL(98,9));
-		gl.glScaled(Util.feetToGL(24,2), Util.feetToGL(50), Util.feetToGL(17,7));
+		gl.glTranslated(Util.f(200,2),0,-Util.f(98,9));
+		gl.glScaled(Util.f(24,2), 50, Util.f(17,7));
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// FAE front west
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(160),0,-Util.feetToGL(98,9));
-		gl.glScaled(Util.feetToGL(24,2), Util.feetToGL(50), Util.feetToGL(17,7));
+		gl.glTranslated(160,0,-Util.f(98,9));
+		gl.glScaled(Util.f(24,2), 50, Util.f(17,7));
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 				
