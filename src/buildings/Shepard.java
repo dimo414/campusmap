@@ -29,7 +29,7 @@ public class Shepard extends Building{
 			}
 			else
 				// this is the appx centerpoint of the building
-				gl.glTranslated(-Util.feetToGL(92.0/2), 0, Util.feetToGL(155.0/2));
+				gl.glTranslated(-(92.0/2), 0, 155.0/2);
 			// End universal positioning
 			
 			gl.glRotated(90, 0, 1, 0);
@@ -37,14 +37,14 @@ public class Shepard extends Building{
 			Shape.Cube.setColor(Building.brick);
 			// 1st Cube
 			gl.glPushMatrix();
-			gl.glScaled(Util.feetToGL(121), Util.feetToGL(50), Util.feetToGL(42));
+			gl.glScaled(121, 50, 42);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 2nd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(73),0,-Util.feetToGL(42));
-			gl.glScaled(Util.feetToGL(23), Util.feetToGL(50), Util.feetToGL(20));
+			gl.glTranslated(73,0,-(42));
+			gl.glScaled(23, 50, 20);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();	
 			

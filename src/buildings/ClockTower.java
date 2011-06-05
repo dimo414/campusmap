@@ -20,7 +20,7 @@ public class ClockTower extends Building {
 	private double posNorth = 472747.03;
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
-	private double[] midpoint = new double[]{Util.feetToGL(11,4)/2,Util.feetToGL(11,4)/2};
+	private double[] midpoint = new double[]{Util.f(11,4)/2,Util.f(11,4)/2};
 	
 	@Override
 	public void init(GL gl) {
@@ -35,7 +35,7 @@ public class ClockTower extends Building {
 			gl.glTranslated(glPos[0],glPos[1],glPos[2]);
 			gl.glRotated(buildingRotation, 0, 1, 0);
 			// move to location relative to library
-			gl.glTranslated(-Util.feetToGL(27+11,2+4),0,-Util.feetToGL(116-21,4-9));
+			gl.glTranslated(-Util.f(27+11,2+4),0,-Util.f(116-21,4-9));
 		}
 		else
 			// this is the appx centerpoint of the building
@@ -45,143 +45,143 @@ public class ClockTower extends Building {
 		Shape.Cube.setColor(Building.brick);
 		// SW Leg
 		gl.glPushMatrix();
-			gl.glScaled(Util.feetToGL(2,3.5), Util.feetToGL(43), Util.feetToGL(2,3.5));
+			gl.glScaled(Util.f(2,3.5), 43, Util.f(2,3.5));
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(0,8),0,-Util.feetToGL(0,8));
-			gl.glScaled(Util.feetToGL(2,3.5), Util.feetToGL(8,6), Util.feetToGL(2,3.5));
+			gl.glTranslated(Util.f(0,8),0,-Util.f(0,8));
+			gl.glScaled(Util.f(2,3.5), Util.f(8,6), Util.f(2,3.5));
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		// S Face
 		gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(0,8),Util.feetToGL(8,6),-Util.feetToGL(0,8));
-			gl.glScaled(Util.feetToGL(10),Util.feetToGL(3,6),Util.feetToGL(2,3.5));
+			gl.glTranslated(Util.f(0,8),Util.f(8,6),-Util.f(0,8));
+			gl.glScaled(10,Util.f(3,6),Util.f(2,3.5));
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
-			gl.glTranslated(0,Util.feetToGL(12),0);
-			gl.glScaled(Util.feetToGL(11,4),Util.feetToGL(3),Util.feetToGL(2,11.5));
+			gl.glTranslated(0,12,0);
+			gl.glScaled(Util.f(11,4),3,Util.f(2,11.5));
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(2,3.5),Util.feetToGL(15),-Util.feetToGL(0,6));
-			gl.glScaled(Util.feetToGL(6,8.5),Util.feetToGL(26),Util.feetToGL(0,1));
+			gl.glTranslated(Util.f(2,3.5),15,-Util.f(0,6));
+			gl.glScaled(Util.f(6,8.5),26,Util.f(0,1));
 			Shape.Cube.setColor(Building.greenGlass);
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		// W Face
 		gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(0,8),Util.feetToGL(8,6),-Util.feetToGL(0,8));
-			gl.glScaled(Util.feetToGL(2,3.5),Util.feetToGL(3,6),Util.feetToGL(10));
+			gl.glTranslated(Util.f(0,8),Util.f(8,6),-Util.f(0,8));
+			gl.glScaled(Util.f(2,3.5),Util.f(3,6),10);
 			Shape.Cube.setColor(Building.brick);
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
-			gl.glTranslated(0,Util.feetToGL(12),0);
-			gl.glScaled(Util.feetToGL(2,11.5),Util.feetToGL(3),Util.feetToGL(11,4));
+			gl.glTranslated(0,12,0);
+			gl.glScaled(Util.f(2,11.5),3,Util.f(11,4));
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(0,6),Util.feetToGL(15),-Util.feetToGL(2,3.5));
-			gl.glScaled(Util.feetToGL(0,1),Util.feetToGL(26),Util.feetToGL(6,8.5));
+			gl.glTranslated(Util.f(0,6),15,-Util.f(2,3.5));
+			gl.glScaled(Util.f(0,1),26,Util.f(6,8.5));
 			Shape.Cube.setColor(Building.greenGlass);
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// NW Leg
-		gl.glTranslated(0, 0, -Util.feetToGL(9,.5));
+		gl.glTranslated(0, 0, -Util.f(9,.5));
 		gl.glPushMatrix();
-			gl.glScaled(Util.feetToGL(2,3.5), Util.feetToGL(43), Util.feetToGL(2,3.5));
+			gl.glScaled(Util.f(2,3.5), 43, Util.f(2,3.5));
 			Shape.Cube.setColor(Building.brick);
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(0,8),0,Util.feetToGL(0,8));
-			gl.glScaled(Util.feetToGL(2,3.5), Util.feetToGL(8,6), Util.feetToGL(2,3.5));
+			gl.glTranslated(Util.f(0,8),0,Util.f(0,8));
+			gl.glScaled(Util.f(2,3.5), Util.f(8,6), Util.f(2,3.5));
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		// N Face
 		gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(0,8),Util.feetToGL(8,6),Util.feetToGL(0,8));
-			gl.glScaled(Util.feetToGL(10),Util.feetToGL(3,6),Util.feetToGL(2,3.5));
+			gl.glTranslated(Util.f(0,8),Util.f(8,6),Util.f(0,8));
+			gl.glScaled(10,Util.f(3,6),Util.f(2,3.5));
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
-			gl.glTranslated(0,Util.feetToGL(12),Util.feetToGL(0,8));
-			gl.glScaled(Util.feetToGL(11,4),Util.feetToGL(3),Util.feetToGL(2,11.5));
+			gl.glTranslated(0,12,Util.f(0,8));
+			gl.glScaled(Util.f(11,4),3,Util.f(2,11.5));
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(2,3.5),Util.feetToGL(15),-Util.feetToGL(1,8.5));
-			gl.glScaled(Util.feetToGL(6,8.5),Util.feetToGL(26),Util.feetToGL(0,1));
+			gl.glTranslated(Util.f(2,3.5),15,-Util.f(1,8.5));
+			gl.glScaled(Util.f(6,8.5),26,Util.f(0,1));
 			Shape.Cube.setColor(Building.greenGlass);
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// NW Leg
-		gl.glTranslated(Util.feetToGL(9,.5),0,0);
+		gl.glTranslated(Util.f(9,.5),0,0);
 		gl.glPushMatrix();
-			gl.glScaled(Util.feetToGL(2,3.5), Util.feetToGL(43), Util.feetToGL(2,3.5));
+			gl.glScaled(Util.f(2,3.5), 43, Util.f(2,3.5));
 			Shape.Cube.setColor(Building.brick);
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
-			gl.glTranslated(-Util.feetToGL(0,8),0,Util.feetToGL(0,8));
-			gl.glScaled(Util.feetToGL(2,3.5), Util.feetToGL(8,6), Util.feetToGL(2,3.5));
+			gl.glTranslated(-Util.f(0,8),0,Util.f(0,8));
+			gl.glScaled(Util.f(2,3.5), Util.f(8,6), Util.f(2,3.5));
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// SE Leg
-		gl.glTranslated(0, 0, Util.feetToGL(9,.5));
+		gl.glTranslated(0, 0, Util.f(9,.5));
 		gl.glPushMatrix();
-			gl.glScaled(Util.feetToGL(2,3.5), Util.feetToGL(43), Util.feetToGL(2,3.5));
+			gl.glScaled(Util.f(2,3.5), 43, Util.f(2,3.5));
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
-			gl.glTranslated(-Util.feetToGL(0,8),0,-Util.feetToGL(0,8));
-			gl.glScaled(Util.feetToGL(2,3.5), Util.feetToGL(8,6), Util.feetToGL(2,3.5));
+			gl.glTranslated(-Util.f(0,8),0,-Util.f(0,8));
+			gl.glScaled(Util.f(2,3.5), Util.f(8,6), Util.f(2,3.5));
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		// W Face
 		gl.glPushMatrix();
-			gl.glTranslated(-Util.feetToGL(0,8),Util.feetToGL(8,6),-Util.feetToGL(0,8));
-			gl.glScaled(Util.feetToGL(2,3.5),Util.feetToGL(3,6),Util.feetToGL(10));
+			gl.glTranslated(-Util.f(0,8),Util.f(8,6),-Util.f(0,8));
+			gl.glScaled(Util.f(2,3.5),Util.f(3,6),10);
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
-			gl.glTranslated(-Util.feetToGL(0,8),Util.feetToGL(12),0);
-			gl.glScaled(Util.feetToGL(2,11.5),Util.feetToGL(3),Util.feetToGL(11,4));
+			gl.glTranslated(-Util.f(0,8),12,0);
+			gl.glScaled(Util.f(2,11.5),3,Util.f(11,4));
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(1,8.5),Util.feetToGL(15),-Util.feetToGL(2,3.5));
-			gl.glScaled(Util.feetToGL(0,1),Util.feetToGL(26),Util.feetToGL(6,8.5));
+			gl.glTranslated(Util.f(1,8.5),15,-Util.f(2,3.5));
+			gl.glScaled(Util.f(0,1),26,Util.f(6,8.5));
 			Shape.Cube.setColor(Building.greenGlass);
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 	
-		gl.glTranslated(-Util.feetToGL(9,.5),0,0);
+		gl.glTranslated(-Util.f(9,.5),0,0);
 				
 		// Top brick - the height of this is a guess
 		gl.glPushMatrix();
-			gl.glTranslated(0, Util.feetToGL(41), 0);
-			gl.glScaled(Util.feetToGL(11,4), Util.feetToGL(2), Util.feetToGL(11,4));
+			gl.glTranslated(0, 41, 0);
+			gl.glScaled(Util.f(11,4), 2, Util.f(11,4));
 			Shape.Cube.setColor(Building.brick);
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 
 		// Peak - the height of this is a guess
 		gl.glPushMatrix();
-			gl.glTranslated(0, Util.feetToGL(43), 0);
-			gl.glScaled(Util.feetToGL(11,4), Util.feetToGL(1), Util.feetToGL(11,4));
+			gl.glTranslated(0, 43, 0);
+			gl.glScaled(Util.f(11,4), 1, Util.f(11,4));
 			Shape.Cube.setColor(Building.oldCopper);
 			Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 			
 		gl.glPushMatrix();
-			gl.glTranslated(0, Util.feetToGL(44), 0);
-			gl.glScaled(Util.feetToGL(11,4), Util.feetToGL(5), Util.feetToGL(11,4));
+			gl.glTranslated(0, 44, 0);
+			gl.glScaled(Util.f(11,4), 5, Util.f(11,4));
 			Shape.Pyramid.setColor(Building.oldCopper);
 			Shape.Pyramid.draw(gl);
 		gl.glPopMatrix();
@@ -189,26 +189,26 @@ public class ClockTower extends Building {
 		// clock faces
 		
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(5,8), Util.feetToGL(38), -Util.feetToGL(11,0));
-		gl.glScaled(Util.feetToGL(5), Util.feetToGL(5), 1);
+		gl.glTranslated(Util.f(5,8), 38, -Util.f(11,0));
+		gl.glScaled(5, 5, 1);
 		clock(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(0,4), Util.feetToGL(38), -Util.feetToGL(5,8));
+		gl.glTranslated(Util.f(0,4), 38, -Util.f(5,8));
 		gl.glRotated(90, 0, 1, 0);
-		gl.glScaled(Util.feetToGL(5), Util.feetToGL(5), 1);
+		gl.glScaled(5, 5, 1);
 		clock(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(5,8), Util.feetToGL(38), -Util.feetToGL(0,4));
+		gl.glTranslated(Util.f(5,8), 38, -Util.f(0,4));
 		gl.glRotated(180, 0, 1, 0);
-		gl.glScaled(Util.feetToGL(5), Util.feetToGL(5), 1);
+		gl.glScaled(5, 5, 1);
 		clock(gl);
 		gl.glPopMatrix();
 		gl.glPushMatrix();
-		gl.glTranslated(Util.feetToGL(11), Util.feetToGL(38), -Util.feetToGL(5,8));
+		gl.glTranslated(11, 38, -Util.f(5,8));
 		gl.glRotated(270, 0, 1, 0);
-		gl.glScaled(Util.feetToGL(5), Util.feetToGL(5), 1);
+		gl.glScaled(5, 5, 1);
 		clock(gl);
 		gl.glPopMatrix();
 		

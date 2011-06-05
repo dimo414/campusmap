@@ -16,7 +16,7 @@ public class Gatke extends Building{
 	private double posNorth = 473298.811;
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
-	private double[] midpoint = new double[]{Util.feetToGL(45/2),Util.feetToGL(98/2)};
+	private double[] midpoint = new double[]{45/2,98/2};
 	
 	@Override
 	public void init(GL gl) {
@@ -43,7 +43,7 @@ public class Gatke extends Building{
 		Shape.Cube.setColor(Building.brick);
 		// 1st Cube
 		gl.glPushMatrix();
-		gl.glScaled(Util.feetToGL(45), Util.feetToGL(50), Util.feetToGL(98));
+		gl.glScaled(45, 50, 98);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		

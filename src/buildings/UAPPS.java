@@ -17,14 +17,14 @@ public class UAPPS extends Building{
 		private double posElevation = 0; // TODO Get Elevation of building
 		private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		
-		private double crossWidth = Util.feetToGL(32,6);
-		private double crossLength = Util.feetToGL(93,8);
-		private double crossDepth = Util.feetToGL(11,8);
-		private double stairWidth = Util.feetToGL(10,6);
-		private double stairDepth = Util.feetToGL(4,2);
-		private double roofBase = Util.feetToGL(52);
-		private double roofShort = Util.feetToGL(65);
-		private double roofTop = Util.feetToGL(72);
+		private double crossWidth = Util.f(32,6);
+		private double crossLength = Util.f(93,8);
+		private double crossDepth = Util.f(11,8);
+		private double stairWidth = Util.f(10,6);
+		private double stairDepth = Util.f(4,2);
+		private double roofBase = 52;
+		private double roofShort = 65;
+		private double roofTop = 72;
 
 		// main body dimensions, a cross at 45 degrees from outside cross
 		// width (visible side) = sqrt(2*(length/2-width/2-depth))
@@ -44,7 +44,7 @@ public class UAPPS extends Building{
 			}
 			else
 				// this is the appx centerpoint of the building
-				gl.glTranslated(-Util.feetToGL(184.0/2), 0, Util.feetToGL(177.0/2));
+				gl.glTranslated(-(184.0/2), 0, 177.0/2);
 			// End universal positioning
 			
 			Shape.Cube.setColor(Building.brick);

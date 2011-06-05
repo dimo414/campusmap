@@ -17,7 +17,7 @@ public class Sparks extends Building{
 		private double posNorth = 472598.103;
 		private double posElevation = 0; // TODO Get Elevation of building
 		private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
-		private double[] midpoint = new double[]{Util.feetToGL(205/2),Util.feetToGL(238/2)};
+		private double[] midpoint = new double[]{205/2,238/2};
 		
 		@Override
 		public void draw(GL gl) {
@@ -38,21 +38,21 @@ public class Sparks extends Building{
 			Shape.Cube.setColor(Building.brick);
 			// 1st Cube
 			gl.glPushMatrix();
-			gl.glScaled(Util.feetToGL(217-27), Util.feetToGL(50), Util.feetToGL(95));
+			gl.glScaled(217-27, 50, 95);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 2nd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(217-27),0,-Util.feetToGL(0));
-			gl.glScaled(Util.feetToGL(27), Util.feetToGL(50), Util.feetToGL(171));
+			gl.glTranslated(217-27,0,-(0));
+			gl.glScaled(27, 50, 171);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 3rd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(-Util.feetToGL(14),0,-Util.feetToGL(95));
-			gl.glScaled(Util.feetToGL(87+122), Util.feetToGL(50), Util.feetToGL(89));
+			gl.glTranslated(-(14),0,-(95));
+			gl.glScaled(87+122, 50, 89);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			

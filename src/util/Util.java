@@ -64,7 +64,25 @@ public class Util {
 		return dToF(coordToGL(easting,northing,elevation));
 	}
 
-	/**
+	/*
+	 * The feetToGL methods have been removed, since they only added redundancy
+	 * and bloat to the construction of buildings.
+	 * 
+	 * This means the native OpenGL unit exactly maps to 1 international foot, and
+	 * can no longer be easily changed.  This does not seem to be an issue,
+	 * but if necessary, the last time the codebase used feetToGL() was in revision
+	 * e767f38dded82b92efa88cdbc75193643a359610
+	 * 
+	 * To prevent regressions no buildings were edited manually, instead the following
+	 * regular expressions were run through jGrep and replaced with the paired string
+	 * to the right of the ->.  Notice the last regex is replaced with the empty string.
+	 * 
+	 * Util\.feetToGL\(([^\(\)]+,[^\(\)]+)\)  ->  Util.f($1)
+     * -Util\.feetToGL\(([^\(\)]+)\)          ->  -($1)
+     * Util\.feetToGL\(([^\(\)]+)\)           ->  $1
+     * Util\.feetToGL                         ->  
+	 */
+	/*
 	 * Takes a measurement in feet, and converts it to the appropriate distance
 	 * in OpenGL.  This method corresponds to coordToGL() - cordToGL(x,y,z)[0]+feetToGL(f) is exactly equivalent to cordToGL(x+f,y,z)[0].
 	 * 
@@ -72,11 +90,11 @@ public class Util {
 	 *            measurement (in feet)
 	 * @return the distance in OpenGL units
 	 */
-	public static double feetToGL(double feet) {
+	/*public static double feetToGL(double feet) {
 		return feet;
-	}
+	}*/
 
-	/**
+	/*
 	 * Takes a measurement in feet and inches, and converts it to the appropriate distance
 	 * in OpenGL.  This method corresponds to coordToGL() - cordToGL(x,y,z)[0]+feetToGL(f) is exactly equivalent to cordToGL(x+f,y,z)[0].
 	 * 
@@ -84,9 +102,9 @@ public class Util {
 	 * @param inches remainder (in inches) 
 	 * @return the distance in OpenGL units
 	 */
-	public static double feetToGL(int feet, double inches) {
+	/*public static double feetToGL(int feet, double inches) {
 		return feetToGL(f(feet,inches));
-	}
+	}*/
 
 	/**
 	 * Helper method to turn feet and inches into a double

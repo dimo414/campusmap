@@ -33,7 +33,7 @@ public class KresgePhysical extends Building{
 		}
 		else //TODO Find Centerpoint
 			// this is the appx centerpoint of the building
-			gl.glTranslated(-Util.feetToGL(50), 0, Util.feetToGL(90));
+			gl.glTranslated(-(50), 0, 90);
 		// End universal positioning
 		
 		//Start Drawing, SouthWest Positions
@@ -41,33 +41,33 @@ public class KresgePhysical extends Building{
 		Shape.Cube.setColor(Building.brick);
 		//Physical Plant
 		gl.glPushMatrix(); //MainBuilding
-		gl.glScaled(Util.feetToGL(51), Util.feetToGL(pheight), Util.feetToGL(55));
+		gl.glScaled(51, pheight, 55);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //East Extrusion (staircase)
-		gl.glTranslated(Util.feetToGL(51), 0, 0);
-		gl.glScaled(Util.feetToGL(32), Util.feetToGL(pheight), Util.feetToGL(29));
+		gl.glTranslated(51, 0, 0);
+		gl.glScaled(32, pheight, 29);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
-		gl.glTranslated(0, 0, -Util.feetToGL(55));
+		gl.glTranslated(0, 0, -(55));
 		//Kresge Playhouse
 		
 		gl.glPushMatrix(); //Southern Portion
-		gl.glScaled(Util.feetToGL(119), Util.feetToGL(kheight), Util.feetToGL(50+6./12));
+		gl.glScaled(119, kheight, 50+6./12);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Middle Portion (w/ Staircase)
-		gl.glTranslated(0, 0, -Util.feetToGL(50+6./12));
-		gl.glScaled(Util.feetToGL(130+8./12), Util.feetToGL(kheight), Util.feetToGL(37+4./12));
+		gl.glTranslated(0, 0, -(50+6./12));
+		gl.glScaled(130+8./12, kheight, 37+4./12);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Northern Portion
-		gl.glTranslated(0, 0, -Util.feetToGL(87+10./12));
-		gl.glScaled(Util.feetToGL(120), Util.feetToGL(kheight), Util.feetToGL(21+2./12));
+		gl.glTranslated(0, 0, -(87+10./12));
+		gl.glScaled(120, kheight, 21+2./12);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		

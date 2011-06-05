@@ -32,38 +32,38 @@ public class Art extends Building{
 		}
 		else //TODO Find Centerpoint
 			// this is the appx centerpoint of the building
-			gl.glTranslated(-Util.feetToGL(30), 0, Util.feetToGL(30));
+			gl.glTranslated(-(30), 0, 30);
 		// End universal positioning
 		
 		//Start Drawing, SouthWest Positions
 		
 		Shape.Cube.setColor(Building.brick);
 		gl.glPushMatrix(); //Kiln
-		gl.glTranslated(-Util.feetToGL(22), 0, -Util.feetToGL(18+3./12));
-		gl.glScaled(Util.feetToGL(22), Util.feetToGL(height), Util.feetToGL(18+8./12));
+		gl.glTranslated(-(22), 0, -(18+3./12));
+		gl.glScaled(22, height, 18+8./12);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 
 		gl.glPushMatrix(); //MainBuilding
-		gl.glScaled(Util.feetToGL(73+2./12), Util.feetToGL(height), Util.feetToGL(54));
+		gl.glScaled(73+2./12, height, 54);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Hallway
-		gl.glTranslated(Util.feetToGL(73+2./12), 0, -Util.feetToGL(20+7./12));
-		gl.glScaled(Util.feetToGL(11+6./12), Util.feetToGL(height), Util.feetToGL(13+11./12));
+		gl.glTranslated(73+2./12, 0, -(20+7./12));
+		gl.glScaled(11+6./12, height, 13+11./12);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //RightSide
-		gl.glTranslated(Util.feetToGL(84+8./12), 0, Util.feetToGL(12+11./12));
-		gl.glScaled(Util.feetToGL(31+4./12), Util.feetToGL(height), Util.feetToGL(66+4./12));
+		gl.glTranslated(84+8./12, 0, 12+11./12);
+		gl.glScaled(31+4./12, height, 66+4./12);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		gl.glPushMatrix(); //Right Extrusion
-		gl.glTranslated(Util.feetToGL(116), 0, -Util.feetToGL(7));
-		gl.glScaled(Util.feetToGL(6), Util.feetToGL(height), Util.feetToGL(26+6./12));
+		gl.glTranslated(116, 0, -(7));
+		gl.glScaled(6, height, 26+6./12);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		

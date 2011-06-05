@@ -29,7 +29,7 @@ public class WishandAdmission extends Building{
 			}
 			else
 				// this is the appx centerpoint of the building
-				gl.glTranslated(-Util.feetToGL(92.0/2), 0, Util.feetToGL(155.0/2));
+				gl.glTranslated(-(92.0/2), 0, 155.0/2);
 			// End universal positioning
 			
 			gl.glRotated(90, 0, 1, 0);
@@ -37,14 +37,14 @@ public class WishandAdmission extends Building{
 			Shape.Cube.setColor(Building.brick);
 			// 1st Cube
 			gl.glPushMatrix();
-			gl.glScaled(Util.feetToGL(31), Util.feetToGL(50), Util.feetToGL(19));
+			gl.glScaled(31, 50, 19);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();
 			
 			// 2nd Cube
 			gl.glPushMatrix();
-			gl.glTranslated(Util.feetToGL(0),0,-Util.feetToGL(19));
-			gl.glScaled(Util.feetToGL(72), Util.feetToGL(50), Util.feetToGL(112));
+			gl.glTranslated(0,0,-(19));
+			gl.glScaled(72, 50, 112);
 			Shape.Cube.draw(gl);
 			gl.glPopMatrix();	
 			
