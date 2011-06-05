@@ -16,8 +16,10 @@ import util.Util;
  * @author Michael Diamond
  */
 public class ClockTower extends Building {
-	private double posEast = 7546826.465;
-	private double posNorth = 472747.03;
+	// Did some trig given the clocktower's position relative to the library
+	// to figure out the easting and northing of the clocktower
+	private double posEast = 7546826.465-Util.f(1,6.152);
+	private double posNorth = 472747.03+Util.f(102, 1.29);
 	private double posElevation = 0; // TODO Get Elevation of building
 	private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
 	private double[] midpoint = new double[]{Util.f(11,4)/2,Util.f(11,4)/2};
@@ -34,8 +36,6 @@ public class ClockTower extends Building {
 		if(!drawOrigin){
 			gl.glTranslated(glPos[0],glPos[1],glPos[2]);
 			gl.glRotated(buildingRotation, 0, 1, 0);
-			// move to location relative to library
-			gl.glTranslated(-Util.f(27+11,2+4),0,-Util.f(116-21,4-9));
 		}
 		else
 			// this is the appx centerpoint of the building
