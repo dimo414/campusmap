@@ -3,7 +3,6 @@ package buildings;
 import javax.media.opengl.GL;
 
 import util.Shape;
-import util.Util;
 
 /**
  * Alpha Chi Omega Sorority House
@@ -16,13 +15,18 @@ public class AlphaChi extends Building{
 		private double posEast = 7546481.18;
 		private double posNorth = 472500.315;
 		private double posElevation = 0; // TODO Get Elevation of building
-		private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
+
+		@Override
+		public void init(GL gl) {
+			coordinate = new double[]{posEast,posNorth,posElevation};
+			midpoint = new double[]{184.0/2, 177.0/2};
+		}
 		
 		@Override
 		public void draw(GL gl) {
 			gl.glPushMatrix();
 			
-			// Universal positioning
+		/*	// Universal positioning
 			if(!drawOrigin){
 				gl.glTranslated(glPos[0],glPos[1],glPos[2]);
 				gl.glRotated(buildingRotation, 0, 1, 0);
@@ -30,7 +34,7 @@ public class AlphaChi extends Building{
 			else
 				// this is the appx centerpoint of the building
 				gl.glTranslated(-(184.0/2), 0, 177.0/2);
-			// End universal positioning
+			// End universal positioning*/
 			
 			gl.glRotated(90, 0, 1, 0);		
 			
@@ -63,11 +67,6 @@ public class AlphaChi extends Building{
 			gl.glPopMatrix();
 			
 			gl.glPopMatrix();
-		}
-
-		@Override
-		public void init(GL gl) {
-			glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		}
 	
 }

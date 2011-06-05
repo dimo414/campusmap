@@ -15,7 +15,6 @@ public class UAPPS extends Building{
 		private double posEast = 7545738.017;
 		private double posNorth = 472840.221;
 		private double posElevation = 0; // TODO Get Elevation of building
-		private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		
 		private double crossWidth = Util.f(32,6);
 		private double crossLength = Util.f(93,8);
@@ -31,21 +30,16 @@ public class UAPPS extends Building{
 		// length (through building) = sqrt(2*(length/2+width/2-depth))
 		private double mainWidth = Math.sqrt(2*Math.pow(crossLength/2-crossWidth/2-crossDepth,2));
 		private double mainLength = Math.sqrt(2*Math.pow(crossLength/2+crossWidth/2-crossDepth,2));
-		
+
+		@Override
+		public void init(GL gl) {
+			coordinate = new double[]{posEast,posNorth,posElevation};
+			midpoint = new double[]{184.0/2,177.0/2};
+		}
 		
 		@Override
 		public void draw(GL gl) {
 			gl.glPushMatrix();
-			
-			// Universal positioning
-			if(!drawOrigin){
-				gl.glTranslated(glPos[0],glPos[1],glPos[2]);
-				gl.glRotated(buildingRotation, 0, 1, 0);
-			}
-			else
-				// this is the appx centerpoint of the building
-				gl.glTranslated(-(184.0/2), 0, 177.0/2);
-			// End universal positioning
 			
 			Shape.Cube.setColor(Building.brick);
 			Shape.UnitTriangle.setColor(Building.brickRoofTriangle);
@@ -120,10 +114,6 @@ public class UAPPS extends Building{
 			gl.glPopMatrix();
 			
 			gl.glPopMatrix();
-		}
-
-		@Override
-		public void init(GL gl) {
 		}
 	
 }

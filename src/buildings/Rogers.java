@@ -3,7 +3,6 @@ package buildings;
 import javax.media.opengl.GL;
 
 import util.Shape;
-import util.Util;
 
 /**
  * <h3>Rogers Music Center</h3>
@@ -18,22 +17,18 @@ public class Rogers extends Building{
 	private double posEast = 7546930.978; //TODO Find position
 	private double posNorth = 473005.738; //TODO Find position
 	private double posElevation = 0; // TODO Get Elevation of building
-	private double[] glPos;
 	
 	private double height = 45;
+
+	@Override
+	public void init(GL gl) {
+		coordinate = new double[]{posEast,posNorth,posElevation};
+		midpoint = new double[]{30,30};
+	}
+	
 	@Override
 	public void draw(GL gl) {
 		gl.glPushMatrix();
-		
-		// Universal positioning
-		if(!drawOrigin){
-			gl.glTranslated(glPos[0],glPos[1],glPos[2]);
-			gl.glRotated(buildingRotation, 0, 1, 0);
-		}
-		else //TODO Find Centerpoint
-			// this is the appx centerpoint of the building
-			gl.glTranslated(-(30), 0, 30);
-		// End universal positioning
 		
 		//Start Drawing, SouthWest Positions
 		
@@ -75,10 +70,4 @@ public class Rogers extends Building{
 		
 		gl.glPopMatrix();
 	}
-
-	@Override
-	public void init(GL gl) {
-		glPos = Util.coordToGL(posEast, posNorth, posElevation);		
-	}
-
 }

@@ -2,9 +2,7 @@ package buildings;
 
 import javax.media.opengl.GL;
 
-
 import util.Shape;
-import util.Util;
 
 /**
  * <h3>Putnam University Center</h3>
@@ -25,8 +23,6 @@ public class Putnam extends Building {
 	private double posEast = 7546493.302;
 	private double posNorth = 472808.16;
 	private double posElevation = 0; // TODO Get Elevation of building
-	private double[] glPos;
-	
 	
 	private double balconyw = 12+11./12;
 	private double roofOverhang = 13+4.5/12;
@@ -38,24 +34,16 @@ public class Putnam extends Building {
 	private double floor2 = 21.5 /2;
 	private double floor3 = 21.5/2;
 	private double roofh = 6;
+	
 	@Override
 	public void init(GL gl) {
-		glPos = Util.coordToGL(posEast, posNorth, posElevation);
+		coordinate = new double[]{posEast,posNorth,posElevation};
+		midpoint = new double[]{lengthEW/2, lengthNS/2};
 	}
 
 	@Override
 	public void draw(GL gl) {//TODO find a better way to position the building at the origin or not
 		gl.glPushMatrix();
-		
-		// Universal positioning
-		if(!drawOrigin){
-			gl.glTranslated(glPos[0],glPos[1],glPos[2]);
-			gl.glRotated(buildingRotation, 0, 1, 0);
-		}
-		else
-			// this is the appx centerpoint of the building
-			gl.glTranslated(-(lengthEW/2), 0, lengthNS/2);
-		// End universal positioning
 		
 		gl.glTranslated(balconyw, 0, -(balconyw));
 		//Pillars

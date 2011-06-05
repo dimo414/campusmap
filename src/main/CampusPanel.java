@@ -198,7 +198,15 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	 */
 	public void drawBuildings(GL gl){
 		for(Building a : buildings){
+			gl.glPushMatrix();
+
+			double[] pos = a.getCoord();
+			pos = Util.coordToGL(pos[0], pos[1], pos[2]);
+			gl.glTranslated(pos[0], pos[1], pos[2]);
+			gl.glRotated(Building.buildingRotation, 0, 1, 0);
 			a.draw(gl);
+			
+			gl.glPopMatrix();
 		}
 	}
 	
