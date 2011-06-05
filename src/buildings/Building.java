@@ -41,20 +41,38 @@ public abstract class Building {
 	/** Composite color for right and unit triangles, brick on triangular faces and bottom quad, tile on top two quad faces */
 	public static final float[][] brickRoofTriangle = {brick,tileRoof,tileRoof,brick,brick};
 	
-	protected boolean drawOrigin = false;
+	
 	
 	/**
-	 * If this method is passed true, the building will be drawn centered on the origin, for viewing of the individual building.
-	 * Otherwise (passed false, or never called) the building will be drawn where it is supposed to be, relative to the campus.
-	 * @param draw indicates if building should be drawn at origin (true) or in it's correct spatial position (false)
+	 * The real world coordinate of the building (usually the SW corner)
+	 * Building should be drawn such that the point at the origin has this coordinate.
 	 */
-	public void drawAtOrigin(boolean draw){
-		drawOrigin = draw;
+	protected double[] coordinate = {0,0,0};
+	
+	/**
+	 * The midpoint of the building relative to the canonical coordinate.  There is no vertical component.
+	 */
+	protected double[] midpoint = {0,0};
+	
+	/**
+	 * Gets the real world coordinate of the canonical point of the building.
+	 * @return an array containing the easting, northing, and elevation of the point.
+	 */
+	public double[] getCoord(){
+		return coordinate;
+	}
+	
+	/**
+	 * Gets the midpoint of the building, relative to the canonical point
+	 * @return an array containing the easting and northing from the canonical point.
+	 */
+	public double[] getMidpoint(){
+		return midpoint;
 	}
 	
 	/**
 	 * Get's called at GL init time, work to properly construct the building should be done in this method, rather
-	 * than in a constructor.
+	 * than in a constructor, to ensure all work is done in one place.
 	 * @param gl the OpenGL object
 	 */
 	public abstract void init(GL gl);

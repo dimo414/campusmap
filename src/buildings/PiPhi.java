@@ -3,7 +3,6 @@ package buildings;
 import javax.media.opengl.GL;
 
 import util.Shape;
-import util.Util;
 
 /**
  * Pi Beta Phi Sorority House
@@ -16,22 +15,16 @@ public class PiPhi extends Building{
 		private double posEast = 7546240.405;
 		private double posNorth = 472590.988;
 		private double posElevation = 0; // TODO Get Elevation of building
-		private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
+
+		@Override
+		public void init(GL gl) {
+			coordinate = new double[]{posEast,posNorth,posElevation};
+			midpoint = new double[]{68.0/2, 151.0/2};
+		}
 				
 		@Override
 		public void draw(GL gl) {
 			gl.glPushMatrix();
-			
-			// Universal positioning
-			if(!drawOrigin){
-				gl.glTranslated(glPos[0],glPos[1],glPos[2]);
-				gl.glRotated(buildingRotation, 0, 1, 0);
-			}
-			else
-				// this is the appx centerpoint of the building
-				gl.glTranslated(-(68.0/2), 0, 151.0/2);
-			// End universal positioning
-			
 			
 			gl.glRotated(90, 0, 1, 0);
 			
@@ -64,11 +57,6 @@ public class PiPhi extends Building{
 			gl.glPopMatrix();
 			
 			gl.glPopMatrix();
-		}
-
-		@Override
-		public void init(GL gl) {
-			glPos = Util.coordToGL(posEast, posNorth, posElevation);
 		}
 	
 }

@@ -74,7 +74,6 @@ public class BuildingViewer implements GLEventListener, ActionListener {
 					if(Building.class.isAssignableFrom(c)){ // if class is a building
 						Building b = (Building) c.newInstance();
 						b.init(gl);
-						b.drawAtOrigin(true);
 						buildings.put(file,b);
 					}
 				} catch (ClassNotFoundException e) {
@@ -126,8 +125,11 @@ public class BuildingViewer implements GLEventListener, ActionListener {
         rAngle += .5;
     	gl.glRotated(rAngle, 0, 1, 0);
         
-    	if(bld != null)
+    	if(bld != null) {
+    		double[] mid = bld.getMidpoint();
+    		gl.glTranslated(-mid[0], 0, mid[1]);
     		bld.draw(gl);
+    	}
 	    
 	    gl.glPopMatrix();
 	    // END DRAWING

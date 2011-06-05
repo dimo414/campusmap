@@ -17,26 +17,16 @@ public class DG extends Building {
 	private double posEast = 7546257.405;
 	private double posNorth = 472563.988;
 	private double posElevation = 0; // TODO Get Elevation of building
-	private double[] glPos = Util.coordToGL(posEast, posNorth, posElevation);
-	private double[] midpoint = new double[]{78/2,Util.f(110,7)/2};
 	
 	@Override
 	public void init(GL gl) {
+		coordinate = new double[]{posEast,posNorth,posElevation};
+		midpoint = new double[]{78/2,Util.f(110,7)/2};
 	}
 
 	@Override
 	public void draw(GL gl) {
 		gl.glPushMatrix();
-		
-		// Universal positioning
-		if(!drawOrigin){
-			gl.glTranslated(glPos[0],glPos[1],glPos[2]);
-			gl.glRotated(buildingRotation, 0, 1, 0);
-		}
-		else
-			// this is the appx centerpoint of the building
-			gl.glTranslated(-midpoint[0], 0, midpoint[1]);
-		// End universal positioning
 		
 		Shape.Cube.setColor(Building.brick);
 		// south wing

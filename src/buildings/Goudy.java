@@ -20,7 +20,6 @@ public class Goudy extends Building{
 	private double posEast = 7546339.868; //TODO Confirm point
 	private double posNorth = 473053.088; //TODO Confirm point
 	private double posElevation = 0; // TODO Get Elevation of building
-	private double[] glPos;
 	private double height = 9+9./12;
 	private double rheight = 19;
 	/*
@@ -34,20 +33,18 @@ public class Goudy extends Building{
 	Wall standard height:			9'9" -F1->F7, F10->F15 
 	Dumpster wall:					8' F1-F2 
 	 */
+
+	@Override
+	public void init(GL gl) {
+		coordinate = new double[]{posEast,posNorth,posElevation};
+		midpoint = new double[]{170, 55};	
+	}
 	
 	@Override
 	public void draw(GL gl) {
+		// TODO lots of little errors with the roofs
+		// TODO add the penthouse
 		gl.glPushMatrix();
-		
-		// Universal positioning
-		if(!drawOrigin){
-			gl.glTranslated(glPos[0],glPos[1],glPos[2]);
-			gl.glRotated(buildingRotation, 0, 1, 0);
-		}
-		else
-			// this is the appx centerpoint of the building
-			gl.glTranslated(-(170), 0, 55);
-		// End universal positioning
 		
 		//Start Drawing, SouthWest Positions
 		Shape.Cube.setColor(Building.brick);
@@ -268,10 +265,4 @@ public class Goudy extends Building{
 		
 		gl.glPopMatrix();
 	}
-
-	@Override
-	public void init(GL gl) {
-		glPos = Util.coordToGL(posEast, posNorth, posElevation);		
-	}
-
 }
