@@ -9,7 +9,6 @@ import util.Shape;
  * 
  * <h4>Identifying Location - SW Corner</h4>
  * <p><strong>SOMETHING E SOMETHING N</strong></p>
-
  * 
  * @author Brian Forbis
  */

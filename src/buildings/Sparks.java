@@ -7,6 +7,9 @@ import util.Shape;
 /**
  * Sparks Center
  * 
+ * Identifying Location - Southwest Corner
+ * 7547086.037E 472598.103N
+ * 
  * @author Jose Alvarado
  */
 public class Sparks extends Building{
@@ -24,31 +27,29 @@ public class Sparks extends Building{
 		
 		@Override
 		public void draw(GL gl) {
-			gl.glPushMatrix();
-			
-//			gl.glRotated(90, 0, 1, 0);
-			
-			Shape.Cube.setColor(Building.brick);
-			// 1st Cube
-			gl.glPushMatrix();
-			gl.glScaled(217-27, 50, 95);
-			Shape.Cube.draw(gl);
-			gl.glPopMatrix();
-			
-			// 2nd Cube
-			gl.glPushMatrix();
-			gl.glTranslated(217-27,0,-(0));
-			gl.glScaled(27, 50, 171);
-			Shape.Cube.draw(gl);
-			gl.glPopMatrix();
-			
-			// 3rd Cube
-			gl.glPushMatrix();
-			gl.glTranslated(-(14),0,-(95));
-			gl.glScaled(87+122, 50, 89);
-			Shape.Cube.draw(gl);
-			gl.glPopMatrix();
-			
-			gl.glPopMatrix();
-		}
+		gl.glPushMatrix();
+		
+		Shape.Cube.setColor(Building.brick);
+		// 1st Cube
+		gl.glPushMatrix();
+		gl.glScaled(217-27, 50, 95);
+		Shape.Cube.draw(gl);
+		gl.glPopMatrix();
+		
+		// 2nd Cube
+		gl.glPushMatrix();
+		gl.glTranslated(217-27,0,-(0));
+		gl.glScaled(27, 50, 171);
+		Shape.Cube.draw(gl);
+		gl.glPopMatrix();
+		
+		// 3rd Cube
+		gl.glPushMatrix();
+		gl.glTranslated(-(14),0,-(95));
+		gl.glScaled(87+122, 50, 89);
+		Shape.Cube.draw(gl);
+		gl.glPopMatrix();
+		
+		gl.glPopMatrix();
+	}
 }

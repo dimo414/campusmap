@@ -17,6 +17,8 @@ public class Art extends Building{
 	private double posEast = 7546568.978;
 	private double posNorth = 473705.738;
 	private double posElevation = 0; // TODO Get Elevation of building
+	
+	private double height = 45;
 
 	@Override
 	public void init(GL gl) {
@@ -24,7 +26,6 @@ public class Art extends Building{
 		midpoint = new double[]{30,30};	
 	}
 	
-	private double height = 45;
 	@Override
 	public void draw(GL gl) {
 		gl.glPushMatrix();

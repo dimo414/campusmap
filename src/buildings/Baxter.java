@@ -7,6 +7,9 @@ import util.Shape;
 /**
  * Baxter Hall and Complex - Sigma Chi, Phi Delt, SAE and Montag
  * 
+ * Identifying Location - Southeast Corner
+ * 7547580.116E 473020.902N
+ * 
  * @author Jose Alvarado
  */
 public class Baxter extends Building{
@@ -26,27 +29,25 @@ public class Baxter extends Building{
 	@Override
 	public void draw(GL gl) {
 		gl.glPushMatrix();
-		
-		gl.glRotated(90, 0, 1, 0);
-		
+		//TODO When building proper model, consider making the southwest corner the canonical point
 		Shape.Cube.setColor(Building.brick);
 		// 1st Cube
 		gl.glPushMatrix();
-		gl.glScaled(205, 50, 36);
+		gl.glScaled(-36, 50, 205);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// 2nd Cube
 		gl.glPushMatrix();
-		gl.glTranslated(66,0,-(36));
-		gl.glScaled(134-66, 50, 202);
+		gl.glTranslated(-36,0,-66);
+		gl.glScaled(-202, 50, 134-66);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
 		// 3rd Cube
 		gl.glPushMatrix();
-		gl.glTranslated(0,0,-(202));
-		gl.glScaled(66, 50, 36);
+		gl.glTranslated(-202,0,0);
+		gl.glScaled(-36, 50, 66);
 		Shape.Cube.draw(gl);
 		gl.glPopMatrix();
 		
