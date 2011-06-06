@@ -10,7 +10,7 @@ import util.Util;
  * @author Michael Diamond
  * @author Jose Alvarado
  */
-public class UAPPS extends Building{
+public class UAps extends Building{
 
 		private double posEast = 7545738.017;
 		private double posNorth = 472840.221;
