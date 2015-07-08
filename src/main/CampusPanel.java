@@ -27,55 +27,55 @@ import buildings.Building;
  * features.
  */
 public class CampusPanel implements GLEventListener, KeyListener, MouseListener, MouseMotionListener {
-	private GLU glu = new GLU();  // OpenGL Utility Library - used to set camera view
+    private GLU glu = new GLU();  // OpenGL Utility Library - used to set camera view
 
-	//glu.gluLookAt(-5.0, 5.0, -5.0, 3.0, 0.0, 3.0, 0.0, 1.0, 0.0);
-	private Eye eye;
-	private HashSet<Integer> keys = new HashSet<>();
+    //glu.gluLookAt(-5.0, 5.0, -5.0, 3.0, 0.0, 3.0, 0.0, 1.0, 0.0);
+    private Eye eye;
+    private HashSet<Integer> keys = new HashSet<>();
 
-	private double moveSpeed = 10;
+    private double moveSpeed = 10;
     private double turnAngle = .01;
     private double trackSpeed = 5;
-	private int lastX;
-	private int lastY;
-	private boolean turn = false;
-	private boolean track = false;
-	
-	private double lAngle = 60;
-	
-	private  ArrayList<Building> buildings = new ArrayList<>();
-	
-	private Ground ground;
-	
-	private int[] names; // the array of texture names;
-	
-	/**
-	 * Constructs a new CampusPanel object
-	 */
-	public CampusPanel(){
-		// Setup Eye - this is done in the constructor
-		// and not in init() since init is called every time
-		// the application full screens
-		Vector pos = new Vector(Util.coordToGL((Util.CAMPUS_SE[0]+Util.CAMPUS_SW[0])/2, (Util.CAMPUS_SE[1]+Util.CAMPUS_SW[1])/2, 1000));
-		Vector lookAt = new Vector(Util.coordToGL((Util.CAMPUS_NE[0]+Util.CAMPUS_NW[0])/2, (Util.CAMPUS_NE[1]+Util.CAMPUS_NW[1])/2, 0));
-		eye = new Eye(pos, lookAt);
-		eye.pitch(-.5);
-	}
-	
-	//
-	// OPENGL METHODS
-	//
-	
-	@Override
-	/**
-	 * Sets up OpenGL with necessary configurations,
-	 * initializes buildings, textures, etc.
-	 * 
-	 * Note that this is called every time the application's
-	 * full screen state changes.
-	 */
-	public void init(GLAutoDrawable drawable) {
-		GL gl = drawable.getGL();
+    private int lastX;
+    private int lastY;
+    private boolean turn = false;
+    private boolean track = false;
+    
+    private double lAngle = 60;
+    
+    private  ArrayList<Building> buildings = new ArrayList<>();
+    
+    private Ground ground;
+    
+    private int[] names; // the array of texture names;
+    
+    /**
+     * Constructs a new CampusPanel object
+     */
+    public CampusPanel(){
+        // Setup Eye - this is done in the constructor
+        // and not in init() since init is called every time
+        // the application full screens
+        Vector pos = new Vector(Util.coordToGL((Util.CAMPUS_SE[0]+Util.CAMPUS_SW[0])/2, (Util.CAMPUS_SE[1]+Util.CAMPUS_SW[1])/2, 1000));
+        Vector lookAt = new Vector(Util.coordToGL((Util.CAMPUS_NE[0]+Util.CAMPUS_NW[0])/2, (Util.CAMPUS_NE[1]+Util.CAMPUS_NW[1])/2, 0));
+        eye = new Eye(pos, lookAt);
+        eye.pitch(-.5);
+    }
+    
+    //
+    // OPENGL METHODS
+    //
+    
+    @Override
+    /**
+     * Sets up OpenGL with necessary configurations,
+     * initializes buildings, textures, etc.
+     * 
+     * Note that this is called every time the application's
+     * full screen state changes.
+     */
+    public void init(GLAutoDrawable drawable) {
+        GL gl = drawable.getGL();
         gl.glClearColor(.2f, .2f, .5f, 0);
 
         gl.glMatrixMode(GL.GL_PROJECTION);
@@ -97,14 +97,14 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
         ground = new Ground();
         
         gl.glEnable(GL.GL_DEPTH_TEST);
-	}
-	
-	@Override
-	/**
-	 * Runs once per frame, generates the image to display
-	 */
-	public void display(GLAutoDrawable drawable) {
-		handleControls();
+    }
+    
+    @Override
+    /**
+     * Runs once per frame, generates the image to display
+     */
+    public void display(GLAutoDrawable drawable) {
+        handleControls();
         GL gl = drawable.getGL();
         
         // lightwork
@@ -115,108 +115,108 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
         gl.glMatrixMode(GL.GL_MODELVIEW);
         gl.glLoadIdentity();
         eye.positionCamera(gl);
-		
-		drawBuildings(gl);
-		drawGround(gl);
-	}
-	
-	@Override
-	/**
-	 * Handles what happens when the display is reshaped (resized)
-	 */
-	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int h) {
-		GL gl = drawable.getGL();
-		
-		int height = Math.max(h, 1);
+        
+        drawBuildings(gl);
+        drawGround(gl);
+    }
+    
+    @Override
+    /**
+     * Handles what happens when the display is reshaped (resized)
+     */
+    public void reshape(GLAutoDrawable drawable, int x, int y, int width, int h) {
+        GL gl = drawable.getGL();
+        
+        int height = Math.max(h, 1);
         gl.glViewport(0, 0, width, height);
         gl.glMatrixMode(GL.GL_PROJECTION);
         gl.glLoadIdentity();
         glu.gluPerspective(60., (double) width / height, 0.1, 3000.0);
         gl.glMatrixMode(GL.GL_MODELVIEW);
         gl.glLoadIdentity();
-	}
+    }
 
-	@Override
-	/**
-	 * What to do when the display changes.  We do not use this method at all.
-	 */
-	public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) {
-		// Nothing to do
-	}
-	
-	//
-	// HELPER METHODS
-	//
-	
-	/**
-	 * Creates and adds buildings to the buildings arraylist
-	 */
-	public void addBuildings(GL gl){
-		// The following block of code loads all children of Building in the buildings package into a hash map        
+    @Override
+    /**
+     * What to do when the display changes.  We do not use this method at all.
+     */
+    public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) {
+        // Nothing to do
+    }
+    
+    //
+    // HELPER METHODS
+    //
+    
+    /**
+     * Creates and adds buildings to the buildings arraylist
+     */
+    public void addBuildings(GL gl){
+        // The following block of code loads all children of Building in the buildings package into a hash map        
         // FIXME this will not work in a Jar, since it's not using getResource()
         File buildingDir = new File("bin/buildings");
         for(String file : buildingDir.list()){
-        	file = file.replaceAll("\\.class", "");
-        	if(!file.equals("Building")){
-        		try {
-					Class<?> c = Class.forName("buildings."+file);
-					if(Building.class.isAssignableFrom(c)){ // if class is a building
-						Building b = (Building) c.newInstance();
-						b.init(gl);
-						buildings.add(b);
-					}
-				} catch (ClassNotFoundException e) {
-					// Do nothing - if it's not a Class, we don't care about it.
-				} catch (InstantiationException e) {
-					// Do nothing - if it failed to instantiate, we don't care about it.
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					// Do nothing - if we weren't supposed to access the Class, we don't care about it.
-				}
-        	}
+            file = file.replaceAll("\\.class", "");
+            if(!file.equals("Building")){
+                try {
+                    Class<?> c = Class.forName("buildings."+file);
+                    if(Building.class.isAssignableFrom(c)){ // if class is a building
+                        Building b = (Building) c.newInstance();
+                        b.init(gl);
+                        buildings.add(b);
+                    }
+                } catch (ClassNotFoundException e) {
+                    // Do nothing - if it's not a Class, we don't care about it.
+                } catch (InstantiationException e) {
+                    // Do nothing - if it failed to instantiate, we don't care about it.
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    // Do nothing - if we weren't supposed to access the Class, we don't care about it.
+                }
+            }
         }
-	}
-	
-	/**
-	 * Adds textures to openGl
-	 */
-	public void addTextures(GL gl){
-		// TODO create a textures library
-		ImageTexture image = new ImageTexture("textures/CampusMap.jpg");
-		
-		names = new int[1];
+    }
+    
+    /**
+     * Adds textures to openGl
+     */
+    public void addTextures(GL gl){
+        // TODO create a textures library
+        ImageTexture image = new ImageTexture("textures/CampusMap.jpg");
+        
+        names = new int[1];
         gl.glGenTextures(1, names, 0);
         // Assign each of the textures an ID
         image.bind(names[0], gl);
-	}
+    }
 
-	/**
-	 * Draws buildings 
-	 */
-	public void drawBuildings(GL gl){
-		for(Building a : buildings){
-			gl.glPushMatrix();
+    /**
+     * Draws buildings 
+     */
+    public void drawBuildings(GL gl){
+        for(Building a : buildings){
+            gl.glPushMatrix();
 
-			double[] pos = a.getCoord();
-			pos = Util.coordToGL(pos[0], pos[1], pos[2]);
-			gl.glTranslated(pos[0], pos[1], pos[2]);
-			gl.glRotated(Building.buildingRotation, 0, 1, 0);
-			a.draw(gl);
-			
-			gl.glPopMatrix();
-		}
-	}
-	
-	/**
-	 * Draws the ground
-	 */
-	public void drawGround(GL gl){
-		// We should disable drawing the campus map when Ground works
-	/*	gl.glPushMatrix();
+            double[] pos = a.getCoord();
+            pos = Util.coordToGL(pos[0], pos[1], pos[2]);
+            gl.glTranslated(pos[0], pos[1], pos[2]);
+            gl.glRotated(Building.buildingRotation, 0, 1, 0);
+            a.draw(gl);
+            
+            gl.glPopMatrix();
+        }
+    }
+    
+    /**
+     * Draws the ground
+     */
+    public void drawGround(GL gl){
+        // We should disable drawing the campus map when Ground works
+    /*  gl.glPushMatrix();
         gl.glEnable(GL.GL_TEXTURE_2D);
         
-		gl.glBindTexture(GL.GL_TEXTURE_2D, names[0]);
-		
+        gl.glBindTexture(GL.GL_TEXTURE_2D, names[0]);
+        
         gl.glBegin(GL.GL_QUADS);
 
         gl.glTexCoord2d(1,0);
@@ -234,82 +234,82 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
         gl.glEnd();
 
         gl.glDisable(GL.GL_TEXTURE_2D);
-		gl.glPopMatrix();
-		// end drawing campus map
-	*/	
-		ground.draw(gl);
-	}
-	
-	//
-	// LISTENER METHODS
-	//
+        gl.glPopMatrix();
+        // end drawing campus map
+    */  
+        ground.draw(gl);
+    }
+    
+    //
+    // LISTENER METHODS
+    //
 
-	@Override
-	public void keyPressed(KeyEvent evt) {
-		keys.add(evt.getKeyCode());
-	}
-
-	@Override
-	public void keyReleased(KeyEvent evt) {
-		keys.remove(evt.getKeyCode());
-	}
-
-	@Override
-	public void keyTyped(KeyEvent evt) {
-		// Nothing to do!
-	}
-	
-	private void handleControls(){
-		boolean shift = keys.contains(KeyEvent.VK_SHIFT);
-    	if(keys.contains((int)'W')){ // forward
-    		eye.dolly(moveSpeed * (shift ? .1 : 1));
-    	}
-    	if(keys.contains((int)'A')){ // left
-    		eye.trackH(-moveSpeed * (shift ? .1 : 1));
-    	}
-    	if(keys.contains((int)'S')){ // backwards
-    		eye.dolly(-moveSpeed * (shift ? .1 : 1));
-    	}
-    	if(keys.contains((int)'D')){ // right
-    		eye.trackH(moveSpeed * (shift ? .1 : 1));
-    	}
+    @Override
+    public void keyPressed(KeyEvent evt) {
+        keys.add(evt.getKeyCode());
     }
 
-	@Override
-	public void mousePressed(MouseEvent evt) {
-		lastX = evt.getX();
-		lastY = evt.getY();
-		turn = evt.getButton() == MouseEvent.BUTTON1;
-		track = evt.getButton() == MouseEvent.BUTTON3;
-	}
+    @Override
+    public void keyReleased(KeyEvent evt) {
+        keys.remove(evt.getKeyCode());
+    }
 
-	@Override
-	public void mouseReleased(MouseEvent evt) { /**/ }
+    @Override
+    public void keyTyped(KeyEvent evt) {
+        // Nothing to do!
+    }
+    
+    private void handleControls(){
+        boolean shift = keys.contains(KeyEvent.VK_SHIFT);
+        if(keys.contains((int)'W')){ // forward
+            eye.dolly(moveSpeed * (shift ? .1 : 1));
+        }
+        if(keys.contains((int)'A')){ // left
+            eye.trackH(-moveSpeed * (shift ? .1 : 1));
+        }
+        if(keys.contains((int)'S')){ // backwards
+            eye.dolly(-moveSpeed * (shift ? .1 : 1));
+        }
+        if(keys.contains((int)'D')){ // right
+            eye.trackH(moveSpeed * (shift ? .1 : 1));
+        }
+    }
 
-	@Override
-	public void mouseDragged(MouseEvent evt) {
-		boolean shift = keys.contains(KeyEvent.VK_SHIFT);
-		if(turn){
-			eye.rotateH((evt.getX()-lastX)*turnAngle);
-			eye.rotateV((evt.getY()-lastY)*turnAngle);
-		}
-		if(track){
-			eye.trackH(-(evt.getX()-lastX)*trackSpeed * (shift ? .1 : 1));
-			eye.trackV((evt.getY()-lastY)*trackSpeed * (shift ? .1 : 1));
-		}
-		lastX = evt.getX();
-		lastY = evt.getY();
-	}
+    @Override
+    public void mousePressed(MouseEvent evt) {
+        lastX = evt.getX();
+        lastY = evt.getY();
+        turn = evt.getButton() == MouseEvent.BUTTON1;
+        track = evt.getButton() == MouseEvent.BUTTON3;
+    }
 
-	@Override
-	public void mouseMoved(MouseEvent evt) { /**/ }
+    @Override
+    public void mouseReleased(MouseEvent evt) { /**/ }
 
-	@Override
-	public void mouseClicked(MouseEvent evt) { /**/ }
+    @Override
+    public void mouseDragged(MouseEvent evt) {
+        boolean shift = keys.contains(KeyEvent.VK_SHIFT);
+        if(turn){
+            eye.rotateH((evt.getX()-lastX)*turnAngle);
+            eye.rotateV((evt.getY()-lastY)*turnAngle);
+        }
+        if(track){
+            eye.trackH(-(evt.getX()-lastX)*trackSpeed * (shift ? .1 : 1));
+            eye.trackV((evt.getY()-lastY)*trackSpeed * (shift ? .1 : 1));
+        }
+        lastX = evt.getX();
+        lastY = evt.getY();
+    }
 
-	@Override
-	public void mouseEntered(MouseEvent evt) { /**/ }
+    @Override
+    public void mouseMoved(MouseEvent evt) { /**/ }
 
-	@Override
-	public void mouseExited(MouseEvent evt) { /**/ }
+    @Override
+    public void mouseClicked(MouseEvent evt) { /**/ }
+
+    @Override
+    public void mouseEntered(MouseEvent evt) { /**/ }
+
+    @Override
+    public void mouseExited(MouseEvent evt) { /**/ }
 }

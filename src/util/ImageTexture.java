@@ -11,7 +11,7 @@ import javax.media.opengl.GL;
  * @author Michael Diamond
  */
 public class ImageTexture {
-	private BufferedImage image;
+    private BufferedImage image;
     private String filename = "";
 
     /**
@@ -62,9 +62,9 @@ public class ImageTexture {
      */
     public void loadImage() {
         try {
-        	getClass().getClassLoader();
-        //	File file = new File("src/"+filename);
-        //	image = ImageIO.read(file);
+            getClass().getClassLoader();
+        //  File file = new File("src/"+filename);
+        //  image = ImageIO.read(file);
             image = ImageIO.read(getClass().getClassLoader().getResourceAsStream(filename));
         //    System.out.println("Loading image " + filename + ".");
         } catch (Exception e) {

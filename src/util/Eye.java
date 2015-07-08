@@ -29,11 +29,11 @@ public class Eye {
      * @param n the N vector - the look vector
      */
     public Eye(Vector e, Vector u, Vector v, Vector n){
-    	eye = e;
-    	right = u;
-    	up = v;
-    	look = n;
-    	orig = new Vector[]{e,u,v,n};
+        eye = e;
+        right = u;
+        up = v;
+        look = n;
+        orig = new Vector[]{e,u,v,n};
     }
     
     /**
@@ -42,7 +42,7 @@ public class Eye {
      * @param look direction to look
      */
     public Eye(Vector e, Vector look){
-    	this(e,look,new Vector());
+        this(e,look,new Vector());
     }
     
     /**
@@ -53,10 +53,10 @@ public class Eye {
      * @param diff a point relative to look to tumble around 
      */
     public Eye(Vector e, Vector look, Vector diff){
-    	eye = e;
-    	up = new Vector(0,1,0);
-    	lookAt(look);
-    	rotationDif = diff;
+        eye = e;
+        up = new Vector(0,1,0);
+        lookAt(look);
+        rotationDif = diff;
     }
     
     /**
@@ -88,9 +88,9 @@ public class Eye {
      * @param t a vector indicating the point to tumble
      */
     public void setTumblePoint(Vector t){
-    	tumblePoint = t;
-    	lookAt(tumblePoint);
-    	orig = new Vector[]{eye,right,up,look};
+        tumblePoint = t;
+        lookAt(tumblePoint);
+        orig = new Vector[]{eye,right,up,look};
     }
     
     /**
@@ -98,7 +98,7 @@ public class Eye {
      * @return a vector indicating the point being tumbled around
      */
     public Vector getTumblePoint(){
-    	return tumblePoint;
+        return tumblePoint;
     }
     
     /**
@@ -106,8 +106,8 @@ public class Eye {
      * @return an array of the spherical coordinates {r, theta, phi}
      */
     public double[] getTumblePosition(){
-    	// NOT THE LOOK VECTOR
-    	return eye.toSpherical(tumblePoint);
+        // NOT THE LOOK VECTOR
+        return eye.toSpherical(tumblePoint);
     }
     
     /**
@@ -115,7 +115,7 @@ public class Eye {
      * @param speed the amount to track
      */
     public void trackH(double speed){
-    	eye = eye.add(right.scale(speed));
+        eye = eye.add(right.scale(speed));
     }
     
     /**
@@ -123,10 +123,10 @@ public class Eye {
      * @param speed the amount to track
      */
     public void trackV(double speed){
-    	Vector temp = eye.add(up.scale(speed));
-    	if(temp.y() > 1){
-    		eye = temp;
-    	}
+        Vector temp = eye.add(up.scale(speed));
+        if(temp.y() > 1){
+            eye = temp;
+        }
     }
     
     /**
@@ -134,10 +134,10 @@ public class Eye {
      * @param speed the amount to dolly
      */
     public void dolly(double speed){
-    	Vector temp = eye.add(look.scale(speed));
-    	if(temp.y() > 1){
-    		eye = eye.add(look.scale(speed));
-    	}
+        Vector temp = eye.add(look.scale(speed));
+        if(temp.y() > 1){
+            eye = eye.add(look.scale(speed));
+        }
     }
     
     /**
@@ -145,8 +145,8 @@ public class Eye {
      * @param angle the angle (0-1) to turn
      */
     public void roll(double angle){
-    	right = right.add(up.scale(-angle)).normalize();
-    	up = right.cross(look).normalize();
+        right = right.add(up.scale(-angle)).normalize();
+        up = right.cross(look).normalize();
     }
     
     /**
@@ -154,8 +154,8 @@ public class Eye {
      * @param angle the angle (0-1) to turn
      */
     public void pitch(double angle){
-    	look = look.add(up.scale(angle)).normalize();
-    	up = right.cross(look).normalize();
+        look = look.add(up.scale(angle)).normalize();
+        up = right.cross(look).normalize();
     }
     
     /**
@@ -163,8 +163,8 @@ public class Eye {
      * @param angle the angle (0-1) to turn
      */
     public void yaw(double angle){
-    	look = look.add(right.scale(angle)).normalize();
-    	right = look.cross(up).normalize();
+        look = look.add(right.scale(angle)).normalize();
+        right = look.cross(up).normalize();
     }
     
     /**
@@ -173,19 +173,19 @@ public class Eye {
      * @param angle the angle (0-1) to turn
      */
     public void rotateV(double angle){
-    	// need to determine if the rotation would put us too close to vertical orientation
-    	// we use a fixed angle to ensure a minimum distance from vertical
-    	double testAngle = Math.copySign(.25, angle);
-    	Vector testLook = look.add(up.scale(testAngle)).normalize();
-    	Vector tempLook = look.add(up.scale(angle)).normalize();
-    	if(look.distance(tempLook) > look.distance(testLook))
-    		testLook = tempLook;
-    	// test if x or z switch signs - that is, it tries to move past vertical
-    	if(look.x() > 0 != testLook.x() > 0 || look.z() > 0 != testLook.z() > 0){
-    		return;
-    	}
-    	look = tempLook;
-    	up = right.cross(look).normalize();
+        // need to determine if the rotation would put us too close to vertical orientation
+        // we use a fixed angle to ensure a minimum distance from vertical
+        double testAngle = Math.copySign(.25, angle);
+        Vector testLook = look.add(up.scale(testAngle)).normalize();
+        Vector tempLook = look.add(up.scale(angle)).normalize();
+        if(look.distance(tempLook) > look.distance(testLook))
+            testLook = tempLook;
+        // test if x or z switch signs - that is, it tries to move past vertical
+        if(look.x() > 0 != testLook.x() > 0 || look.z() > 0 != testLook.z() > 0){
+            return;
+        }
+        look = tempLook;
+        up = right.cross(look).normalize();
     }
 
     /**
@@ -193,12 +193,12 @@ public class Eye {
      * @param angle the angle (0-1) to turn
      */
     // like yaw, but always rotates around the y axis
-	public void rotateH(double angle) {
-		Vector tempUp = new Vector(0,1,0);
-		look = look.add(right.scale(angle)).normalize();
-    	right = look.cross(tempUp).normalize();
-    	up = right.cross(look).normalize();
-	}
+    public void rotateH(double angle) {
+        Vector tempUp = new Vector(0,1,0);
+        look = look.add(right.scale(angle)).normalize();
+        right = look.cross(tempUp).normalize();
+        up = right.cross(look).normalize();
+    }
     
     /**
      * Tumble - Rotates around the tumble point in a large sphere in the horizontal.
@@ -207,11 +207,11 @@ public class Eye {
      * @param relative if true, rotate by angle, if false the angle (in degrees) to be positioned at
      */
     public void tumbleH(double angle, boolean relative){
-    	Vector lookAt = tumblePoint.minus(rotationDif);
-    	double[] sphere = eye.toSpherical(lookAt);
-    	sphere[2] = (relative ? sphere[2] : 0) + angle;
-    	eye = new Vector(lookAt,sphere);
-    	lookAt(tumblePoint);
+        Vector lookAt = tumblePoint.minus(rotationDif);
+        double[] sphere = eye.toSpherical(lookAt);
+        sphere[2] = (relative ? sphere[2] : 0) + angle;
+        eye = new Vector(lookAt,sphere);
+        lookAt(tumblePoint);
     }
     
     
@@ -222,15 +222,15 @@ public class Eye {
      * @param relative if true, rotate by angle, if false the angle (in degrees) to be positioned at
      */
     public void tumbleV(double angle, boolean relative){
-    	Vector lookAt = tumblePoint.minus(rotationDif);
-    	double[] sphere = eye.toSpherical(lookAt);
-    	sphere[1] = (relative ? sphere[1] : 0) + angle;
-    	if(sphere[1] < tumbleMax)
-    		sphere[1] = tumbleMax;
-    	if(sphere[1] > tumbleMin)
-    		sphere[1] = tumbleMin;
-    	eye = new Vector(lookAt,sphere);
-    	lookAt(tumblePoint);
+        Vector lookAt = tumblePoint.minus(rotationDif);
+        double[] sphere = eye.toSpherical(lookAt);
+        sphere[1] = (relative ? sphere[1] : 0) + angle;
+        if(sphere[1] < tumbleMax)
+            sphere[1] = tumbleMax;
+        if(sphere[1] > tumbleMin)
+            sphere[1] = tumbleMin;
+        eye = new Vector(lookAt,sphere);
+        lookAt(tumblePoint);
     }
     private static double tumbleMax = .000001;
     private static double tumbleMin = Math.PI-tumbleMax;
@@ -240,7 +240,7 @@ public class Eye {
      * @param angle the angle (in degrees) to tumble by
      */
     public void tumbleV(double angle){
-    	tumbleV(angle,true);
+        tumbleV(angle,true);
     }
 
     /**
@@ -248,7 +248,7 @@ public class Eye {
      * @param angle the angle (in degrees) to tumble by
      */
     public void tumbleH(double angle){
-    	tumbleH(angle,true);
+        tumbleH(angle,true);
     }
     
     /**
@@ -256,29 +256,29 @@ public class Eye {
      * @param lookAt the point vector to look at
      */
     public void lookAt(Vector lookAt){
-    	up = new Vector(0,1,0);
-    	look = lookAt.minus(eye).normalize();
-    	right = look.cross(up).normalize();
-    	up = right.cross(look).normalize();
-    	tumblePoint = lookAt;
+        up = new Vector(0,1,0);
+        look = lookAt.minus(eye).normalize();
+        right = look.cross(up).normalize();
+        up = right.cross(look).normalize();
+        tumblePoint = lookAt;
     }
     
     /**
      * Resets the eye to it's original position and orientation
      */
     public void reset(){
-    	eye = orig[0];
-    	right = orig[1];
-    	up = orig[2];
-    	look = orig[3];
+        eye = orig[0];
+        right = orig[1];
+        up = orig[2];
+        look = orig[3];
     }
     
     /**
      * Reorients the eye so the up vector is the y axis
      */
     public void reorient(){
-    	up = new Vector(0,1,0);
-    	right = look.cross(up).normalize();
-    	look = up.cross(right).normalize();    	
+        up = new Vector(0,1,0);
+        right = look.cross(up).normalize();
+        look = up.cross(right).normalize();     
     }
 }

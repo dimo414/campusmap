@@ -25,8 +25,8 @@ public class Ground {
          * Constructs a representation of the ground
          */
         public Ground() {
-        	shape = new Triangulator("landscape/elevations.txt").getShape();
-        	shape.setColor(new float[]{.1f,.8f,.1f});
+            shape = new Triangulator("landscape/elevations.txt").getShape();
+            shape.setColor(new float[]{.1f,.8f,.1f});
         }
 
         /**
