@@ -19,37 +19,37 @@ import util.Util;
  * @author Michael Diamond
  */
 public class Library extends Building {
-	private double posEast = 7546826.465;
-	private double posNorth = 472747.03;
-	private double posElevation = 0; // TODO Get Elevation of building
-	
-	@Override
-	public void init(GL gl) {
-		coordinate = new double[]{posEast,posNorth,posElevation};
-		midpoint = new double[]{Util.f(186,1)/2, Util.f(186,1)/2};
-	}
+    private double posEast = 7546826.465;
+    private double posNorth = 472747.03;
+    private double posElevation = 0; // TODO Get Elevation of building
+    
+    @Override
+    public void init(GL gl) {
+        coordinate = new double[]{posEast,posNorth,posElevation};
+        midpoint = new double[]{Util.f(186,1)/2, Util.f(186,1)/2};
+    }
 
-	@Override
-	public void draw(GL gl) {
-		gl.glPushMatrix();
-		
-		Shape.Cube.setColor(Building.brick);
-		// main building
-		gl.glPushMatrix();
-		gl.glScaled(Util.f(186,1), 40, Util.f(186,1));
-		Shape.Cube.draw(gl);
-		gl.glPopMatrix();
-		
-		// north outcrop - this position has not been measured yet - numbers are guesses
-		gl.glPushMatrix();
-		gl.glTranslated(60,0,-Util.f(186,1));
-		gl.glRotated(45, 0, 1, 0);
-		gl.glScaled(20, 40, 20);
-		gl.glTranslated(-.5, 0, .5);
-		Shape.Cube.draw(gl);
-		gl.glPopMatrix();
-		
-		gl.glPopMatrix();
-	}
+    @Override
+    public void draw(GL gl) {
+        gl.glPushMatrix();
+        
+        Shape.Cube.setColor(Building.brick);
+        // main building
+        gl.glPushMatrix();
+        gl.glScaled(Util.f(186,1), 40, Util.f(186,1));
+        Shape.Cube.draw(gl);
+        gl.glPopMatrix();
+        
+        // north outcrop - this position has not been measured yet - numbers are guesses
+        gl.glPushMatrix();
+        gl.glTranslated(60,0,-Util.f(186,1));
+        gl.glRotated(45, 0, 1, 0);
+        gl.glScaled(20, 40, 20);
+        gl.glTranslated(-.5, 0, .5);
+        Shape.Cube.draw(gl);
+        gl.glPopMatrix();
+        
+        gl.glPopMatrix();
+    }
 
 }

@@ -16,54 +16,54 @@ should be presumed to be incorrect.
 
 
 Goudy Commons
-	Main Hall south outcrop:	19'
-	Main Hall south base of roof:	24'4"
-	Main Hall south top of roof:	33'6"
-	Roof standard height:			19'
-	Roof penthouse:					~25'
-	Smokestack penthouse:			~30'
-	Wall standard height:			9'9"
-	Dumpster wall:					8'
+    Main Hall south outcrop:    19'
+    Main Hall south base of roof:   24'4"
+    Main Hall south top of roof:    33'6"
+    Roof standard height:           19'
+    Roof penthouse:                 ~25'
+    Smokestack penthouse:           ~30'
+    Wall standard height:           9'9"
+    Dumpster wall:                  8'
 
 Grounds
-	East section to base of roof:	6'6"
-	West section to base of roof:	9'
+    East section to base of roof:   6'6"
+    West section to base of roof:   9'
 
 Kresge
-	SE Corner:							29'
-	East wing center to top of roof:	23'
+    SE Corner:                          29'
+    East wing center to top of roof:    23'
 
 Mark O. Hatfield Library
-	Ground to bottom of balcony:			11'
-	Ground to bottom of roof:				28'
-	Height of roof:							~6'
-	Clock tower, ground to arch:			8'6"
-	Clock tower, ground to base of roof:	44'
+    Ground to bottom of balcony:            11'
+    Ground to bottom of roof:               28'
+    Height of roof:                         ~6'
+    Clock tower, ground to arch:            8'6"
+    Clock tower, ground to base of roof:    44'
 
 Physical Plant
-	SE corner:	16'
+    SE corner:  16'
 
 Putnum University Center
-	Ground to balcony floor:	13'10"
-	Balcony to bottom of roof:	21'6"
-	Height of roof:				~6'
+    Ground to balcony floor:    13'10"
+    Balcony to bottom of roof:  21'6"
+    Height of roof:             ~6'
 
 Rogers Music Hall
-	West overhang:	17'
-	South wing:		13'
+    West overhang:  17'
+    South wing:     13'
 
 Smith Fine Arts
-	FAW NW corner:			27'6"
-	Smith north overhang:	19'
-	Auditorium roof:		44'
+    FAW NW corner:          27'6"
+    Smith north overhang:   19'
+    Auditorium roof:        44'
 
 University Apartments
-	Each floor:			8'8"
-	7th floor:			~15'
-	To base of roof:	~52'
-	To top of roof:		~72'	
+    Each floor:         8'8"
+    7th floor:          ~15'
+    To base of roof:    ~52'
+    To top of roof:     ~72'    
 
 Westside
-	Lausanne - SE corner to base of roof:		48'
-	Doney - south outcrop:						23'
-	Doney/ResServices ground to base of roof:	29'
+    Lausanne - SE corner to base of roof:       48'
+    Doney - south outcrop:                      23'
+    Doney/ResServices ground to base of roof:   29'

@@ -44,8 +44,8 @@ public class BuildingViewer implements GLEventListener, ActionListener {
     private JComboBox<String> choices;
     
     private BuildingViewer(JFrame f, JPanel c){
-    	frame = f;
-    	controls = c;
+        frame = f;
+        controls = c;
     }
    
     @Override
@@ -68,38 +68,38 @@ public class BuildingViewer implements GLEventListener, ActionListener {
         // WARNING this will not work in a Jar, since it's not using getResource()
         File buildingDir = new File("bin/buildings");
         for(String file : buildingDir.list()){
-        	file = file.replaceAll("\\.class", "");
-        	if(!file.equals("Building")){
-        		try {
-					Class<?> c = Class.forName("buildings."+file);
-					if(Building.class.isAssignableFrom(c)){ // if class is a building
-						Building b = (Building) c.newInstance();
-						b.init(gl);
-						buildings.put(file,b);
-					}
-				} catch (ClassNotFoundException e) {
-					// Do nothing - if it's not a Class, we don't care about it.
-				} catch (InstantiationException e) {
-					// Do nothing - if it failed to instantiate, we don't care about it.
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					// Do nothing - if we weren't supposed to access the Class, we don't care about it.
-				}
-        	}
+            file = file.replaceAll("\\.class", "");
+            if(!file.equals("Building")){
+                try {
+                    Class<?> c = Class.forName("buildings."+file);
+                    if(Building.class.isAssignableFrom(c)){ // if class is a building
+                        Building b = (Building) c.newInstance();
+                        b.init(gl);
+                        buildings.put(file,b);
+                    }
+                } catch (ClassNotFoundException e) {
+                    // Do nothing - if it's not a Class, we don't care about it.
+                } catch (InstantiationException e) {
+                    // Do nothing - if it failed to instantiate, we don't care about it.
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    // Do nothing - if we weren't supposed to access the Class, we don't care about it.
+                }
+            }
         }
         
         // Add choices to panel
         String[] buildStrs = buildings.keySet().toArray(new String[]{});
         Arrays.sort(buildStrs);
         if(buildStrs.length > 0) // set default building
-        	bld = buildings.get(buildStrs[0]);
+            bld = buildings.get(buildStrs[0]);
         choices = new JComboBox<>(buildStrs);
         choices.addActionListener(this);
         controls.add(choices);
         frame.validate();
     }
 
-   	@Override
+    @Override
     public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
         GL gl = drawable.getGL();
         gl.glViewport(0, 0, width, height);
@@ -111,7 +111,7 @@ public class BuildingViewer implements GLEventListener, ActionListener {
     }
 
     @Override
-    public void display(GLAutoDrawable drawable) {    	
+    public void display(GLAutoDrawable drawable) {      
         GL gl = drawable.getGL();
                 
         // lightwork
@@ -126,16 +126,16 @@ public class BuildingViewer implements GLEventListener, ActionListener {
         // DRAW
         gl.glPushMatrix();
         rAngle += .5;
-    	gl.glRotated(rAngle, 0, 1, 0);
+        gl.glRotated(rAngle, 0, 1, 0);
         
-    	if(bld != null) {
-    		double[] mid = bld.getMidpoint();
-    		gl.glTranslated(-mid[0], 0, mid[1]);
-    		bld.draw(gl);
-    	}
-	    
-	    gl.glPopMatrix();
-	    // END DRAWING
+        if(bld != null) {
+            double[] mid = bld.getMidpoint();
+            gl.glTranslated(-mid[0], 0, mid[1]);
+            bld.draw(gl);
+        }
+        
+        gl.glPopMatrix();
+        // END DRAWING
         
         // Flush all drawing operations to the graphics card
         gl.glFlush();
@@ -144,13 +144,13 @@ public class BuildingViewer implements GLEventListener, ActionListener {
     @Override
     public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) { /**/ }
 
-	@Override
-	public void actionPerformed(ActionEvent evt) {
-		Object src = evt.getSource();
-		if(src == choices){
-			bld = buildings.get(choices.getSelectedItem());
-		}
-	}
+    @Override
+    public void actionPerformed(ActionEvent evt) {
+        Object src = evt.getSource();
+        if(src == choices){
+            bld = buildings.get(choices.getSelectedItem());
+        }
+    }
     
     //
     // MAIN
