@@ -60,6 +60,7 @@ public class CampusFrame extends JFrame implements ActionListener, KeyListener {
                 // exiting
                 new Thread(new Runnable() {
 
+                    @Override
                     public void run() {
                         animator.stop();
                         System.exit(0);
@@ -161,17 +162,18 @@ public class CampusFrame extends JFrame implements ActionListener, KeyListener {
 	 * in fullscreen mode.
 	 * @param args the set of parameters which modify how the program runs.
 	 */
-	public static void main(String[] args){
+	@SuppressWarnings("unused")
+    public static void main(String[] args){
 		// necessary to do full screen (hardware accelerated) with JOGL
 		// http://stackoverflow.com/questions/4245060/full-screen-swing-with-jogl/424736
 		System.setProperty("sun.java2d.noddraw", "true");
 		
-		ArrayList<String> argsLs = new ArrayList<String>(Arrays.asList(args));
+		ArrayList<String> argsLs = new ArrayList<>(Arrays.asList(args));
 		
 		boolean full = argsLs.contains("fullscreen");
 		
 		try{
-		new CampusFrame(full);
+		    new CampusFrame(full);
 		} catch (RuntimeException e){
 			String err = e.getClass().getName();
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error: "+err.substring(err.lastIndexOf('.')+1), JOptionPane.ERROR_MESSAGE);

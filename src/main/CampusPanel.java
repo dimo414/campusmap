@@ -31,7 +31,7 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 
 	//glu.gluLookAt(-5.0, 5.0, -5.0, 3.0, 0.0, 3.0, 0.0, 1.0, 0.0);
 	private Eye eye;
-	private HashSet<Integer> keys = new HashSet<Integer>();
+	private HashSet<Integer> keys = new HashSet<>();
 
 	private double moveSpeed = 10;
     private double turnAngle = .01;
@@ -43,7 +43,7 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	
 	private double lAngle = 60;
 	
-	private  ArrayList<Building> buildings = new ArrayList<Building>();
+	private  ArrayList<Building> buildings = new ArrayList<>();
 	
 	private Ground ground;
 	
@@ -124,13 +124,10 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	/**
 	 * Handles what happens when the display is reshaped (resized)
 	 */
-	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
+	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int h) {
 		GL gl = drawable.getGL();
-
-        if (height <= 0) { // avoid a divide by zero error!
-        
-            height = 1;
-        }
+		
+		int height = Math.max(h, 1);
         gl.glViewport(0, 0, width, height);
         gl.glMatrixMode(GL.GL_PROJECTION);
         gl.glLoadIdentity();
@@ -287,8 +284,7 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent evt) {
-	}
+	public void mouseReleased(MouseEvent evt) { /**/ }
 
 	@Override
 	public void mouseDragged(MouseEvent evt) {
@@ -306,18 +302,14 @@ public class CampusPanel implements GLEventListener, KeyListener, MouseListener,
 	}
 
 	@Override
-	public void mouseMoved(MouseEvent evt) {
-	}
+	public void mouseMoved(MouseEvent evt) { /**/ }
 
 	@Override
-	public void mouseClicked(MouseEvent evt) {
-	}
+	public void mouseClicked(MouseEvent evt) { /**/ }
 
 	@Override
-	public void mouseEntered(MouseEvent evt) {
-	}
+	public void mouseEntered(MouseEvent evt) { /**/ }
 
 	@Override
-	public void mouseExited(MouseEvent evt) {
-	}
+	public void mouseExited(MouseEvent evt) { /**/ }
 }

@@ -25,13 +25,13 @@ public class Triangulator {
 	private ArrayList<int[]> triangles;
 	
 	/**
-	 * Takes an arraylist of vectors and constructs the triangulator object.
+	 * Takes an ArrayList of vectors and constructs the triangulator object.
 	 * The third (z) parameter of the vector is not factored into the
 	 * triangulation algorithm.
 	 * @param al double precision coordinates in international feet
 	 */
 	public Triangulator(ArrayList<Vector> al){
-		cords = new ArrayList<Vector>(al);
+		cords = new ArrayList<>(al);
 		genTriangles();
 	}
 	
@@ -49,9 +49,8 @@ public class Triangulator {
 	public Triangulator(String file){
 		// FIXME this code is currently not JAR compatible
 		File f = new File("src/"+file);
-		try {
-			cords = new ArrayList<Vector>();
-			Scanner in = new Scanner(f);
+        cords = new ArrayList<>();
+		try (Scanner in = new Scanner(f)) {
 			int line = 0;
 			while(in.hasNextLine()){
 				line++;
@@ -85,7 +84,7 @@ public class Triangulator {
 	 * coordinates provided. 
 	 */
 	private void genTriangles(){
-		triangles = new ArrayList<int[]>();
+		triangles = new ArrayList<>();
 		
 		// shuffle the data to help the algorithm
 		Collections.shuffle(cords);
@@ -93,9 +92,9 @@ public class Triangulator {
 		// start algorithm - based heavily on Diemke's code
 		long start = System.currentTimeMillis();
 		
-		ArrayList<Vector2D> cords2D = new ArrayList<Vector2D>();
+		ArrayList<Vector2D> cords2D = new ArrayList<>();
 		// hash map to track the indices of the coordinates we're actually talking about
-		HashMap<Vector2D,Integer> cordMap = new HashMap<Vector2D,Integer>();
+		HashMap<Vector2D,Integer> cordMap = new HashMap<>();
 		for(int i = 0; i < cords.size(); i++){
 			Vector v = cords.get(i);
 			Vector2D v2 = new Vector2D(v);
@@ -261,7 +260,7 @@ public class Triangulator {
 		} 
 	}
 	
-	private Triangle findNeighbour(TriangleSet triangleSet, Triangle tri, Edge edge) {
+	private static Triangle findNeighbour(TriangleSet triangleSet, Triangle tri, Edge edge) {
 		for(Triangle triangle : triangleSet.triangleSet) {
 			if(triangle.isNeighbour(edge) && triangle != tri) {
 				return triangle;
@@ -271,7 +270,7 @@ public class Triangulator {
 		return null;
 	}
 	
-	private Triangle findTriangleSharing(TriangleSet triangleSet, Edge edge) {
+	private static Triangle findTriangleSharing(TriangleSet triangleSet, Edge edge) {
 		for(Triangle triangle : triangleSet.triangleSet) {
 			if(triangle.isNeighbour(edge)) {
 				return triangle;
@@ -360,7 +359,8 @@ public class Triangulator {
 			return true;
 		}
 
-		public String toString() {
+		@Override
+        public String toString() {
 			return "Vector2D(" + x + ", " + y + ")";
 		}
 	}
@@ -482,10 +482,10 @@ public class Triangulator {
 			double det = a11 * a22 * a33 + a12 * a23 * a31 + a13 * a21 * a32 -
 						 a13 * a22 * a31 - a12 * a21 * a33 - a11 * a23 * a32;
 			
-			if(isOrientedCCW())
+			if(isOrientedCCW()) {
 				return det > 0.0f;
-			else
-				return det < 0.0f;
+			}
+			return det < 0.0f;
 		}
 		
 		/**
@@ -523,10 +523,7 @@ public class Triangulator {
 		}
 		
 		public boolean hasVertex(Vector2D v1) {
-			if(a.equals(v1) || b.equals(v1) || c.equals(v1))
-				return true;
-			else
-				return false; 
+			return a.equals(v1) || b.equals(v1) || c.equals(v1); 
 		}
 
 		public EdgePointDistance findNearestEdge(Vector2D point) {
@@ -539,7 +536,8 @@ public class Triangulator {
 			return edges[0];
 		}
 		
-		public String toString() {
+		@Override
+        public String toString() {
 			return "Triangle: " + a + " " + b + " " + c;
 		}
 	}
@@ -553,12 +551,12 @@ public class Triangulator {
 		ArrayList<Triangle> triangleSet;
 		
 		public TriangleSet() {
-			this.triangleSet = new ArrayList<Triangle>();
+			this.triangleSet = new ArrayList<>();
 		}
 		
 		public Edge findEdgeThatContains(Vector2D point) {
 			
-			ArrayList<EdgePointDistance> edgeVector = new ArrayList<EdgePointDistance>();
+			ArrayList<EdgePointDistance> edgeVector = new ArrayList<>();
 			
 			for(Triangle triangle : triangleSet) {
 				edgeVector.add(triangle.findNearestEdge(point));
@@ -582,7 +580,7 @@ public class Triangulator {
 		}
 		
 		public void removeTrianglesUsing(Vector2D point) {
-			ArrayList<Triangle> removeList = new ArrayList<Triangle>();
+			ArrayList<Triangle> removeList = new ArrayList<>();
 			for(Triangle triangle : triangleSet) {
 				if(triangle.hasVertex(point)) {
 					removeList.add(triangle);
@@ -601,7 +599,8 @@ public class Triangulator {
 			return null;
 		}
 		
-		public String toString(){
+		@Override
+        public String toString(){
 			return triangleSet.toString();
 		}
 	}
