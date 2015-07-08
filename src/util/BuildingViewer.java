@@ -33,7 +33,7 @@ public class BuildingViewer implements GLEventListener, ActionListener {
     private GLU glu = new GLU(); // OpenGL Utility Library - used to set camera view
     
     private Eye eye = new Eye(new Vector(0.0, 120.0, 240.0), new Vector(0,30,0));
-    private HashMap<String, Building> buildings = new HashMap<String,Building>();
+    private HashMap<String, Building> buildings = new HashMap<>();
     private Building bld = null;
     
     private double lAngle = 60;
@@ -41,13 +41,14 @@ public class BuildingViewer implements GLEventListener, ActionListener {
     
     private JFrame frame;
     private JPanel controls;
-    private JComboBox choices;
+    private JComboBox<String> choices;
     
     private BuildingViewer(JFrame f, JPanel c){
     	frame = f;
     	controls = c;
     }
    
+    @Override
     public void init(GLAutoDrawable drawable) {
         GL gl = drawable.getGL();
         // Enable VSync
@@ -92,13 +93,14 @@ public class BuildingViewer implements GLEventListener, ActionListener {
         Arrays.sort(buildStrs);
         if(buildStrs.length > 0) // set default building
         	bld = buildings.get(buildStrs[0]);
-        choices = new JComboBox(buildStrs);
+        choices = new JComboBox<>(buildStrs);
         choices.addActionListener(this);
         controls.add(choices);
         frame.validate();
     }
 
-   	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
+   	@Override
+    public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
         GL gl = drawable.getGL();
         gl.glViewport(0, 0, width, height);
         gl.glMatrixMode(GL.GL_PROJECTION);
@@ -108,6 +110,7 @@ public class BuildingViewer implements GLEventListener, ActionListener {
         gl.glMatrixMode(GL.GL_MODELVIEW);
     }
 
+    @Override
     public void display(GLAutoDrawable drawable) {    	
         GL gl = drawable.getGL();
                 
@@ -138,8 +141,8 @@ public class BuildingViewer implements GLEventListener, ActionListener {
         gl.glFlush();
     }
     
-    public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) {
-    }
+    @Override
+    public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) { /**/ }
 
 	@Override
 	public void actionPerformed(ActionEvent evt) {
@@ -183,6 +186,7 @@ public class BuildingViewer implements GLEventListener, ActionListener {
                 // exiting
                 new Thread(new Runnable() {
 
+                    @Override
                     public void run() {
                         animator.stop();
                         System.exit(0);

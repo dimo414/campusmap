@@ -181,7 +181,7 @@ public class Shape {
 	private FloatBuffer colorBuff;
 	private FloatBuffer normalBuff;
 	
-	private HashMap<FAW,FloatBuffer> colorCache = new HashMap<FAW,FloatBuffer>();
+	private HashMap<FAW,FloatBuffer> colorCache = new HashMap<>();
 	
 	/**
 	 * Constructs a new shape with no components

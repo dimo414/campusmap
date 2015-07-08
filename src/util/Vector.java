@@ -144,6 +144,7 @@ public class Vector {
 	  return eq(x,v.x,p) && eq(y,v.y,p) && eq(z,v.z,p);
   }
 
+  @Override
   public String toString() {
     return "{" + x + ", " + y + ", " + z + "}";
   }
