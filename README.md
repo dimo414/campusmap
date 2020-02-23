@@ -9,8 +9,8 @@ code attached.  The JOGL OS-specific files (DLLs on Windows) need to be download
 root of the project directory.  It shouldn't be too hard to get working in NetBeans, but for
 consistency Eclipse is recommended.
 
-http://jogamp.org/jogl/
-https://jogamp.org/deployment/autobuilds/master/?C=M;O=D
+* http://jogamp.org/jogl/
+* https://jogamp.org/deployment/archive/master/jogl-old-1.1.1/
 
 ## Copyright
 
